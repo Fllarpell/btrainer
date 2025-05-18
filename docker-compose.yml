@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: btrainer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  init-db:
+    build: .
+    command: python app/db/setup.py
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  fill-references:
+    build: .
+    command: python scripts/batch_add_references.py
+    env_file:
+      - .env
+    depends_on:
+      - init-db
+    volumes:
+      - .:/app
+
+  bot:
+    build: .
+    command: python bot.py
+    env_file:
+      - .env
+    depends_on:
+      - fill-references
+    volumes:
+      - .:/app
+    restart: always
+
+volumes:
+  pgdata:
+
+networks:
+  glamcoding_network:
+    driver: bridge 

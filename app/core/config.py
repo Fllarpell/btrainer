@@ -33,10 +33,22 @@ class Settings:
     if ADMIN_IDS_STR:
         try:
             ADMIN_IDS = [int(admin_id.strip()) for admin_id in ADMIN_IDS_STR.split(',')]
+            print(f"Loaded ADMIN_IDS: {ADMIN_IDS} from string: '{ADMIN_IDS_STR}'")
         except ValueError:
             print(f"Warning: ADMIN_IDS in .env ('{ADMIN_IDS_STR}') contains non-integer values")
             ADMIN_IDS = []
+    else:
+        print("Warning: ADMIN_IDS is not set in .env")
     
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO").upper()
+
+    deep_seek_api_key: str = os.getenv("DEEP_SEEK_API_KEY", "YOUR_DEEP_SEEK_API_KEY_HERE")
+
+    # Telegram Payment Provider Token (from BotFather, for YooKassa)
+    TELEGRAM_PAYMENT_PROVIDER_TOKEN: Optional[str] = os.getenv("TELEGRAM_PAYMENT_PROVIDER_TOKEN")
+    if not TELEGRAM_PAYMENT_PROVIDER_TOKEN:
+        print("Warning: TELEGRAM_PAYMENT_PROVIDER_TOKEN is not set in .env. Payments will not work.")
+
+    TRIAL_PERIOD_DAYS: int = 7
 
 settings = Settings()

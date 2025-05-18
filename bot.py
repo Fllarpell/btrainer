@@ -7,23 +7,29 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.default import DefaultBotProperties
 
 from app.core.config import settings
-from app.db.session import SessionLocal
+from app.db.session import AsyncSessionLocal
 from app.middlewares.db import DbSessionMiddleware
-from app.handlers.common import common_router
-# from app.handlers import user_router, admin_router
-# from app.db.engine import engine # SQLAlchemy engine для middleware
+
+from app.handlers.user.user_onboarding_handlers import user_onboarding_router
+from app.handlers.user.feature_handlers import feature_router as user_feature_router
+from app.handlers.case.case_lifecycle_handlers import case_lifecycle_router
+from app.handlers.admin.admin import admin_router
+from app.handlers.payment_handlers import payment_router
+
 
 async def main():
     logging.basicConfig(
         level=settings.LOG_LEVEL,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-    )
+        handlers=[
+            logging.FileHandler("app.log", encoding="utf-8"),
+            logging.StreamHandler()
+    ]
+)
     logger = logging.getLogger(__name__)
     logger.info("Starting bot...")
 
-    # Инициализация бота и диспетчера
-    # MemoryStorage используется по умолчанию для хранения состояний FSM. 
-    # Для продакшена лучше использовать RedisStorage или другое персистентное хранилище.
+    # Для продакшена лучше использовать RedisStorage
     storage = MemoryStorage()
 
     bot = Bot(
@@ -32,13 +38,16 @@ async def main():
     )
     dp = Dispatcher(storage=storage)
 
-    dp.update.middleware(DbSessionMiddleware(session_pool=SessionLocal))
+    dp.update.middleware(DbSessionMiddleware(session_pool=AsyncSessionLocal))
     logger.info("Database session middleware registered.")
 
-    dp.include_router(common_router)
-    # dp.include_router(user_router) # Для пользовательских команд
-    # dp.include_router(admin_router) # Для админ-команд
-    logger.info("Common routers included.")
+    dp.include_router(user_onboarding_router)
+    dp.include_router(user_feature_router)
+    dp.include_router(case_lifecycle_router)
+    dp.include_router(admin_router)
+    dp.include_router(payment_router)
+
+    logger.info("All application routers and payment handlers included.")
 
     await bot.delete_webhook(drop_pending_updates=True)
     logger.info("Starting polling...")
@@ -46,8 +55,9 @@ async def main():
         await dp.start_polling(bot)
     finally:
         await bot.session.close()
-        # from app.db.session import engine as async_engine
-        # await async_engine.dispose()
+
+        from app.db.session import async_engine
+        await async_engine.dispose()
         logger.info("Bot stopped.")
 
 if __name__ == "__main__":
