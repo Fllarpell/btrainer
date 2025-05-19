@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from app.db.crud.user_crud import get_user_by_telegram_id
 # Import for enums
 from app.db.models import SubscriptionStatus, UserRole
+from app.core.config import is_admin
 
 logger = logging.getLogger(__name__)
 
@@ -91,9 +92,7 @@ class DbSessionMiddleware(BaseMiddleware):
 
                 # 2. Subscription/Trial Check (using actual_event and event_for_reply)
                 if db_user:
-                    if db_user.role == UserRole.ADMIN:
-                        pass 
-                    else:
+                    if not is_admin(user_id, db_user):
                         is_active_subscriber = db_user.subscription_status == SubscriptionStatus.ACTIVE
                         is_active_trial = (
                             db_user.subscription_status == SubscriptionStatus.TRIAL and
@@ -103,9 +102,9 @@ class DbSessionMiddleware(BaseMiddleware):
                         if not (is_active_subscriber or is_active_trial):
                             logger.warning(f"User {user_id} without active subscription/trial. Status: {db_user.subscription_status}, Trial ends: {db_user.trial_end_date}")
                             message_text = "Для доступа к функциям бота необходима активная подписка или пробный период. Пожалуйста, оформите подписку или используйте /start для просмотра опций."
+                            allow_bypass = False
                             
                             # Determine if the current event should bypass the subscription check
-                            allow_bypass = False
                             if isinstance(actual_event, Message):
                                 if actual_event.text in ["/start", "💳 Тарифы и подписка", "ℹ️ Помощь"]:
                                     allow_bypass = True

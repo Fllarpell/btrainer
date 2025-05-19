@@ -52,3 +52,8 @@ class Settings:
     TRIAL_PERIOD_DAYS: int = 7
 
 settings = Settings()
+
+def is_admin(user_id: int, db_user) -> bool:
+    from app.core.config import settings
+    from app.db.models import UserRole
+    return (user_id in settings.ADMIN_IDS) or (db_user and getattr(db_user, 'role', None) == UserRole.ADMIN)

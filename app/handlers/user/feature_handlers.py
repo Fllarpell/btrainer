@@ -24,7 +24,7 @@ from app.db.crud import transaction_crud # For creating transaction record
 import uuid # For generating unique internal_transaction_id
 from decimal import Decimal # For price
 from aiogram.types import LabeledPrice # For invoice
-from app.core.config import settings # ADDED: Import settings
+from app.core.config import settings, is_admin # ADDED: Import settings and is_admin
 from app.states.feedback_states import FeedbackStates # Import new FeedbackStates
 from app.services import ai_service # Import the ai_service module
 from app.utils.formatters import format_datetime_md, escape_md # ADDED
@@ -330,7 +330,7 @@ async def handle_subscribe_callback(query: types.CallbackQuery, session: AsyncSe
         # await query.message.answer("Не удалось найти ваш аккаунт. Пожалуйста, начните с команды /start.", reply_markup=get_main_menu_keyboard())
         return
 
-    if db_user.subscription_status == SubscriptionStatus.ACTIVE:
+    if db_user.subscription_status == SubscriptionStatus.ACTIVE or is_admin(user_telegram_id, db_user):
         expires_at_formatted = format_datetime_md(db_user.subscription_expires_at) if db_user.subscription_expires_at else "N/A"
         await query.answer(f"У вас уже есть активная подписка '{escape_md(db_user.current_plan_name or MONTHLY_PLAN_TITLE)}', действует до {expires_at_formatted}.", show_alert=True)
         # Optionally, update the message or send a new one

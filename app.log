@@ -8,3 +8,43 @@
 2025-05-18 23:13:30,508 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
 2025-05-18 23:13:30,508 - INFO - aiogram.dispatcher - Polling stopped
 2025-05-18 23:13:30,763 - INFO - __main__ - Bot stopped.
+2025-05-18 23:21:01,989 - INFO - __main__ - Starting bot...
+2025-05-18 23:21:01,993 - INFO - __main__ - Database session middleware registered.
+2025-05-18 23:21:01,993 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-18 23:21:02,277 - INFO - __main__ - Starting polling...
+2025-05-18 23:21:02,278 - INFO - aiogram.dispatcher - Start polling
+2025-05-18 23:21:02,350 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-18 23:23:57,139 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286259
+2025-05-18 23:23:57,140 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-18 23:23:57,407 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-18 23:23:57,407 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 352
+2025-05-18 23:23:57,440 - INFO - app.handlers.user.user_onboarding_handlers - User 1024566187 exists. Activity updated.
+2025-05-18 23:23:57,440 - INFO - app.handlers.user.user_onboarding_handlers - User 1024566187 has active sub/trial. Sending to main menu (inline).
+2025-05-18 23:23:57,694 - INFO - aiogram.event - Update id=855286259 is handled. Duration 563 ms by bot id=7667511166
+2025-05-19 03:32:48,006 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-19 03:32:48,010 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-19 03:32:59,293 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-19 05:34:59,171 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-19 05:34:59,174 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-19 05:51:16,606 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-19 05:51:16,612 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286260
+2025-05-19 05:51:16,612 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1229508120
+2025-05-19 05:51:16,716 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: False
+2025-05-19 05:51:16,817 - INFO - app.handlers.user.user_onboarding_handlers - New user 1229508120 created. Starting onboarding.
+2025-05-19 05:51:17,062 - INFO - aiogram.event - Update id=855286260 is handled. Duration 454 ms by bot id=7667511166
+2025-05-19 06:23:15,788 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Connect call failed ('149.154.167.220', 443)]
+2025-05-19 06:23:15,867 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-19 06:29:56,021 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-19 06:29:56,034 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-19 06:29:56,037 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-19 06:29:56,343 - INFO - __main__ - Bot stopped.
+2025-05-19 06:29:58,925 - INFO - __main__ - Starting bot...
+2025-05-19 06:29:58,930 - INFO - __main__ - Database session middleware registered.
+2025-05-19 06:29:58,930 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-19 06:29:59,163 - INFO - __main__ - Starting polling...
+2025-05-19 06:29:59,164 - INFO - aiogram.dispatcher - Start polling
+2025-05-19 06:29:59,239 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-19 06:32:47,813 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-19 06:32:47,819 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-19 06:32:47,819 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-19 06:32:48,090 - INFO - __main__ - Bot stopped.
