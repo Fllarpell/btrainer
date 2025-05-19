@@ -55,20 +55,15 @@ async def _generate_and_send_case(
     session: AsyncSession,
     is_another_case: bool = False
 ):
-    """
-    Helper function to generate a new case, save it, and send it to the user.
-    Sets the FSM state to awaiting_solution.
-    """
+
     user = message_or_callback_query.from_user
     if isinstance(message_or_callback_query, types.CallbackQuery):
-        await message_or_callback_query.answer() # Answer callback quickly
-        # Send a new message for "generating case" to avoid editing a message with inline keyboard
+        await message_or_callback_query.answer()
         await message_or_callback_query.message.answer("⏳ Генерирую новый кейс для вас, подождите немного...")
-    else: # It's a types.Message
+    else:
         await message_or_callback_query.answer("⏳ Генерирую кейс для вас, это может занять некоторое время...")
 
     active_references = await get_active_ai_references_for_prompt(db=session)
-    # Log if references are empty, as this might affect AI's ability to generate content as per new prompts
     if not active_references:
         logger.warning(f"No active AI references found in DB for user {user.id} during case generation.")
 
@@ -85,7 +80,7 @@ async def _generate_and_send_case(
 
     case_title = case_data["title"]
     case_description = case_data["description"]
-    ai_model_name = "gpt-3.5-turbo" # Consistent with ai_service.py
+    ai_model_name = "gpt-4o-mini"
     prompt_version_placeholder = "generic_case_prompt_v1_json_output_with_refs" 
 
     try:
@@ -96,12 +91,11 @@ async def _generate_and_send_case(
             ai_model_used=ai_model_name,
             prompt_version=prompt_version_placeholder,
         )
-        await session.flush() # Ensure new_case.id is populated
+        await session.flush()
         logger.info(f"Case {new_case.id} (AI-generated, another_case={is_another_case}) created for user {user.id}. Refs count: {len(active_references) if active_references else 0}")
 
         response_text = f"{hbold(new_case.title)}\n\n{new_case.case_text}"
         
-        # Send as a new message in both cases (button press or inline button)
         target_message_callable = message_or_callback_query.message.answer if isinstance(message_or_callback_query, types.CallbackQuery) else message_or_callback_query.answer
         
         await target_message_callable(
@@ -159,10 +153,9 @@ async def handle_request_case_again_callback(
     Обработчик для кнопки '💼 Получить новый кейс' (после анализа).
     """
     logger.info(f"User {callback_query.from_user.id} requested case again via button after analysis.")
-    # We can treat this as requesting 'another' case in terms of logging/flow
     await _generate_and_send_case(callback_query, state, session, is_another_case=True)
 
-@case_lifecycle_router.message(SolveCaseStates.awaiting_solution, F.text)
+@case_lifecycle_router.message(SolveCaseStates.awaiting_solution, F.text & ~F.text.startswith('/'))
 async def handle_solution_submission(
     message: types.Message, 
     state: FSMContext,
@@ -181,7 +174,7 @@ async def handle_solution_submission(
 
     state_data = await state.get_data()
     current_case_id = state_data.get("current_case_id")
-    case_title = state_data.get("case_title", "ранее полученный кейс") # Fallback title
+    case_title = state_data.get("case_title", "ранее полученный кейс")
 
     if not current_case_id:
         logger.warning(f"User {user_telegram_id} submitted solution, but no current_case_id found in state. State data: {state_data}")
@@ -207,10 +200,10 @@ async def handle_solution_submission(
         analysis_report = await analyze_solution_with_ai(
             original_case.case_text, 
             solution_text,
-            active_references=active_references # Pass references
+            active_references=active_references
         )
         if not (
-            analysis_report and not analysis_report.get("error") and # Check for our custom error structure
+            analysis_report and not analysis_report.get("error") and
             isinstance(analysis_report.get("strengths"), list) and
             isinstance(analysis_report.get("areas_for_improvement"), list) and
             isinstance(analysis_report.get("overall_impression"), str) and
@@ -251,7 +244,7 @@ async def handle_solution_submission(
             reply_markup = get_after_solution_analysis_keyboard() if i == len(analysis_chunks) - 1 else None
             await message.answer(chunk, reply_markup=reply_markup)
         
-        await state.clear() # Clear state after successful analysis and sending
+        await state.clear()
         logger.info(f"State cleared for user {user_telegram_id} after solution analysis for case {current_case_id}.")
 
     except Exception as e:
@@ -259,5 +252,4 @@ async def handle_solution_submission(
         await message.answer(
             "Произошла серьезная ошибка во время анализа или сохранения вашего решения. Пожалуйста, сообщите администратору или попробуйте позже."
         )
-        # Re-raise to allow middleware to potentially roll back DB changes if any started
         raise 

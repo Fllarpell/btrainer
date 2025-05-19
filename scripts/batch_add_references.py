@@ -1,14 +1,11 @@
 import asyncio
 from typing import Dict, Any, List
 
-# Attempt to import database-related components
-# Adjust these imports if your project structure is different
 try:
     from app.db.crud.ai_reference_crud import create_ai_reference
-    from app.db.models import AISourceType # Used for type hinting and potential direct enum usage
-    # You will need a way to get an async database session.
-    # This is a common pattern; replace with your actual session provider:
-    from app.db.session import AsyncSessionLocal # Import the sessionmaker
+    from app.db.models import AISourceType
+
+    from app.db.session import AsyncSessionLocal
 except ImportError as e:
     print(f"ImportError: {e}. Please ensure that this script is run in an environment where all project modules are accessible,")
     print("and that the paths to 'ai_reference_crud', 'models', and 'session' are correct relative to your project root.")
@@ -343,33 +340,25 @@ new_sources_data: List[Dict[str, Any]] = [
 ]
 
 async def add_sources_to_db():
-    # Ensure you have a way to get an async database session.
-    # The get_async_session() here is a placeholder for your actual session provider.
-    # It's often implemented as an async context manager.
-    # Example: async with get_async_session() as session:
     
     created_count = 0
     error_count = 0
 
-    # Replace `get_async_session` with your actual context manager for sessions
-    # Get a new session instance from the sessionmaker
     session: AsyncSession = AsyncSessionLocal()
     try:
         for source_data_dict in new_sources_data:
             try:
-                # The 'source_type' is already a string in new_sources_data,
-                # and create_ai_reference should handle converting it to the AISourceType enum.
                 print(f"Attempting to add: {source_data_dict.get('description', 'N/A')[:70]}...")
                 await create_ai_reference(db=session, source_data=source_data_dict)
-                await session.commit() # Commit after each successful addition
+                await session.commit()
                 created_count += 1
                 print(f"Successfully added: {source_data_dict.get('description', 'N/A')[:70]}")
             except Exception as e:
-                await session.rollback() # Rollback on error for this item
+                await session.rollback()
                 print(f"Error adding source '{source_data_dict.get('description', 'N/A')[:70]}...': {e}")
                 error_count += 1
     finally:
-        await session.close() # Ensure the session is closed afterwards
+        await session.close()
         
     print(f"\n--- Batch Import Summary ---")
     print(f"Successfully added {created_count} new sources.")
@@ -379,19 +368,7 @@ async def add_sources_to_db():
 
 if __name__ == "__main__":
     print("Starting batch script to add AI references...")
-    # This part needs to be run in an environment where your FastAPI/SQLAlchemy app 
-    # is initialized, or where the DB connection can be established.
-    # You might need to adjust how your application's settings and DB engine are loaded.
-    
-    # Example of how to run an async main function:
-    # This typically requires your project's ASGI app or a similar setup for DB access if run standalone.
-    # If your `get_async_session` relies on app context, this script might need to be
-    # executed via a management command provided by your web framework (e.g., FastAPI-utils, Typer with app context).
 
-    # For a simple standalone script, ensure your database URL is configured
-    # and the session factory can be used independently.
-    
-    # Check if get_async_session is available
     if 'AsyncSessionLocal' not in globals() or not callable(AsyncSessionLocal):
         print("Error: `AsyncSessionLocal` is not correctly imported or defined.")
         print("Please ensure `app.db.session.AsyncSessionLocal` is available and correctly imported.")

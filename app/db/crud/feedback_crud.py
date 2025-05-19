@@ -23,7 +23,6 @@ async def create_feedback(
         ai_analysis_reason=ai_analysis_reason,
         ai_analysis_category=ai_analysis_category,
         raw_ai_response=raw_ai_response
-        # submitted_at will be set by the database default
     )
     db.add(db_feedback)
     await db.commit()

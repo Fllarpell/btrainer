@@ -1,20 +1,19 @@
 import logging
-from openai import AsyncOpenAI # Используем асинхронного клиента
+from openai import AsyncOpenAI
 from typing import List, Dict, Optional
 import openai
-import json # Added for formatting references if needed, though string formatting is likely sufficient
+import json
 
 from app.core.config import settings
-from app.core import prompts # <--- ДОБАВЛЯЕМ ИМПОРТ ПРОМПТОВ
+from app.core import prompts
 
 logger = logging.getLogger(__name__)
 
-# --- UPDATED AI CLIENT INITIALIZATION FOR OPENAI USING SETTINGS ---
 if settings.OPENAI_API_KEY and settings.OPENAI_API_KEY != "YOUR_DEFAULT_OPENAI_KEY" and (settings.OPENAI_API_KEY.startswith("sk-proj-") or settings.OPENAI_API_KEY.startswith("sk-")):
     logger.info("Initializing OpenAI client with key from settings.")
     ai_client = AsyncOpenAI(
         api_key=settings.OPENAI_API_KEY,
-        base_url="https://api.openai.com/v1"  # OpenAI API endpoint
+        base_url="https://api.openai.com/v1"
     )
 else:
     logger.warning(
@@ -22,21 +21,14 @@ else:
         "AI services requiring OpenAI will not be functional."
     )
     ai_client = None
-# --- END UPDATED AI CLIENT INITIALIZATION ---
 
-# This client for deepseek.com might be legacy if AIService class is not actively used.
-# Leaving it for now.
 async_openai_client = openai.AsyncOpenAI(
-    api_key=settings.deep_seek_api_key, # This would still use the old key from settings for deepseek
+    api_key=settings.deep_seek_api_key,
     base_url="https://api.deepseek.com/v1"
 )
 
 class AIService:
     async def generate_case_study(self, user_prompt: str = None) -> str:
-        """
-        Generates a psychotherapeutic case study using DeepSeek.
-        Optionally, a user prompt can guide the case generation.
-        """
         system_prompt = (
             "You are an AI assistant specialized in creating realistic and complex psychotherapeutic case studies. "
             "These case studies are for training psychotherapists. Ensure the cases are nuanced, present a clear problem, "
@@ -63,7 +55,6 @@ class AIService:
             )
             case_text = response.choices[0].message.content.strip()
             
-            # Clean up potential unwanted prefixes from the AI
             prefixes_to_remove = [
                 "here is a case study for you:",
                 "here is a case study:",
@@ -80,7 +71,6 @@ class AIService:
             print(f"Error generating case study from DeepSeek: {e}")
             return "Произошла ошибка при генерации кейса. Пожалуйста, попробуйте позже."
 
-# Instantiate the service for use in other modules
 ai_service = AIService()
 
 def format_references_for_prompt(references: List[Dict[str, str]]) -> str:
@@ -105,21 +95,11 @@ async def generate_text_with_ai(
     temperature: float = 0.7,
     max_tokens: int = 3000
 ) -> Optional[str]:
-    """
-    Генерирует текст с использованием указанной модели через OpenRouter API.
-    """
     if not ai_client:
         logger.error("AI client (OpenRouter) is not initialized. Check API key configuration.")
         return None
 
     try:
-        # Опциональные заголовки для OpenRouter, чтобы приложение появилось в их дашбордах
-        # https://openrouter.ai/docs#headers
-        # Пока не будем их добавлять для простоты, но можно будет позже
-        # headers = {
-        #     "HTTP-Referer": "YOUR_SITE_URL", # Заменить на URL твоего проекта, если есть
-        #     "X-Title": "GlamCoding BTrainer Bot" # Название твоего проекта
-        # }
 
         response = await ai_client.chat.completions.create(
             model=model,
@@ -127,35 +107,29 @@ async def generate_text_with_ai(
             temperature=temperature,
             max_tokens=max_tokens,
             stream=False
-            # Можно добавить route="fallback" или route="any" для OpenRouter, если нужно
         )
         
-        # -- UPDATED EXTRACTION LOGIC --
         generated_text = None
         if response.choices and response.choices[0].message:
             message_obj = response.choices[0].message
             if message_obj.content and message_obj.content.strip():
                 generated_text = message_obj.content.strip()
             elif message_obj.reasoning and message_obj.reasoning.strip():
-                # Try to extract JSON from reasoning, stripping potential prefixes
                 reasoning_content = message_obj.reasoning.strip()
                 json_start_index = reasoning_content.find("{")
                 json_end_index = reasoning_content.rfind("}")
                 if json_start_index != -1 and json_end_index != -1 and json_start_index < json_end_index:
                     potential_json = reasoning_content[json_start_index : json_end_index + 1]
-                    # Basic validation if it looks like JSON (could be more robust)
                     if potential_json.startswith("{") and potential_json.endswith("}"):
                          generated_text = potential_json
-                    else: # Fallback to full reasoning if JSON extraction is unsure
+                    else:
                         logger.warning(f"Could not reliably extract JSON from reasoning for model {model}. Using full reasoning. Reasoning: {reasoning_content[:200]}...")
-                        generated_text = reasoning_content # Or None, depending on desired strictness
-                else: # No clear JSON object found
+                        generated_text = reasoning_content
+                else:
                      logger.warning(f"Reasoning found for model {model} but no clear JSON object. Reasoning: {reasoning_content[:200]}...")
-                     # generated_text = reasoning_content # Or None
 
         if generated_text:
             return generated_text
-        # -- END UPDATED EXTRACTION LOGIC --
         else:
             logger.warning(
                 f"AI API (model: {model}) returned no choices, empty message, or no content in expected fields. "
@@ -180,8 +154,7 @@ async def generate_case_from_ai(
         {"role": "user", "content": current_user_prompt}
     ]
 
-    # Используем ChatGPT модель для генерации кейса
-    model_for_case_generation = "gpt-4o-mini" # Changed from deepseek/deepseek-r1:free
+    model_for_case_generation = "gpt-4o-mini"
     generated_content = await generate_text_with_ai(
         messages=messages, 
         model=model_for_case_generation, 
@@ -192,7 +165,6 @@ async def generate_case_from_ai(
     if generated_content:
         try:
             import json
-            # Очистка от markdown-обертки ```json ... ``` и возможных вариаций
             content_to_parse = generated_content.strip()
             if content_to_parse.startswith("```json"):
                 content_to_parse = content_to_parse[len("```json"):].strip()
@@ -202,7 +174,7 @@ async def generate_case_from_ai(
             if content_to_parse.endswith("```"):
                 content_to_parse = content_to_parse[:-len("```")]
             
-            content_to_parse = content_to_parse.strip() # Еще раз на всякий случай
+            content_to_parse = content_to_parse.strip()
             
             case_data = json.loads(content_to_parse)
             if isinstance(case_data, dict) and "title" in case_data and "description" in case_data:
@@ -233,8 +205,7 @@ async def analyze_solution_with_ai(
         {"role": "user", "content": user_content}
     ]
 
-    # Используем ChatGPT модель для анализа
-    model_for_analysis = "gpt-4o-mini" # Changed from anthropic/claude-3-haiku:beta
+    model_for_analysis = "gpt-4o-mini"
     generated_analysis_json = await generate_text_with_ai(
         messages=messages, 
         model=model_for_analysis, 
@@ -245,7 +216,6 @@ async def analyze_solution_with_ai(
     if generated_analysis_json:
         try:
             import json
-            # Очистка от markdown-обертки, если есть
             content_to_parse = generated_analysis_json.strip()
             if content_to_parse.startswith("```json"):
                 content_to_parse = content_to_parse[len("```json"):].strip()
@@ -254,7 +224,6 @@ async def analyze_solution_with_ai(
             content_to_parse = content_to_parse.strip()
 
             analysis_data = json.loads(content_to_parse)
-            # Проверяем наличие ожидаемых ключей
             if isinstance(analysis_data, dict) and \
                "strengths" in analysis_data and \
                "areas_for_improvement" in analysis_data and \
@@ -263,7 +232,6 @@ async def analyze_solution_with_ai(
                 return analysis_data
             else:
                 logger.error(f"AI (model {model_for_analysis}) returned malformed JSON for solution analysis (missing expected keys): {generated_analysis_json}")
-                # Возвращаем структуру с ошибкой, чтобы обработать выше
                 return {"error": "Malformed JSON response from AI - missing keys", "raw_response": generated_analysis_json}
         except json.JSONDecodeError:
             logger.error(f"Failed to decode JSON from AI (model {model_for_analysis}) for solution analysis: {generated_analysis_json}", exc_info=True)
@@ -271,10 +239,7 @@ async def analyze_solution_with_ai(
     return None
 
 async def analyze_feedback_substance(feedback_text: str) -> Optional[Dict[str, any]]:
-    """
-    Analyzes user feedback for its substance/meaningfulness using an AI model.
-    Returns a dictionary like {'is_meaningful': bool, 'reason': str, 'category': str}.
-    """
+
     system_prompt = prompts.FEEDBACK_ANALYSIS_SYSTEM_PROMPT
     user_prompt = prompts.FEEDBACK_ANALYSIS_USER_PROMPT_TEMPLATE.format(feedback_text=feedback_text)
 
@@ -283,23 +248,21 @@ async def analyze_feedback_substance(feedback_text: str) -> Optional[Dict[str, a
         {"role": "user", "content": user_prompt}
     ]
 
-    # Используем ChatGPT модель для анализа отзыва
-    model_for_feedback_analysis = "gpt-4o-mini" # Changed from anthropic/claude-3-haiku:beta
+    model_for_feedback_analysis = "gpt-4o-mini"
     
     logger.debug(f"Sending feedback to AI for analysis. Model: {model_for_feedback_analysis}. Feedback: '{feedback_text[:100]}...' ")
 
     raw_response = await generate_text_with_ai(
         messages=messages,
         model=model_for_feedback_analysis,
-        temperature=0.3, # Низкая температура для более детерминированного ответа
-        max_tokens=1000  # Должно хватить для JSON ответа
+        temperature=0.3,
+        max_tokens=1000
     )
 
     if raw_response:
         logger.debug(f"Raw AI response for feedback analysis: {raw_response}")
         try:
             import json
-            # Очистка от markdown-обертки, если есть
             content_to_parse = raw_response.strip()
             if content_to_parse.startswith("```json"):
                 content_to_parse = content_to_parse[len("```json"):].strip()
@@ -307,14 +270,12 @@ async def analyze_feedback_substance(feedback_text: str) -> Optional[Dict[str, a
                 content_to_parse = content_to_parse[:-len("```")]
             content_to_parse = content_to_parse.strip()
             
-            # Ensure it's a valid JSON object before parsing
             if not (content_to_parse.startswith("{") and content_to_parse.endswith("}")):
                 logger.error(f"AI response for feedback analysis is not a valid JSON object: {content_to_parse}")
                 return {"is_meaningful": None, "reason": "AI response was not valid JSON.", "category": "error", "raw_response": raw_response}
 
             analysis_data = json.loads(content_to_parse)
             
-            # Валидация ожидаемых ключей и типов
             if isinstance(analysis_data, dict) and \
                isinstance(analysis_data.get("is_meaningful"), bool) and \
                isinstance(analysis_data.get("reason"), str) and \

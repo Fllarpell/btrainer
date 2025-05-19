@@ -2,8 +2,7 @@ aiogram>=3.0.0,<4.0.0
 openai>=1.0.0,<2.0.0
 
 SQLAlchemy>=2.0,<2.1
-# psycopg2-binary>=2.9,<3.0
-asyncpg>=0.27,<0.29 # Added asyncpg driver
+asyncpg>=0.27,<0.29
 alembic>=1.9,<1.10
 
 pydantic>=2.0.0
@@ -14,5 +13,5 @@ black>=23.3,<24.0
 
 yookassa>=2.10.0
 
-greenlet>=3.0.0 # Added for SQLAlchemy sync + asyncpg compatibility
-psycopg2-binary>=2.9.0 # Added for synchronous DB operations in setup.py
+greenlet>=3.0.0
+psycopg2-binary>=2.9.0

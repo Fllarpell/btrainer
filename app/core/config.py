@@ -44,7 +44,6 @@ class Settings:
 
     deep_seek_api_key: str = os.getenv("DEEP_SEEK_API_KEY", "YOUR_DEEP_SEEK_API_KEY_HERE")
 
-    # Telegram Payment Provider Token (from BotFather, for YooKassa)
     TELEGRAM_PAYMENT_PROVIDER_TOKEN: Optional[str] = os.getenv("TELEGRAM_PAYMENT_PROVIDER_TOKEN")
     if not TELEGRAM_PAYMENT_PROVIDER_TOKEN:
         print("Warning: TELEGRAM_PAYMENT_PROVIDER_TOKEN is not set in .env. Payments will not work.")

@@ -1,50 +1,35 @@
 import logging
 from aiogram import Router, types, F
-# from aiogram.filters import Filter, Command # Filter no longer needed here
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 import math
-# Remove Dict, Any import
 
-# from app.core.config import settings # No longer needed by local AdminTelegramFilter
-# from app.db import user_crud # No longer needed by local AdminTelegramFilter (used by handlers though)
-from app.db.crud import user_crud # Still needed for handlers
+from app.db.crud import user_crud
 from app.db.crud import admin_log_crud
-# from app.db.models import UserRole, SubscriptionStatus, AdminAction # UserRole no longer needed by local filter
-from app.db.models import UserRole, SubscriptionStatus, AdminAction # Still needed for handlers
+from app.db.models import UserRole, SubscriptionStatus, AdminAction
 from app.ui.keyboards import (
     get_admin_users_menu_keyboard, 
     get_admin_user_list_keyboard, 
     get_admin_user_actions_keyboard,
-    get_admin_panel_main_keyboard, # Changed from get_admin_main_menu_keyboard
-    get_admin_manage_trial_keyboard, # Added new keyboard
-    get_admin_manage_subscription_keyboard # Added new keyboard
+    get_admin_panel_main_keyboard,
+    get_admin_manage_trial_keyboard,
+    get_admin_manage_subscription_keyboard
 )
 from app.states.admin_states import AdminStates
-# Use absolute imports instead of relative
-# from ..admin import AdminTelegramFilter # Import from parent admin.py
-# from .admin_utils import format_datetime_md # Import the new utility function
 
-# Import AdminTelegramFilter from the new filters.py
-# from app.handlers.admin.admin import AdminTelegramFilter # Old import
-from .filters import AdminTelegramFilter # New import from sibling file
+from .filters import AdminTelegramFilter
 
-from app.utils.formatters import format_datetime_md, escape_md # Import from new location
+from app.utils.formatters import format_datetime_md, escape_md
 
-# Correct CRUD imports
-# from glamcoding.app.db.crud import user_crud # Still needed for handlers
-# from app.db import admin_log_crud
 from app.db.crud.user_crud import (
     get_user, count_users, get_users, get_user_by_telegram_id, 
     block_user, unblock_user, set_user_role,
-    grant_trial_period, cancel_trial_period, activate_user_subscription, deactivate_user_subscription # Added new CRUD functions
+    grant_trial_period, cancel_trial_period, activate_user_subscription, deactivate_user_subscription
 )
 from app.db.crud.admin_log_crud import create_admin_log
 
 logger = logging.getLogger(__name__)
 admin_user_mgmt_router = Router(name="admin_user_management")
-
-# AdminTelegramFilter is now imported from ..admin
 
 USERS_PER_PAGE = 10
 
@@ -63,8 +48,6 @@ async def display_user_details(message_or_cq: types.Message | types.CallbackQuer
     details_text = f"👤 **Информация о пользователе: {user_display_name}** \(ID: `{db_user.id}`\)\n\n"
     details_text += f"✉️ Telegram ID: `{db_user.telegram_id}`\n"
     details_text += f"🗣️ Username: `@{escape_md(db_user.username)}`\n" if db_user.username else f"🗣️ Username: `Не указан`\n"
-    # Name is already in the header, potentially skip here or make it more specific if needed.
-    # details_text += f"Имя: {escape_md(db_user.first_name or '')} {escape_md(db_user.last_name or '')}\n"
     details_text += f"🌍 Язык: `{escape_md(db_user.language_code or 'Не указан')}`\n"
     details_text += escape_md("------------------------------------") + "\n"
     details_text += f"🔑 Роль: `{escape_md(db_user.role.value)}`\n"
@@ -86,7 +69,6 @@ async def display_user_details(message_or_cq: types.Message | types.CallbackQuer
     user_actions_kb = get_admin_user_actions_keyboard(db_user)
     
     if isinstance(message_or_cq, types.CallbackQuery):
-        # Edit the message that the callback query originated from
         await message_or_cq.message.edit_text(details_text, reply_markup=user_actions_kb, parse_mode="MarkdownV2")
     else: 
         await message_or_cq.answer(details_text, reply_markup=user_actions_kb, parse_mode="MarkdownV2")
@@ -130,18 +112,12 @@ async def handle_admin_list_users_page_callback(callback_query: types.CallbackQu
 
     total_pages = math.ceil(total_users / USERS_PER_PAGE)
     logger.debug(f"Calculated total_pages: {total_pages}, current_page: {page}")
-    
-    # Adjust page to be 0-indexed for database query if it came as 1-indexed from user display
-    # current_page_for_query = page -1 if page > 0 else 0 
-    # For now, assuming page is 0-indexed internally from pagination
 
     users = await get_users(db=session, skip=page * USERS_PER_PAGE, limit=USERS_PER_PAGE)
     logger.debug(f"Fetched {len(users) if users else 0} users for page {page}.")
 
-    # Page display should be 1-indexed for user-friendliness
     page_display_number = page + 1
     escaped_page_info = f"\(Страница {page_display_number}/{total_pages}\)"
-    # No need to manually escape parentheses if they are already escaped for MarkdownV2
 
     user_list_text = f"👥 **Список пользователей** {escaped_page_info}\nВсего в базе: {total_users}\n\n"
     if users:
@@ -149,7 +125,6 @@ async def handle_admin_list_users_page_callback(callback_query: types.CallbackQu
             user_first_name = escape_md(user_obj.first_name or "")
             user_last_name = escape_md(user_obj.last_name or "")
             display_name_parts = [user_first_name, user_last_name]
-            # Filter out empty parts before joining
             user_display_name = " ".join(filter(None, display_name_parts)).strip() or "N/A"
             username_tg = f"@{escape_md(user_obj.username)}" if user_obj.username else "N/A"
 
@@ -176,7 +151,7 @@ async def handle_admin_find_user_by_tg_id_prompt_callback(callback_query: types.
     await callback_query.message.edit_text(
         "Введите Telegram ID пользователя, которого хотите найти.\n"
         "Вы можете получить его, например, от пользователя или из логов.\n"
-        "\nДля отмены введите /cancel_admin_action", # Clarify cancel scope
+        "\nДля отмены введите /cancel_admin_action",
         reply_markup=None 
     )
 
@@ -222,9 +197,8 @@ async def handle_admin_block_user_callback(callback_query: types.CallbackQuery, 
         return
 
     admin_performing_action = await get_user_by_telegram_id(db=session, telegram_id=callback_query.from_user.id)
-    if not admin_performing_action: # Should ideally not happen if AdminTelegramFilter passed
+    if not admin_performing_action:
         logger.error(f"Admin user with TG ID {callback_query.from_user.id} not found in DB. Cannot log action.")
-        # Decide if we should proceed without logging or halt. For now, proceed but log error.
     
     updated_user = await block_user(db=session, telegram_id=db_user.telegram_id)
     if updated_user and updated_user.is_blocked:
@@ -237,7 +211,7 @@ async def handle_admin_block_user_callback(callback_query: types.CallbackQuery, 
                 target_user_id=db_user.id,
                 details=f"User TG ID: {db_user.telegram_id}"
             )
-        else: # Log that admin_performing_action was not found, hence logging skipped
+        else:
             logger.error(f"Skipped admin logging for block action on user {db_user.telegram_id} by TG ID {callback_query.from_user.id} because admin DB entry not found.")
         await display_user_details(callback_query, db_user.id, session)
     else:
@@ -288,10 +262,9 @@ async def handle_admin_set_role_callback(callback_query: types.CallbackQuery, st
     parts = callback_query.data.split("_")
     logger.debug(f"Admin {callback_query.from_user.id} initiated 'admin_set_role'. Callback data: {callback_query.data}, parts: {parts}")
     try:
-        # admin_set_role_USER_123 -> parts: ['admin', 'set', 'role', 'USER', '123']
         user_db_id = parts[-1]
         role_str = parts[-2]
-        new_role = UserRole[role_str.upper()] # USER -> UserRole.USER
+        new_role = UserRole[role_str.upper()]
         logger.debug(f"Parsed role_str: {role_str}, user_db_id: {user_db_id}, new_role enum: {new_role}")
     except (ValueError, IndexError, KeyError) as e:
         logger.error(f"Invalid role/user_db_id in callback data: {callback_query.data}. Error: {e}")
@@ -389,7 +362,6 @@ async def handle_admin_manage_subscription_callback(callback_query: types.Callba
         reply_markup=subscription_keyboard
     )
 
-# --- Handlers for Trial Management Actions ---
 @admin_user_mgmt_router.callback_query(F.data.startswith("admin_grant_trial_"), AdminTelegramFilter())
 async def handle_admin_grant_trial_action(callback_query: types.CallbackQuery, session: AsyncSession):
     parts = callback_query.data.split("_")
@@ -412,7 +384,7 @@ async def handle_admin_grant_trial_action(callback_query: types.CallbackQuery, s
                 db=session, admin_user_id=admin_actor.id, action=AdminAction.TRIAL_GRANTED,
                 target_user_id=user_id, details=f"{days}-day trial granted."
             )
-        await display_user_details(callback_query, user_id, session) # Refresh user details
+        await display_user_details(callback_query, user_id, session)
     else:
         await callback_query.message.answer("Не удалось предоставить триал. Проверьте логи.", reply_markup=get_admin_panel_main_keyboard())
 
@@ -436,15 +408,14 @@ async def handle_admin_cancel_trial_action(callback_query: types.CallbackQuery, 
                 db=session, admin_user_id=admin_actor.id, action=AdminAction.TRIAL_CANCELLED,
                 target_user_id=user_id, details="Trial cancelled."
             )
-        await display_user_details(callback_query, user_id, session) # Refresh user details
+        await display_user_details(callback_query, user_id, session)
     else:
         await callback_query.message.answer("Не удалось отменить триал. Проверьте логи.", reply_markup=get_admin_panel_main_keyboard())
 
-# --- Handlers for Subscription Management Actions ---
 @admin_user_mgmt_router.callback_query(F.data.startswith("admin_activate_sub_"), AdminTelegramFilter())
 async def handle_admin_activate_subscription_action(callback_query: types.CallbackQuery, session: AsyncSession):
     prefix = "admin_activate_sub_"
-    data_part = callback_query.data[len(prefix):] # Remove the prefix
+    data_part = callback_query.data[len(prefix):]
     
     try:
         user_id_str, plan_id_key = data_part.split("_", 1) # Split only once to separate user_id from potentially complex plan_id
@@ -454,8 +425,6 @@ async def handle_admin_activate_subscription_action(callback_query: types.Callba
         await callback_query.answer("Ошибка: Неверные данные для активации подписки.", show_alert=True)
         return
 
-    # Placeholder plan details - in a real app, fetch these from config or DB
-    # This is the same dict as in keyboards.py, consider centralizing it.
     available_plans = {
         "base_1m": {"name": "Базовый - 1 месяц", "duration_days": 30},
         "pro_1m": {"name": "Продвинутый - 1 месяц", "duration_days": 30},
@@ -483,7 +452,7 @@ async def handle_admin_activate_subscription_action(callback_query: types.Callba
                 db=session, admin_user_id=admin_actor.id, action=AdminAction.SUBSCRIPTION_ACTIVATED,
                 target_user_id=user_id, details=f"Activated plan: {plan_details['name']}"
             )
-        await display_user_details(callback_query, user_id, session) # Refresh user details
+        await display_user_details(callback_query, user_id, session)
     else:
         await callback_query.message.answer("Не удалось активировать подписку. Проверьте логи.", reply_markup=get_admin_panel_main_keyboard())
 
@@ -507,10 +476,6 @@ async def handle_admin_deactivate_subscription_action(callback_query: types.Call
                 db=session, admin_user_id=admin_actor.id, action=AdminAction.SUBSCRIPTION_DEACTIVATED,
                 target_user_id=user_id, details=f"Subscription deactivated. Was: {updated_user.current_plan_name or 'N/A'}"
             )
-        await display_user_details(callback_query, user_id, session) # Refresh user details
+        await display_user_details(callback_query, user_id, session)
     else:
         await callback_query.message.answer("Не удалось деактивировать подписку. Проверьте логи.", reply_markup=get_admin_panel_main_keyboard())
-
-# Note: handle_cancel_admin_action is kept in the main admin router for now as it's a general admin command.
-# If AdminStates specific to user management arise that need specific cancellation,
-# they could be handled here or the main cancel could be made more context-aware. 

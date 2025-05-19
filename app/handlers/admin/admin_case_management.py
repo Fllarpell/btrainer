@@ -1,34 +1,25 @@
 import logging
 from aiogram import Router, types, F
-# from aiogram.filters import Filter # Filter no longer needed here
-from aiogram.fsm.context import FSMContext # Required for handler signatures
-from sqlalchemy.ext.asyncio import AsyncSession # For type hint
+from aiogram.fsm.context import FSMContext
+from sqlalchemy.ext.asyncio import AsyncSession 
 import math
-# Remove Dict, Any import
 
-# from app.core.config import settings # No longer needed by local AdminTelegramFilter
-# from app.db import user_crud # No longer needed by local AdminTelegramFilter
 from app.db.crud.case_crud import count_all_cases, get_cases
-# from app.db.models import UserRole # No longer needed by local AdminTelegramFilter
 from app.ui.keyboards import (
     get_admin_cases_menu_keyboard, 
     get_admin_case_list_keyboard
 )
-# No AdminStates needed specifically for these case handlers yet
-from .filters import AdminTelegramFilter # Import from sibling filters.py
-from app.utils.formatters import format_date_md # Import from new location
+
+from .filters import AdminTelegramFilter
+from app.utils.formatters import format_date_md
 
 logger = logging.getLogger(__name__)
 admin_case_mgmt_router = Router(name="admin_case_management")
-
-# AdminTelegramFilter is now imported from .filters
 
 CASES_PER_PAGE = 10
 
 @admin_case_mgmt_router.callback_query(F.data == "admin_cases_menu", AdminTelegramFilter())
 async def handle_admin_cases_menu_callback(callback_query: types.CallbackQuery, state: FSMContext, session: AsyncSession):
-    # Remove data: Dict[str, Any]
-    # Remove session extraction: session: AsyncSession = data["session"]
     await callback_query.answer()
     logger.debug(f"Admin {callback_query.from_user.id} pressed 'admin_cases_menu'.")
     cases_menu_kb = get_admin_cases_menu_keyboard()
@@ -39,8 +30,6 @@ async def handle_admin_cases_menu_callback(callback_query: types.CallbackQuery, 
 
 @admin_case_mgmt_router.callback_query(F.data.startswith("admin_list_cases_page_"), AdminTelegramFilter())
 async def handle_admin_list_cases_page_callback(callback_query: types.CallbackQuery, state: FSMContext, session: AsyncSession):
-    # Remove data: Dict[str, Any]
-    # Remove manual session extraction: session: AsyncSession = data["session"]
     await callback_query.answer()
     page_str = callback_query.data.split("_")[-1]
     logger.debug(f"Admin {callback_query.from_user.id} requested case list page, callback_data: {callback_query.data}, extracted page_str: {page_str}")
@@ -70,18 +59,16 @@ async def handle_admin_list_cases_page_callback(callback_query: types.CallbackQu
     if cases:
         for case_obj in cases:
             title_preview = (case_obj.title[:50] + '…') if case_obj.title and len(case_obj.title) > 50 else case_obj.title
-            # Ensure all special MarkdownV2 characters are escaped in title_preview
-            # Simplified common special characters for MarkdownV2 for preview
             replacements = {
                 "_": "\\_", "*": "\\*", "[": "\\[", "]": "\\]", "(": "\\(", ")": "\\)", 
                 "~": "\\~", "`": "\\`", ">": "\\>", "#": "\\#", "+": "\\+", "-": "\\-", 
                 "=": "\\=", "|": "\\|", "{": "\\{", "}": "\\}", ".": "\\.", "!": "\\!"
             }
             for char, escaped_char in replacements.items():
-                if title_preview: # Ensure title_preview is not None
+                if title_preview:
                     title_preview = title_preview.replace(char, escaped_char)
             
-            date_generated = format_date_md(case_obj.generated_at) # Use the imported function
+            date_generated = format_date_md(case_obj.generated_at)
             case_list_text += (
                 f"ID: `{case_obj.id}` \\| {date_generated} \\| {title_preview if title_preview else 'N/A'}\n"
             )
@@ -98,14 +85,11 @@ async def handle_admin_list_cases_page_callback(callback_query: types.CallbackQu
 
 @admin_case_mgmt_router.callback_query(F.data == "admin_add_case_manual_prompt", AdminTelegramFilter())
 async def handle_admin_add_case_manual_placeholder_callback(callback_query: types.CallbackQuery, state: FSMContext, session: AsyncSession):
-    # Remove data: Dict[str, Any]
-    # Remove session extraction: session: AsyncSession = data["session"]
     await callback_query.answer("Функция 'Добавить кейс вручную' в разработке.", show_alert=True)
     logger.info(f"Admin {callback_query.from_user.id} tried to access 'admin_add_case_manual_prompt'. Placeholder activated.")
 
 @admin_case_mgmt_router.callback_query(F.data == "admin_find_case_by_id_prompt", AdminTelegramFilter())
 async def handle_admin_find_case_by_id_placeholder_callback(callback_query: types.CallbackQuery, state: FSMContext, session: AsyncSession):
-    # Remove data: Dict[str, Any]
-    # Remove session extraction: session: AsyncSession = data["session"]
     await callback_query.answer("Функция 'Найти кейс (по ID)' в разработке.", show_alert=True)
     logger.info(f"Admin {callback_query.from_user.id} tried to access 'admin_find_case_by_id_prompt'. Placeholder activated.") 
+    

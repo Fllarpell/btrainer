@@ -153,14 +153,12 @@ async def count_users(db: AsyncSession) -> int:
 
 
 async def get_total_db_request_count(db: AsyncSession) -> int:
-    """Calculates the sum of db_request_count across all users."""
     result = await db.execute(select(func.sum(User.db_request_count).label("total_requests")))
-    total = result.scalar_one_or_none() # scalar_one_or_none in case the table is empty
+    total = result.scalar_one_or_none()
     return total if total is not None else 0
 
 
 async def count_converted_from_trial_users(db: AsyncSession) -> int:
-    """Counts users who have converted_from_trial flag set to True."""
     result = await db.execute(
         select(func.count(User.id)).filter(User.converted_from_trial == True)
     )
@@ -254,10 +252,9 @@ async def grant_trial_period(db: AsyncSession, user_id: int, trial_days: int) ->
     user.trial_start_date = now
     user.trial_end_date = now + datetime.timedelta(days=trial_days)
     user.subscription_status = SubscriptionStatus.TRIAL
-    # Reset subscription fields if they were active
     user.current_plan_name = None
     user.subscription_expires_at = None
-    user.converted_from_trial = False # Reset this flag if re-granting trial
+    user.converted_from_trial = False
     
     try:
         await db.commit()
@@ -276,14 +273,11 @@ async def cancel_trial_period(db: AsyncSession, user_id: int) -> Optional[User]:
         return None
 
     if user.subscription_status == SubscriptionStatus.TRIAL:
-        user.subscription_status = SubscriptionStatus.NONE # Or EXPIRED, depending on logic
-        user.trial_end_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1) # Expire it
-        # trial_start_date can be left as is for historical record or cleared
+        user.subscription_status = SubscriptionStatus.NONE
+        user.trial_end_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
         logger.info(f"Cancelled trial for user ID {user_id} (TG: {user.telegram_id}).")
     else:
         logger.warning(f"Attempted to cancel trial for user ID {user_id} (TG: {user.telegram_id}) who is not on trial (status: {user.subscription_status}).")
-        # Optionally, still set status to NONE if that's desired behavior
-        # user.subscription_status = SubscriptionStatus.NONE
 
     try:
         await db.commit()
@@ -332,14 +326,11 @@ async def deactivate_user_subscription(db: AsyncSession, user_id: int) -> Option
         return None
 
     if user.subscription_status == SubscriptionStatus.ACTIVE:
-        user.subscription_status = SubscriptionStatus.EXPIRED # Or CANCELLED if you add that status
-        user.subscription_expires_at = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1) # Expire it
-        # current_plan_name can be left for history or cleared
+        user.subscription_status = SubscriptionStatus.EXPIRED
+        user.subscription_expires_at = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
         logger.info(f"Deactivated subscription for user ID {user_id} (TG: {user.telegram_id}). Plan was: {user.current_plan_name}")
     else:
         logger.warning(f"Attempted to deactivate subscription for user ID {user_id} (TG: {user.telegram_id}) who has no active subscription (status: {user.subscription_status}).")
-        # Optionally, still set status to EXPIRED if that's desired behavior
-        # user.subscription_status = SubscriptionStatus.EXPIRED
 
     try:
         await db.commit()

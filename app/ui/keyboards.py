@@ -5,26 +5,24 @@ from aiogram.filters.callback_data import CallbackData
 from typing import Optional
 from datetime import datetime
 
-# CallbackData classes
 class AdminUserCallback(CallbackData, prefix="admin_user"):
-    action: str # e.g., "view", "ban", "set_admin", "remove_admin", "give_trial", "remove_trial"
+    action: str
     user_id: int
     page: Optional[int] = None
 
 class AdminCaseCallback(CallbackData, prefix="admin_case"):
-    action: str # e.g., "view_all_cases", "view_case_details", "delete_case"
-    case_id: Optional[int] = None # For specific case actions
+    action: str
+    case_id: Optional[int] = None
     page: Optional[int] = None
 
 class OnboardingCallback(CallbackData, prefix="onboarding"):
-    action: str # "tell_me_more", "how_to_start", "start_trial"
+    action: str
 
 class CaseAction(CallbackData, prefix="case_action"):
     pass
 
 class UserProfileCallback(CallbackData, prefix="user_profile"):
-    action: str # e.g. "view_history", "change_settings"
-    # Add any other relevant fields
+    action: str
 
 def get_main_menu_keyboard(user_role: UserRole = UserRole.USER) -> ReplyKeyboardMarkup:
     buttons = [
@@ -73,16 +71,12 @@ def get_admin_panel_main_keyboard() -> InlineKeyboardMarkup:
     builder.row(
         InlineKeyboardButton(text="📈 Конверсия из триала", callback_data="admin_trial_conversion_stats")
     )
-    #builder.row(
-    #    InlineKeyboardButton(text="Рассылка", callback_data="admin_broadcast_menu")
-    #)
     return builder.as_markup()
 
 def get_admin_users_menu_keyboard() -> InlineKeyboardMarkup:
     buttons = [
         [InlineKeyboardButton(text="Список пользователей (стр. 1)", callback_data="admin_list_users_page_0")],
         [InlineKeyboardButton(text="Найти пользователя (по TG ID)", callback_data="admin_find_user_by_tg_id_prompt")],
-        # Future additions: Block user, Change role, etc.
         [InlineKeyboardButton(text="⬅️ Назад (в админ меню)", callback_data="admin_main_menu_back")]
     ]
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
@@ -128,8 +122,8 @@ def get_admin_user_actions_keyboard(db_user: User) -> InlineKeyboardMarkup:
 def get_admin_cases_menu_keyboard() -> InlineKeyboardMarkup:
     buttons = [
         [InlineKeyboardButton(text="Список всех кейсов (стр. 1)", callback_data="admin_list_cases_page_0")],
-        [InlineKeyboardButton(text="Добавить кейс вручную", callback_data="admin_add_case_manual_prompt")],
-        [InlineKeyboardButton(text="Найти кейс (по ID)", callback_data="admin_find_case_by_id_prompt")],
+        #[InlineKeyboardButton(text="Добавить кейс вручную", callback_data="admin_add_case_manual_prompt")],
+        #[InlineKeyboardButton(text="Найти кейс (по ID)", callback_data="admin_find_case_by_id_prompt")],
         [InlineKeyboardButton(text="⬅️ Назад (в гл. админ меню)", callback_data="admin_main_menu_back")]
     ]
     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
@@ -146,7 +140,7 @@ def get_admin_case_list_keyboard(current_page: int, total_pages: int) -> InlineK
         buttons_row.append(InlineKeyboardButton(text="След. ➡️", callback_data=f"admin_list_cases_page_{current_page + 1}"))
     
     keyboard_buttons = []
-    if buttons_row: # Add row only if there are navigation buttons
+    if buttons_row:
         keyboard_buttons.append(buttons_row)
     
     keyboard_buttons.append([InlineKeyboardButton(text="⬅️ Назад (в меню Кейсы)", callback_data="admin_cases_menu")]) 
@@ -162,8 +156,7 @@ def get_subscribe_inline_keyboard(plan_id: str, plan_title: str) -> InlineKeyboa
     )
     return builder.as_markup()
 
-# ---- Start of re-added keyboard functions ----
-def get_after_case_keyboard() -> InlineKeyboardMarkup: # case_id: int removed as it wasn't used by the button
+def get_after_case_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="🔀 Запросить другой кейс", callback_data="request_another_case")
     builder.adjust(1)
@@ -173,24 +166,22 @@ def get_after_solution_analysis_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="💼 Получить новый кейс", callback_data="request_case_again")
     return builder.as_markup()
-# ---- End of re-added keyboard functions ----
 
 def get_admin_ai_references_menu_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.row(InlineKeyboardButton(text="📋 Список источников (Стр. 1)", callback_data="admin_list_ai_references_page_0")) # Placeholder page 0
+    builder.row(InlineKeyboardButton(text="📋 Список источников (Стр. 1)", callback_data="admin_list_ai_references_page_0"))
     builder.row(InlineKeyboardButton(text="➕ Добавить новый источник", callback_data="admin_add_ai_reference_prompt"))
     builder.row(InlineKeyboardButton(text="⬅️ Назад (в гл. админ меню)", callback_data="admin_main_menu_back"))
     return builder.as_markup()
 
 def get_admin_ai_source_type_select_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    # Dynamically create buttons from AISourceType enum
     for source_type_enum_member in AISourceType:
         builder.button(
-            text=source_type_enum_member.name.replace("_", " ").title(), # e.g., "Url", "Book"
+            text=source_type_enum_member.name.replace("_", " ").title(),
             callback_data=f"admin_select_ai_ref_type_{source_type_enum_member.value}"
         )
-    builder.adjust(2) # Adjust to have 2 buttons per row, or as preferred
+    builder.adjust(2)
     builder.row(InlineKeyboardButton(text="⬅️ Отмена (в меню источников)", callback_data="admin_ai_references_menu_back"))
     return builder.as_markup()
 
@@ -202,7 +193,6 @@ def get_admin_ai_reference_list_keyboard(current_page: int, total_pages: int) ->
         pagination_buttons.append(
             InlineKeyboardButton(text="⬅️ Пред.", callback_data=f"admin_list_ai_references_page_{current_page - 1}")
         )
-    # Always add page number button if there are pages
     if total_pages > 0:
         pagination_buttons.append(
             InlineKeyboardButton(text=f"{current_page + 1}/{total_pages}", callback_data="admin_noop")
@@ -212,20 +202,19 @@ def get_admin_ai_reference_list_keyboard(current_page: int, total_pages: int) ->
             InlineKeyboardButton(text="След. ➡️", callback_data=f"admin_list_ai_references_page_{current_page + 1}")
         )
     
-    if pagination_buttons: # If there are any pagination buttons
-        builder.row(*pagination_buttons) # Add them as a single row
+    if pagination_buttons:
+        builder.row(*pagination_buttons)
 
     builder.row(InlineKeyboardButton(text="⬅️ Назад (в меню источников)", callback_data="admin_ai_references_menu_back"))
     return builder.as_markup()
 
-# Placeholder for actions keyboard - when viewing a single reference
 def get_admin_ai_reference_actions_keyboard(reference_id: int, is_active: bool) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="✏️ Редактировать", callback_data=f"admin_edit_ai_reference_prompt_{reference_id}")
     active_text = "Деактивировать" if is_active else "Активировать"
     builder.button(text=f"👁️ {active_text}", callback_data=f"admin_toggle_ai_reference_active_{reference_id}")
-    builder.button(text="🗑️ Удалить", callback_data=f"admin_delete_ai_reference_confirm_{reference_id}") # Should go to a confirm step
-    builder.row(InlineKeyboardButton(text="⬅️ К списку источников", callback_data="admin_list_ai_references_page_0")) # Assuming page 0 for now
+    builder.button(text="🗑️ Удалить", callback_data=f"admin_delete_ai_reference_confirm_{reference_id}")
+    builder.row(InlineKeyboardButton(text="⬅️ К списку источников", callback_data="admin_list_ai_references_page_0"))
     return builder.as_markup()
 
 def get_admin_manage_trial_keyboard(user_id: int, current_trial_end_date: Optional[datetime]) -> InlineKeyboardMarkup:
@@ -239,15 +228,12 @@ def get_admin_manage_trial_keyboard(user_id: int, current_trial_end_date: Option
         builder.button(text="🎁 Выдать триал на 30 дней", callback_data=f"admin_grant_trial_{user_id}_30")
     
     builder.button(text="⬅️ Назад (к действиям с пользователем)", callback_data=f"admin_view_user_{user_id}")
-    builder.adjust(1) # Each button on a new row for clarity
+    builder.adjust(1)
     return builder.as_markup()
 
 def get_admin_manage_subscription_keyboard(user_id: int, current_subscription_status: Optional[str], current_plan_name: Optional[str]) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    # Using placeholder plan names. These should be configured elsewhere ideally.
-    # Example: settings.AVAILABLE_PLANS = {"plan_a": "Базовый (1 месяц)", "plan_b": "Продвинутый (3 месяца)"}
-    
-    # Placeholder plans and their durations in days
+
     available_plans = {
         "base_1m": {"name": "Базовый - 1 месяц", "duration_days": 30},
         "pro_1m": {"name": "Продвинутый - 1 месяц", "duration_days": 30},
@@ -257,14 +243,13 @@ def get_admin_manage_subscription_keyboard(user_id: int, current_subscription_st
     for plan_id, plan_details in available_plans.items():
         builder.button(text=f"💳 Активировать: {plan_details['name']}", callback_data=f"admin_activate_sub_{user_id}_{plan_id}")
 
-    if current_subscription_status == "active": # Assuming SubscriptionStatus.ACTIVE.value is "active"
+    if current_subscription_status == "active":
         builder.button(text=f"🚫 Деактивировать текущую подписку ({current_plan_name or 'N/A'})", callback_data=f"admin_deactivate_sub_{user_id}")
     
     builder.button(text="⬅️ Назад (к действиям с пользователем)", callback_data=f"admin_view_user_{user_id}")
-    builder.adjust(1) # Each button on a new row for clarity
+    builder.adjust(1)
     return builder.as_markup()
 
-# New Main Inline Menu Keyboard
 def get_main_inline_menu_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     builder.button(text="📝 Новый кейс", callback_data="main_menu:request_case")
@@ -272,9 +257,7 @@ def get_main_inline_menu_keyboard() -> InlineKeyboardMarkup:
     builder.button(text="💬 Оставить отзыв", callback_data="main_menu:leave_feedback")
     builder.button(text="💳 Тарифы и подписка", callback_data="main_menu:tariffs")
     builder.button(text="ℹ️ Помощь", callback_data="main_menu:help")
-    # Optional: Add /start if needed, though it's usually a command.
-    # builder.button(text="🔄 Начать / Перезагрузить", callback_data="main_menu:start") 
-    builder.adjust(2, 2, 1) # Adjust layout: 2 buttons, then 2, then 1
+    builder.adjust(2, 2, 1)
     return builder.as_markup()
 
 def get_back_to_main_menu_keyboard() -> InlineKeyboardMarkup:

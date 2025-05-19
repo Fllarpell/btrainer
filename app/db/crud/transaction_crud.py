@@ -8,19 +8,18 @@ from typing import Optional, List
 import logging
 
 from app.db.models import Transaction, User, TransactionStatus
-from app.db.session import AsyncSession # Ensure AsyncSession is imported for type hints
+from app.db.session import AsyncSession
 
 logger = logging.getLogger(__name__)
 
 async def create_transaction(
     db: AsyncSession, 
     user_id: int, 
-    internal_transaction_id: str, # Added this to be explicit, was missing
+    internal_transaction_id: str,
     amount: Decimal,
     currency: str,
     plan_name: Optional[str] = None,
     status: TransactionStatus = TransactionStatus.PENDING,
-    # yookassa_payment_id: Optional[str] = None, # Retaining for potential future direct YooKassa use
     telegram_payment_charge_id: Optional[str] = None
 ) -> Transaction:
     new_transaction = Transaction(
@@ -30,7 +29,6 @@ async def create_transaction(
         currency=currency,
         plan_name=plan_name,
         status=status,
-        # yookassa_payment_id=yookassa_payment_id, # Ensure this is in your model if used
         telegram_payment_charge_id=telegram_payment_charge_id
     )
     db.add(new_transaction)
@@ -52,7 +50,7 @@ async def update_transaction_status(
     internal_id: str, 
     new_status: TransactionStatus,
     telegram_charge_id: Optional[str] = None,
-    yookassa_payment_id: Optional[str] = None # if we get an update from yookassa webhook later for some reason
+    yookassa_payment_id: Optional[str] = None
 ) -> Optional[Transaction]:
     transaction = await get_transaction_by_internal_id(db=db, internal_id=internal_id)
     if transaction:
@@ -61,10 +59,7 @@ async def update_transaction_status(
             transaction.telegram_payment_charge_id = telegram_charge_id
         if yookassa_payment_id:
             transaction.yookassa_payment_id = yookassa_payment_id
-        # transaction.updated_at will be updated automatically by SQLAlchemy if configured in model
-        await db.flush() # Or commit if this function is responsible for it
-        # await db.commit()
-        # await db.refresh(transaction)
+        await db.flush()
         logger.info(f"Transaction {transaction.id} (internal: {internal_id}) status updated to {new_status}.")
         return transaction
     logger.warning(f"Failed to update transaction status: No transaction found with internal_id {internal_id}.")
@@ -74,13 +69,12 @@ async def update_transaction_successful(
     db: AsyncSession,
     internal_id: str,
     telegram_charge_id: str,
-    provider_payment_charge_id: Optional[str] # YooKassa might also return its own charge ID via Telegram
+    provider_payment_charge_id: Optional[str]
 ) -> Optional[Transaction]:
     transaction = await get_transaction_by_internal_id(db=db, internal_id=internal_id)
     if transaction:
         transaction.status = TransactionStatus.SUCCEEDED
         transaction.telegram_payment_charge_id = telegram_charge_id
-        # Store YooKassa's charge ID if provided and if yookassa_payment_id field exists and is distinct
         if provider_payment_charge_id and hasattr(transaction, 'yookassa_payment_id'):
             transaction.yookassa_payment_id = provider_payment_charge_id 
 

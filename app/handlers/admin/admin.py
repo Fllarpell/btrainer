@@ -4,34 +4,24 @@ from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func
-# import math # No longer needed here as case pagination moved
 
 from app.core.config import settings
-# from app.db.crud.user_crud import get_user_by_telegram_id
-# from app.db import case_crud # No longer needed here
-# admin_log_crud is not directly used by remaining handlers in this file
-from app.db.models import UserRole, AdminAction, User, SubscriptionStatus # SubscriptionStatus no longer needed here
+from app.db.models import UserRole, AdminAction, User, SubscriptionStatus
 from app.ui.keyboards import (
     get_admin_panel_main_keyboard,
-    # User and Case management keyboards moved or not used here directly
 )
-from app.states.admin_states import AdminStates # Still needed for cancel_admin_action
+from app.states.admin_states import AdminStates
 
-# Import the sub-routers
 from .admin_user_management import admin_user_mgmt_router
 from .admin_case_management import admin_case_mgmt_router
 from .admin_ai_reference_management import admin_ai_ref_router
-# Import the filter from the new file
 from .filters import AdminTelegramFilter
-# Import the CRUD function for total requests
 from app.db.crud.user_crud import get_total_db_request_count, count_converted_from_trial_users
-# from aiogram.utils.markdown import escape_md # Old import
-from aiogram.utils.formatting import Text, Bold, Italic, Code  # Correct imports for rich text objects
+from aiogram.utils.formatting import Text, Bold, Italic, Code
 
 logger = logging.getLogger(__name__)
-admin_router = Router(name="admin_handlers") # This is the main admin router
+admin_router = Router(name="admin_handlers")
 
-# Include the sub-routers
 admin_router.include_router(admin_user_mgmt_router)
 admin_router.include_router(admin_case_mgmt_router)
 admin_router.include_router(admin_ai_ref_router)
@@ -49,12 +39,13 @@ async def handle_admin_command(message: types.Message, state: FSMContext, sessio
         reply_markup=admin_menu_kb
     )
 
-@admin_router.message(Command("admin")) # No filter, so it catches non-admins
+@admin_router.message(Command("admin"))
 async def handle_admin_command_access_denied(message: types.Message):
     logger.warning(f"User {message.from_user.id} (non-admin) attempted to access /admin.")
 
 @admin_router.callback_query(F.data == "admin_main_menu_back", AdminTelegramFilter())
 async def handle_admin_main_menu_back_callback(callback_query: types.CallbackQuery, state: FSMContext, session: AsyncSession):
+    await state.clear()
     await callback_query.answer()
     logger.debug(f"Admin {callback_query.from_user.id} pressed 'admin_main_menu_back'.")
     admin_menu_kb = get_admin_panel_main_keyboard()
@@ -111,8 +102,8 @@ async def handle_admin_trial_conversion_stats_callback(callback_query: types.Cal
         "Количество пользователей, перешедших с триала на платную подписку: ", Code(str(converted_users_count)), "\n",
         "Приблизительный процент конверсии: ", Code(percentage_str), 
         " (от пользователей, у которых был триал или сейчас активна подписка)\n\n",
-        Italic(plain_descriptive_text_conversion), "\n", # Added trailing newline for spacing if needed
-        "Для возврата в главное меню нажмите соответствующую кнопку." # Added this line for consistency
+        Italic(plain_descriptive_text_conversion), "\n",
+        "Для возврата в главное меню нажмите соответствующую кнопку."
     )
 
     await callback_query.message.edit_text(
@@ -135,8 +126,3 @@ async def handle_cancel_admin_action(message: types.Message, state: FSMContext, 
 @admin_router.callback_query(F.data == "admin_noop", AdminTelegramFilter())
 async def handle_admin_noop_callback(callback_query: types.CallbackQuery, session: AsyncSession):
     await callback_query.answer()
-
-# Case Management Section has been moved to admin_case_management.py
-# User Management Section has been moved to admin_user_management.py
-
-# The escape_date_md helpers were moved with their respective sections or can be centralized later. 

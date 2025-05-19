@@ -46,7 +46,7 @@ EXPLANATION_TEXT = """📝 Как все устроено:
 
 TRIAL_OFFER_TEXT = """🚀 Отлично!
 
-Чтобы ты мог полноценно оценить все возможности, мы предлагаем тебе начать с **бесплатного 7-дневного пробного периода**.
+Чтобы ты мог полноценно оценить все возможности, мы предлагаем тебе начать с <b>бесплатного 7-дневного пробного периода</b>.
 В течение недели тебе будут доступны все функции бота без ограничений.
 
 После окончания пробного периода ты сможешь выбрать подходящий тариф для продолжения практики.
@@ -132,16 +132,16 @@ async def handle_start(message: types.Message, session: AsyncSession, state: FSM
             logger.info(f"User {db_user.telegram_id} has no active sub/trial, but trial was used before. Guiding to /menu.")
             await message.answer(
                 "Пробный период уже был использован. Вы можете выбрать платный тариф или посмотреть другие опции в меню.", 
-                reply_markup=get_main_inline_menu_keyboard() # Show inline menu directly
+                reply_markup=get_main_inline_menu_keyboard()
             )
         else:
-            # No active trial, no active subscription, and trial was never used - start full onboarding
+            # No active trial, no active subscription, and trial was never used
             logger.info(f"User {db_user.telegram_id} has no active sub/trial and trial never used. Starting onboarding flow.")
             await message.answer(WELCOME_TEXT, reply_markup=get_onboarding_welcome_keyboard())
     else:
         # User has an active trial or active subscription
         logger.info(f"User {db_user.telegram_id} has active sub/trial. Sending to main menu (inline).")
-        await message.answer(WELCOME_BACK_TEXT, reply_markup=get_main_inline_menu_keyboard()) # Show inline menu
+        await message.answer(WELCOME_BACK_TEXT, reply_markup=get_main_inline_menu_keyboard())
 
 @user_onboarding_router.callback_query(OnboardingCallback.filter(F.action == "tell_me_more"))
 async def cq_onboarding_tell_me_more(query: types.CallbackQuery, callback_data: OnboardingCallback, session: AsyncSession):
@@ -210,22 +210,18 @@ async def cq_onboarding_start_trial(query: types.CallbackQuery, callback_data: O
 
 @user_onboarding_router.message(Command("help"))
 @user_onboarding_router.message(F.text == "ℹ️ Помощь")
-async def handle_help(message: types.Message, state: FSMContext):
-    current_state = await state.get_state()
-    if current_state is not None:
-        logger.info(f"User {message.from_user.id} was in state {current_state}, clearing state due to /help or 'Помощь' button")
-        await state.clear()
-    logger.info(f"User {message.from_user.id} requested help via command or button.")
+async def handle_help_command(message: types.Message, state: FSMContext):
+    await state.clear()
     await message.answer(HELP_TEXT, disable_web_page_preview=True, parse_mode='HTML')
 
 @user_onboarding_router.message(Command("profile"))
-async def handle_profile(message: types.Message, session: AsyncSession):
+async def handle_profile_command(message: types.Message, session: AsyncSession, state: FSMContext):
+    await state.clear()
     telegram_user_id = message.from_user.id
     db_user = await user_crud.get_user_by_telegram_id(session, telegram_id=telegram_user_id)
     if db_user:
         trial_end_str = db_user.trial_end_date.strftime('%d.%m.%Y') if db_user.trial_end_date else 'не использовался'
         sub_expires_str = db_user.subscription_expires_at.strftime('%d.%m.%Y') if db_user.subscription_expires_at else 'нет'
-        
         status_description = "Нет подписки"
         if db_user.subscription_status == SubscriptionStatus.TRIAL:
             status_description = f"Пробный период (до {trial_end_str})"
@@ -234,8 +230,7 @@ async def handle_profile(message: types.Message, session: AsyncSession):
         elif db_user.subscription_status == SubscriptionStatus.EXPIRED:
             status_description = "Истекла"
             if db_user.subscription_expires_at:
-                 status_description += f" ({db_user.subscription_expires_at.strftime('%d.%m.%Y')})"
-
+                status_description += f" ({db_user.subscription_expires_at.strftime('%d.%m.%Y')})"
         role_map = {
             UserRole.USER: "Пользователь",
             UserRole.ADMIN: "Администратор"
@@ -252,39 +247,20 @@ async def handle_profile(message: types.Message, session: AsyncSession):
         await message.answer("Не удалось найти ваш профиль. Попробуйте /start")
 
 @user_onboarding_router.message(Command("menu"))
-async def handle_menu_command(message: types.Message, session: AsyncSession):
-    # Potentially check user status if menu options depend on it, or let middleware handle it.
-    # For now, just show the menu.
+async def handle_menu_command(message: types.Message, session: AsyncSession, state: FSMContext):
+    await state.clear()
     user_id = message.from_user.id
     db_user = await user_crud.get_user_by_telegram_id(session, telegram_id=user_id)
-    
     if not db_user:
         await message.answer("Похоже, вы еще не начали диалог со мной. Пожалуйста, используйте /start.")
         return
-    
     if db_user.is_blocked:
-        await message.answer("Ваш аккаунт заблокирован.") # Consistent with /start handler
+        await message.answer("Ваш аккаунт заблокирован.")
         return
-
-    # Check if user is in a state, if so, offer to clear it or give context-specific menu
-    # current_state = await state.get_state() # Requires FSMContext as argument
-    # if current_state is not None:
-    #     await message.answer("Вы сейчас находитесь в процессе. Чтобы выйти в главное меню, текущее действие будет отменено. Продолжить?", 
-    #                          reply_markup=get_cancel_to_menu_keyboard()) # Example: needs new keyboard
-    #     return
-
     await message.answer("Выберите опцию из меню:", reply_markup=get_main_inline_menu_keyboard())
 
 @user_onboarding_router.callback_query(F.data == "main_menu:show")
 async def cq_show_main_menu(query: types.CallbackQuery, session: AsyncSession, state: FSMContext):
-    # Optional: Re-fetch user or check status if menu content depends on it
-    # user_id = query.from_user.id
-    # db_user = await user_crud.get_user_by_telegram_id(session, telegram_id=user_id)
-    # if not db_user: # Handle if user somehow deleted
-    #     await query.answer("Произошла ошибка. Попробуйте /start", show_alert=True)
-    #     return
-    
-    # Clear feedback state if user is going back to menu from feedback prompt
     current_state = await state.get_state()
     if current_state == FeedbackStates.awaiting_feedback_text:
         await state.clear()
@@ -295,7 +271,3 @@ async def cq_show_main_menu(query: types.CallbackQuery, session: AsyncSession, s
         reply_markup=get_main_inline_menu_keyboard()
     )
     await query.answer()
-
-# Keep other handlers if they exist (e.g., feedback, etc.)
-# from app.handlers.user.feedback_handlers import feedback_router # Example
-# user_onboarding_router.include_router(feedback_router) # Example 

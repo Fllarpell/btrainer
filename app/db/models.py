@@ -111,11 +111,10 @@ class Feedback(Base):
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
     
-    # AI analysis fields
     is_meaningful_ai: Mapped[Optional[bool]] = mapped_column(Boolean, nullable=True)
-    ai_analysis_reason: Mapped[Optional[str]] = mapped_column(Text, nullable=True) # Reason from AI for meaningfulness decision
-    ai_analysis_category: Mapped[Optional[str]] = mapped_column(String, nullable=True) # Category from AI (e.g., bug_report, feature_request)
-    raw_ai_response: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True) # Store raw JSON response from AI, just in case
+    ai_analysis_reason: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    ai_analysis_category: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    raw_ai_response: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
 
     user: Mapped["User"] = relationship(back_populates="feedbacks")
 
@@ -175,9 +174,9 @@ class AIReference(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     source_type: Mapped[AISourceType] = mapped_column(SQLAlchemyEnum(AISourceType, name="ai_source_type_enum", create_type=False), nullable=False)
-    description: Mapped[str] = mapped_column(Text, nullable=False) # e.g., Book title, Article name, URL description
-    url: Mapped[Optional[str]] = mapped_column(String(2048), nullable=True) # For URLs
-    citation_details: Mapped[Optional[str]] = mapped_column(Text, nullable=True) # E.g., page numbers, authors for books/articles not in description
+    description: Mapped[str] = mapped_column(Text, nullable=False)
+    url: Mapped[Optional[str]] = mapped_column(String(2048), nullable=True)
+    citation_details: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
