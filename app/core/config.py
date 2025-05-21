@@ -47,6 +47,8 @@ class Settings:
     TELEGRAM_PAYMENT_PROVIDER_TOKEN: Optional[str] = os.getenv("TELEGRAM_PAYMENT_PROVIDER_TOKEN")
     if not TELEGRAM_PAYMENT_PROVIDER_TOKEN:
         print("Warning: TELEGRAM_PAYMENT_PROVIDER_TOKEN is not set in .env. Payments will not work.")
+    else:
+        print(f"Loaded TELEGRAM_PAYMENT_PROVIDER_TOKEN: {TELEGRAM_PAYMENT_PROVIDER_TOKEN[:10]}...")
 
     TRIAL_PERIOD_DAYS: int = 7
 

@@ -1,25 +1,23 @@
 import logging
-import json # <-- Add json import
+import json
 from aiogram import Router, types, F
 from aiogram.utils.markdown import hbold
 from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram.fsm.context import FSMContext
-import datetime # Keep for potential future use with cases, though not directly in _generate_and_send_case now
+import datetime
 
-# Attempt to import TextSplitter, provide fallback if not available
 try:
     from aiogram.utils.text_splitter import TextSplitter
     TEXT_SPLITTER_AVAILABLE = True
 except ImportError:
     TEXT_SPLITTER_AVAILABLE = False
-    # Fallback logger for TextSplitter will use the main logger for this module
-    pass # Logger will be initialized below
+    pass
 
 from app.db.crud.user_crud import get_user_by_telegram_id
 from app.db.crud.case_crud import create_case, get_case
 from app.db.crud.solution_crud import create_solution
-from app.db.crud.ai_reference_crud import get_active_ai_references_for_prompt # Import for fetching references
-from app.db.models import Solution # Needed for handle_solution_submission
+from app.db.crud.ai_reference_crud import get_active_ai_references_for_prompt
+from app.db.models import Solution
 from app.ui.keyboards import get_after_case_keyboard, get_after_solution_analysis_keyboard
 from app.services.ai_service import generate_case_from_ai, analyze_solution_with_ai
 from app.states.solve_case import SolveCaseStates
@@ -27,11 +25,11 @@ from app.states.solve_case import SolveCaseStates
 logger = logging.getLogger(__name__)
 case_lifecycle_router = Router(name="case_lifecycle_handlers")
 
-MAX_MESSAGE_LENGTH = 4096 # Telegram's message length limit
+MAX_MESSAGE_LENGTH = 4096
 
 def manual_text_splitter(text: str, max_chunk_size: int = MAX_MESSAGE_LENGTH) -> list[str]:
     """Manually splits text into chunks of a maximum size, respecting Telegram limits."""
-    if not TEXT_SPLITTER_AVAILABLE: # Log only if this fallback is actually used
+    if not TEXT_SPLITTER_AVAILABLE:
         logger.warning(
             "aiogram.utils.text_splitter.TextSplitter not found. Using manual fallback for splitting long messages. "
             "Consider updating aiogram to v3.0.0b8+ for the native utility."

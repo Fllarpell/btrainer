@@ -1592,3 +1592,1318 @@ UnboundLocalError: cannot access local variable 'now' where it is not associated
 2025-05-19 11:18:53,067 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
 2025-05-19 11:18:53,067 - INFO - aiogram.dispatcher - Polling stopped
 2025-05-19 11:18:53,326 - INFO - __main__ - Bot stopped.
+2025-05-19 11:19:18,516 - INFO - __main__ - Starting bot...
+2025-05-19 11:19:18,520 - INFO - __main__ - Database session middleware registered.
+2025-05-19 11:19:18,520 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-19 11:19:18,764 - INFO - __main__ - Starting polling...
+2025-05-19 11:19:18,765 - INFO - aiogram.dispatcher - Start polling
+2025-05-19 11:19:18,840 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-19 11:35:17,947 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286448
+2025-05-19 11:35:17,949 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:35:18,094 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:18,094 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 77
+2025-05-19 11:35:18,465 - INFO - aiogram.event - Update id=855286448 is handled. Duration 522 ms by bot id=7667511166
+2025-05-19 11:35:28,787 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286449
+2025-05-19 11:35:28,790 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:35:28,822 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:28,823 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 78
+2025-05-19 11:35:29,127 - INFO - aiogram.event - Update id=855286449 is handled. Duration 340 ms by bot id=7667511166
+2025-05-19 11:35:33,311 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286450
+2025-05-19 11:35:33,312 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:35:33,333 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:33,333 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 79
+2025-05-19 11:35:33,771 - INFO - aiogram.event - Update id=855286450 is handled. Duration 461 ms by bot id=7667511166
+2025-05-19 11:35:34,719 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286451
+2025-05-19 11:35:34,720 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:35:34,724 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:34,724 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 80
+2025-05-19 11:35:35,087 - INFO - aiogram.event - Update id=855286451 is handled. Duration 367 ms by bot id=7667511166
+2025-05-19 11:35:36,224 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286452
+2025-05-19 11:35:36,225 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1229508120
+2025-05-19 11:35:36,229 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:36,229 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 81
+2025-05-19 11:35:36,236 - INFO - app.handlers.admin.admin_user_management - Admin 1229508120 found user 3 (TG: 1229508120) by TG ID.
+2025-05-19 11:35:36,457 - INFO - aiogram.event - Update id=855286452 is handled. Duration 233 ms by bot id=7667511166
+2025-05-19 11:35:59,178 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286453
+2025-05-19 11:35:59,178 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:35:59,185 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:35:59,186 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 82
+2025-05-19 11:35:59,371 - INFO - aiogram.event - Update id=855286453 is handled. Duration 193 ms by bot id=7667511166
+2025-05-19 11:36:00,321 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286454
+2025-05-19 11:36:00,322 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:00,323 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:00,323 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 83
+2025-05-19 11:36:00,549 - INFO - aiogram.event - Update id=855286454 is handled. Duration 227 ms by bot id=7667511166
+2025-05-19 11:36:02,471 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286455
+2025-05-19 11:36:02,471 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:02,475 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:02,476 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 84
+2025-05-19 11:36:02,703 - INFO - aiogram.event - Update id=855286455 is handled. Duration 232 ms by bot id=7667511166
+2025-05-19 11:36:19,788 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286456
+2025-05-19 11:36:19,789 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:19,805 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:19,805 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 85
+2025-05-19 11:36:20,072 - INFO - aiogram.event - Update id=855286456 is handled. Duration 285 ms by bot id=7667511166
+2025-05-19 11:36:22,270 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286457
+2025-05-19 11:36:22,270 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:22,275 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:22,275 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 86
+2025-05-19 11:36:22,604 - INFO - aiogram.event - Update id=855286457 is handled. Duration 334 ms by bot id=7667511166
+2025-05-19 11:36:29,533 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286458
+2025-05-19 11:36:29,535 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:29,548 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:29,548 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 87
+2025-05-19 11:36:29,751 - INFO - aiogram.event - Update id=855286458 is handled. Duration 219 ms by bot id=7667511166
+2025-05-19 11:36:30,911 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286459
+2025-05-19 11:36:30,911 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-19 11:36:30,913 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-19 11:36:30,913 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 88
+2025-05-19 11:36:31,114 - INFO - aiogram.event - Update id=855286459 is handled. Duration 202 ms by bot id=7667511166
+2025-05-19 16:28:55,541 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-19 16:28:55,546 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-19 16:29:06,787 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 01:47:31,792 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 01:47:31,800 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 01:47:43,053 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 02:09:22,837 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 02:09:22,839 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 02:09:34,108 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 02:32:02,444 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 02:32:02,445 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 02:32:13,700 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 02:45:30,777 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 65] No route to host
+2025-05-20 02:45:30,780 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 02:45:42,225 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 03:23:51,161 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno None] Can not write request body for https://api.telegram.org/bot7667511166:AAEtqfjMUrFAykZDfDa_W5lNplJtHpoinDY/getUpdates
+2025-05-20 03:23:51,163 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 03:40:39,747 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 03:40:39,750 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-05-20 03:40:39,750 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 03:55:52,289 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 04:12:55,268 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-05-20 04:12:55,269 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 04:29:03,000 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 04:44:58,986 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno None] Can not write request body for https://api.telegram.org/bot7667511166:AAEtqfjMUrFAykZDfDa_W5lNplJtHpoinDY/getUpdates
+2025-05-20 04:44:58,987 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 04:50:41,155 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 05:26:09,734 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-05-20 05:26:09,735 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 05:42:58,265 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 06:05:09,816 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 06:05:09,821 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 06:05:21,135 - INFO - aiogram.dispatcher - Connection established (tryings = 1, bot id = 7667511166)
+2025-05-20 07:23:11,084 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 07:23:11,087 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 07:23:12,104 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:12,104 - WARNING - aiogram.dispatcher - Sleep for 1.174317 seconds and try again... (tryings = 1, bot id = 7667511166)
+2025-05-20 07:23:13,285 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:13,286 - WARNING - aiogram.dispatcher - Sleep for 1.536968 seconds and try again... (tryings = 2, bot id = 7667511166)
+2025-05-20 07:23:14,827 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:14,827 - WARNING - aiogram.dispatcher - Sleep for 2.052190 seconds and try again... (tryings = 3, bot id = 7667511166)
+2025-05-20 07:23:16,883 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:16,884 - WARNING - aiogram.dispatcher - Sleep for 2.683197 seconds and try again... (tryings = 4, bot id = 7667511166)
+2025-05-20 07:23:19,571 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:19,572 - WARNING - aiogram.dispatcher - Sleep for 3.453770 seconds and try again... (tryings = 5, bot id = 7667511166)
+2025-05-20 07:23:23,031 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:23,032 - WARNING - aiogram.dispatcher - Sleep for 4.381411 seconds and try again... (tryings = 6, bot id = 7667511166)
+2025-05-20 07:23:27,418 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:23:27,418 - WARNING - aiogram.dispatcher - Sleep for 4.958241 seconds and try again... (tryings = 7, bot id = 7667511166)
+2025-05-20 07:24:25,642 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 07:24:25,642 - WARNING - aiogram.dispatcher - Sleep for 4.855405 seconds and try again... (tryings = 8, bot id = 7667511166)
+2025-05-20 07:29:53,469 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 07:29:53,471 - WARNING - aiogram.dispatcher - Sleep for 5.165299 seconds and try again... (tryings = 9, bot id = 7667511166)
+2025-05-20 07:30:09,331 - INFO - aiogram.dispatcher - Connection established (tryings = 10, bot id = 7667511166)
+2025-05-20 08:56:16,680 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-05-20 08:56:16,681 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 7667511166)
+2025-05-20 08:56:17,687 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 08:56:17,687 - WARNING - aiogram.dispatcher - Sleep for 1.487883 seconds and try again... (tryings = 1, bot id = 7667511166)
+2025-05-20 09:08:38,677 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:08:38,677 - WARNING - aiogram.dispatcher - Sleep for 2.088004 seconds and try again... (tryings = 2, bot id = 7667511166)
+2025-05-20 09:08:40,771 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:08:40,772 - WARNING - aiogram.dispatcher - Sleep for 2.932113 seconds and try again... (tryings = 3, bot id = 7667511166)
+2025-05-20 09:08:43,708 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:08:43,709 - WARNING - aiogram.dispatcher - Sleep for 3.760158 seconds and try again... (tryings = 4, bot id = 7667511166)
+2025-05-20 09:08:47,475 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:08:47,475 - WARNING - aiogram.dispatcher - Sleep for 4.870862 seconds and try again... (tryings = 5, bot id = 7667511166)
+2025-05-20 09:08:52,348 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:08:52,349 - WARNING - aiogram.dispatcher - Sleep for 4.911242 seconds and try again... (tryings = 6, bot id = 7667511166)
+2025-05-20 09:15:34,530 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:15:34,531 - WARNING - aiogram.dispatcher - Sleep for 5.064928 seconds and try again... (tryings = 7, bot id = 7667511166)
+2025-05-20 09:23:11,191 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:11,192 - WARNING - aiogram.dispatcher - Sleep for 5.269695 seconds and try again... (tryings = 8, bot id = 7667511166)
+2025-05-20 09:23:16,466 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:16,467 - WARNING - aiogram.dispatcher - Sleep for 5.050888 seconds and try again... (tryings = 9, bot id = 7667511166)
+2025-05-20 09:23:21,526 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:21,527 - WARNING - aiogram.dispatcher - Sleep for 4.931324 seconds and try again... (tryings = 10, bot id = 7667511166)
+2025-05-20 09:23:26,463 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:26,464 - WARNING - aiogram.dispatcher - Sleep for 5.053803 seconds and try again... (tryings = 11, bot id = 7667511166)
+2025-05-20 09:23:31,522 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:31,523 - WARNING - aiogram.dispatcher - Sleep for 4.990438 seconds and try again... (tryings = 12, bot id = 7667511166)
+2025-05-20 09:23:36,516 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:36,518 - WARNING - aiogram.dispatcher - Sleep for 5.067968 seconds and try again... (tryings = 13, bot id = 7667511166)
+2025-05-20 09:23:41,589 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:41,590 - WARNING - aiogram.dispatcher - Sleep for 5.228895 seconds and try again... (tryings = 14, bot id = 7667511166)
+2025-05-20 09:23:46,823 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:23:46,823 - WARNING - aiogram.dispatcher - Sleep for 5.056564 seconds and try again... (tryings = 15, bot id = 7667511166)
+2025-05-20 09:29:19,632 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:19,632 - WARNING - aiogram.dispatcher - Sleep for 5.189888 seconds and try again... (tryings = 16, bot id = 7667511166)
+2025-05-20 09:29:24,827 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:24,827 - WARNING - aiogram.dispatcher - Sleep for 4.857062 seconds and try again... (tryings = 17, bot id = 7667511166)
+2025-05-20 09:29:29,697 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:29,702 - WARNING - aiogram.dispatcher - Sleep for 5.197183 seconds and try again... (tryings = 18, bot id = 7667511166)
+2025-05-20 09:29:34,904 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:34,905 - WARNING - aiogram.dispatcher - Sleep for 4.897275 seconds and try again... (tryings = 19, bot id = 7667511166)
+2025-05-20 09:29:39,806 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:39,806 - WARNING - aiogram.dispatcher - Sleep for 4.997575 seconds and try again... (tryings = 20, bot id = 7667511166)
+2025-05-20 09:29:44,808 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:29:44,809 - WARNING - aiogram.dispatcher - Sleep for 5.020767 seconds and try again... (tryings = 21, bot id = 7667511166)
+2025-05-20 09:32:51,021 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:32:51,022 - WARNING - aiogram.dispatcher - Sleep for 4.875686 seconds and try again... (tryings = 22, bot id = 7667511166)
+2025-05-20 09:32:55,902 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:32:55,903 - WARNING - aiogram.dispatcher - Sleep for 5.010498 seconds and try again... (tryings = 23, bot id = 7667511166)
+2025-05-20 09:33:05,299 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:05,300 - WARNING - aiogram.dispatcher - Sleep for 4.932632 seconds and try again... (tryings = 24, bot id = 7667511166)
+2025-05-20 09:33:10,237 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:10,238 - WARNING - aiogram.dispatcher - Sleep for 5.087064 seconds and try again... (tryings = 25, bot id = 7667511166)
+2025-05-20 09:33:15,327 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:15,328 - WARNING - aiogram.dispatcher - Sleep for 5.093789 seconds and try again... (tryings = 26, bot id = 7667511166)
+2025-05-20 09:33:28,147 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:28,147 - WARNING - aiogram.dispatcher - Sleep for 5.016382 seconds and try again... (tryings = 27, bot id = 7667511166)
+2025-05-20 09:33:33,168 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:33,168 - WARNING - aiogram.dispatcher - Sleep for 5.106053 seconds and try again... (tryings = 28, bot id = 7667511166)
+2025-05-20 09:33:38,279 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:38,280 - WARNING - aiogram.dispatcher - Sleep for 5.097861 seconds and try again... (tryings = 29, bot id = 7667511166)
+2025-05-20 09:33:43,380 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:43,380 - WARNING - aiogram.dispatcher - Sleep for 5.051555 seconds and try again... (tryings = 30, bot id = 7667511166)
+2025-05-20 09:33:49,401 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:49,403 - WARNING - aiogram.dispatcher - Sleep for 4.983165 seconds and try again... (tryings = 31, bot id = 7667511166)
+2025-05-20 09:33:54,390 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:33:54,390 - WARNING - aiogram.dispatcher - Sleep for 4.975185 seconds and try again... (tryings = 32, bot id = 7667511166)
+2025-05-20 09:36:45,144 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:36:45,145 - WARNING - aiogram.dispatcher - Sleep for 4.964519 seconds and try again... (tryings = 33, bot id = 7667511166)
+2025-05-20 09:36:50,113 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:36:50,113 - WARNING - aiogram.dispatcher - Sleep for 4.992285 seconds and try again... (tryings = 34, bot id = 7667511166)
+2025-05-20 09:36:55,110 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:36:55,111 - WARNING - aiogram.dispatcher - Sleep for 5.223352 seconds and try again... (tryings = 35, bot id = 7667511166)
+2025-05-20 09:37:00,339 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:37:00,339 - WARNING - aiogram.dispatcher - Sleep for 4.989131 seconds and try again... (tryings = 36, bot id = 7667511166)
+2025-05-20 09:37:05,333 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:37:05,334 - WARNING - aiogram.dispatcher - Sleep for 4.996996 seconds and try again... (tryings = 37, bot id = 7667511166)
+2025-05-20 09:37:32,680 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:37:32,680 - WARNING - aiogram.dispatcher - Sleep for 4.741035 seconds and try again... (tryings = 38, bot id = 7667511166)
+2025-05-20 09:37:37,424 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:37:37,425 - WARNING - aiogram.dispatcher - Sleep for 5.005915 seconds and try again... (tryings = 39, bot id = 7667511166)
+2025-05-20 09:38:30,519 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:38:30,520 - WARNING - aiogram.dispatcher - Sleep for 4.943018 seconds and try again... (tryings = 40, bot id = 7667511166)
+2025-05-20 09:38:43,987 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:38:43,987 - WARNING - aiogram.dispatcher - Sleep for 5.007649 seconds and try again... (tryings = 41, bot id = 7667511166)
+2025-05-20 09:38:49,000 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:38:49,002 - WARNING - aiogram.dispatcher - Sleep for 4.984059 seconds and try again... (tryings = 42, bot id = 7667511166)
+2025-05-20 09:39:00,098 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:39:00,098 - WARNING - aiogram.dispatcher - Sleep for 5.004388 seconds and try again... (tryings = 43, bot id = 7667511166)
+2025-05-20 09:39:10,865 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:39:10,867 - WARNING - aiogram.dispatcher - Sleep for 4.907855 seconds and try again... (tryings = 44, bot id = 7667511166)
+2025-05-20 09:39:15,780 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:39:15,781 - WARNING - aiogram.dispatcher - Sleep for 5.002500 seconds and try again... (tryings = 45, bot id = 7667511166)
+2025-05-20 09:39:40,279 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:39:40,281 - WARNING - aiogram.dispatcher - Sleep for 4.797048 seconds and try again... (tryings = 46, bot id = 7667511166)
+2025-05-20 09:39:45,082 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:39:45,082 - WARNING - aiogram.dispatcher - Sleep for 4.933282 seconds and try again... (tryings = 47, bot id = 7667511166)
+2025-05-20 09:40:11,889 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:40:11,890 - WARNING - aiogram.dispatcher - Sleep for 4.784863 seconds and try again... (tryings = 48, bot id = 7667511166)
+2025-05-20 09:40:16,679 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:40:16,679 - WARNING - aiogram.dispatcher - Sleep for 4.986702 seconds and try again... (tryings = 49, bot id = 7667511166)
+2025-05-20 09:40:21,671 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:40:21,671 - WARNING - aiogram.dispatcher - Sleep for 4.964673 seconds and try again... (tryings = 50, bot id = 7667511166)
+2025-05-20 09:57:22,156 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 09:57:22,157 - WARNING - aiogram.dispatcher - Sleep for 4.972499 seconds and try again... (tryings = 51, bot id = 7667511166)
+2025-05-20 10:09:44,923 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:09:44,923 - WARNING - aiogram.dispatcher - Sleep for 5.024030 seconds and try again... (tryings = 52, bot id = 7667511166)
+2025-05-20 10:09:49,951 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:09:49,952 - WARNING - aiogram.dispatcher - Sleep for 5.172920 seconds and try again... (tryings = 53, bot id = 7667511166)
+2025-05-20 10:09:55,129 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:09:55,129 - WARNING - aiogram.dispatcher - Sleep for 4.883321 seconds and try again... (tryings = 54, bot id = 7667511166)
+2025-05-20 10:10:00,018 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:10:00,019 - WARNING - aiogram.dispatcher - Sleep for 5.020126 seconds and try again... (tryings = 55, bot id = 7667511166)
+2025-05-20 10:26:36,690 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:26:36,690 - WARNING - aiogram.dispatcher - Sleep for 5.076769 seconds and try again... (tryings = 56, bot id = 7667511166)
+2025-05-20 10:44:02,558 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:44:02,559 - WARNING - aiogram.dispatcher - Sleep for 5.065129 seconds and try again... (tryings = 57, bot id = 7667511166)
+2025-05-20 10:58:41,407 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:58:41,407 - WARNING - aiogram.dispatcher - Sleep for 5.060108 seconds and try again... (tryings = 58, bot id = 7667511166)
+2025-05-20 10:58:46,472 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:58:46,472 - WARNING - aiogram.dispatcher - Sleep for 5.100216 seconds and try again... (tryings = 59, bot id = 7667511166)
+2025-05-20 10:58:51,577 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:58:51,577 - WARNING - aiogram.dispatcher - Sleep for 5.199197 seconds and try again... (tryings = 60, bot id = 7667511166)
+2025-05-20 10:58:56,781 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 10:58:56,782 - WARNING - aiogram.dispatcher - Sleep for 5.058184 seconds and try again... (tryings = 61, bot id = 7667511166)
+2025-05-20 11:10:46,182 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 11:10:46,184 - WARNING - aiogram.dispatcher - Sleep for 4.977510 seconds and try again... (tryings = 62, bot id = 7667511166)
+2025-05-20 11:26:17,169 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 11:26:17,169 - WARNING - aiogram.dispatcher - Sleep for 4.877450 seconds and try again... (tryings = 63, bot id = 7667511166)
+2025-05-20 11:43:17,353 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 11:43:17,356 - WARNING - aiogram.dispatcher - Sleep for 5.132118 seconds and try again... (tryings = 64, bot id = 7667511166)
+2025-05-20 11:58:22,032 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 11:58:22,033 - WARNING - aiogram.dispatcher - Sleep for 4.861192 seconds and try again... (tryings = 65, bot id = 7667511166)
+2025-05-20 12:11:42,573 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:11:42,573 - WARNING - aiogram.dispatcher - Sleep for 4.912476 seconds and try again... (tryings = 66, bot id = 7667511166)
+2025-05-20 12:11:47,489 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:11:47,490 - WARNING - aiogram.dispatcher - Sleep for 4.855944 seconds and try again... (tryings = 67, bot id = 7667511166)
+2025-05-20 12:11:52,352 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:11:52,352 - WARNING - aiogram.dispatcher - Sleep for 5.071388 seconds and try again... (tryings = 68, bot id = 7667511166)
+2025-05-20 12:11:57,427 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:11:57,427 - WARNING - aiogram.dispatcher - Sleep for 4.938072 seconds and try again... (tryings = 69, bot id = 7667511166)
+2025-05-20 12:12:02,368 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:12:02,368 - WARNING - aiogram.dispatcher - Sleep for 4.849332 seconds and try again... (tryings = 70, bot id = 7667511166)
+2025-05-20 12:12:07,222 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:12:07,222 - WARNING - aiogram.dispatcher - Sleep for 5.000377 seconds and try again... (tryings = 71, bot id = 7667511166)
+2025-05-20 12:12:12,224 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:12:12,224 - WARNING - aiogram.dispatcher - Sleep for 5.152815 seconds and try again... (tryings = 72, bot id = 7667511166)
+2025-05-20 12:20:59,291 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:20:59,292 - WARNING - aiogram.dispatcher - Sleep for 5.019974 seconds and try again... (tryings = 73, bot id = 7667511166)
+2025-05-20 12:21:04,318 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:04,319 - WARNING - aiogram.dispatcher - Sleep for 4.935893 seconds and try again... (tryings = 74, bot id = 7667511166)
+2025-05-20 12:21:09,259 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:09,260 - WARNING - aiogram.dispatcher - Sleep for 5.152510 seconds and try again... (tryings = 75, bot id = 7667511166)
+2025-05-20 12:21:14,414 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:14,416 - WARNING - aiogram.dispatcher - Sleep for 4.946272 seconds and try again... (tryings = 76, bot id = 7667511166)
+2025-05-20 12:21:19,366 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:19,367 - WARNING - aiogram.dispatcher - Sleep for 5.023406 seconds and try again... (tryings = 77, bot id = 7667511166)
+2025-05-20 12:21:24,395 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:24,396 - WARNING - aiogram.dispatcher - Sleep for 5.170524 seconds and try again... (tryings = 78, bot id = 7667511166)
+2025-05-20 12:21:56,883 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:21:56,884 - WARNING - aiogram.dispatcher - Sleep for 5.010815 seconds and try again... (tryings = 79, bot id = 7667511166)
+2025-05-20 12:22:01,904 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:22:01,906 - WARNING - aiogram.dispatcher - Sleep for 4.989057 seconds and try again... (tryings = 80, bot id = 7667511166)
+2025-05-20 12:22:06,899 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:22:06,899 - WARNING - aiogram.dispatcher - Sleep for 4.979773 seconds and try again... (tryings = 81, bot id = 7667511166)
+2025-05-20 12:22:11,883 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:22:11,885 - WARNING - aiogram.dispatcher - Sleep for 5.027590 seconds and try again... (tryings = 82, bot id = 7667511166)
+2025-05-20 12:22:16,917 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:22:16,918 - WARNING - aiogram.dispatcher - Sleep for 5.005628 seconds and try again... (tryings = 83, bot id = 7667511166)
+2025-05-20 12:33:01,654 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:01,655 - WARNING - aiogram.dispatcher - Sleep for 5.036792 seconds and try again... (tryings = 84, bot id = 7667511166)
+2025-05-20 12:33:06,695 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:06,696 - WARNING - aiogram.dispatcher - Sleep for 5.105825 seconds and try again... (tryings = 85, bot id = 7667511166)
+2025-05-20 12:33:11,806 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:11,807 - WARNING - aiogram.dispatcher - Sleep for 4.982755 seconds and try again... (tryings = 86, bot id = 7667511166)
+2025-05-20 12:33:16,792 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:16,793 - WARNING - aiogram.dispatcher - Sleep for 4.874798 seconds and try again... (tryings = 87, bot id = 7667511166)
+2025-05-20 12:33:21,671 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:21,672 - WARNING - aiogram.dispatcher - Sleep for 5.002225 seconds and try again... (tryings = 88, bot id = 7667511166)
+2025-05-20 12:33:26,678 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:33:26,680 - WARNING - aiogram.dispatcher - Sleep for 4.917240 seconds and try again... (tryings = 89, bot id = 7667511166)
+2025-05-20 12:34:03,052 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:34:03,052 - WARNING - aiogram.dispatcher - Sleep for 4.926902 seconds and try again... (tryings = 90, bot id = 7667511166)
+2025-05-20 12:34:07,986 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:34:07,986 - WARNING - aiogram.dispatcher - Sleep for 5.019054 seconds and try again... (tryings = 91, bot id = 7667511166)
+2025-05-20 12:34:13,009 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:34:13,009 - WARNING - aiogram.dispatcher - Sleep for 5.065458 seconds and try again... (tryings = 92, bot id = 7667511166)
+2025-05-20 12:35:33,059 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:35:33,064 - WARNING - aiogram.dispatcher - Sleep for 4.977905 seconds and try again... (tryings = 93, bot id = 7667511166)
+2025-05-20 12:38:25,485 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:25,485 - WARNING - aiogram.dispatcher - Sleep for 5.075780 seconds and try again... (tryings = 94, bot id = 7667511166)
+2025-05-20 12:38:30,567 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:30,568 - WARNING - aiogram.dispatcher - Sleep for 5.065824 seconds and try again... (tryings = 95, bot id = 7667511166)
+2025-05-20 12:38:35,636 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:35,636 - WARNING - aiogram.dispatcher - Sleep for 4.743307 seconds and try again... (tryings = 96, bot id = 7667511166)
+2025-05-20 12:38:40,384 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:40,385 - WARNING - aiogram.dispatcher - Sleep for 5.234862 seconds and try again... (tryings = 97, bot id = 7667511166)
+2025-05-20 12:38:45,625 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:45,626 - WARNING - aiogram.dispatcher - Sleep for 4.926740 seconds and try again... (tryings = 98, bot id = 7667511166)
+2025-05-20 12:38:50,557 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:38:50,558 - WARNING - aiogram.dispatcher - Sleep for 4.990016 seconds and try again... (tryings = 99, bot id = 7667511166)
+2025-05-20 12:40:51,446 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:40:51,455 - WARNING - aiogram.dispatcher - Sleep for 4.939688 seconds and try again... (tryings = 100, bot id = 7667511166)
+2025-05-20 12:40:56,398 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:40:56,399 - WARNING - aiogram.dispatcher - Sleep for 4.819125 seconds and try again... (tryings = 101, bot id = 7667511166)
+2025-05-20 12:48:32,189 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:32,191 - WARNING - aiogram.dispatcher - Sleep for 4.935598 seconds and try again... (tryings = 102, bot id = 7667511166)
+2025-05-20 12:48:37,143 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:37,143 - WARNING - aiogram.dispatcher - Sleep for 4.892695 seconds and try again... (tryings = 103, bot id = 7667511166)
+2025-05-20 12:48:42,041 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:42,042 - WARNING - aiogram.dispatcher - Sleep for 4.815374 seconds and try again... (tryings = 104, bot id = 7667511166)
+2025-05-20 12:48:46,860 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:46,861 - WARNING - aiogram.dispatcher - Sleep for 4.975283 seconds and try again... (tryings = 105, bot id = 7667511166)
+2025-05-20 12:48:51,840 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:51,841 - WARNING - aiogram.dispatcher - Sleep for 5.055313 seconds and try again... (tryings = 106, bot id = 7667511166)
+2025-05-20 12:48:56,900 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 12:48:56,904 - WARNING - aiogram.dispatcher - Sleep for 4.949316 seconds and try again... (tryings = 107, bot id = 7667511166)
+2025-05-20 13:06:00,264 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:06:00,264 - WARNING - aiogram.dispatcher - Sleep for 4.988211 seconds and try again... (tryings = 108, bot id = 7667511166)
+2025-05-20 13:12:44,078 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:12:44,079 - WARNING - aiogram.dispatcher - Sleep for 5.015550 seconds and try again... (tryings = 109, bot id = 7667511166)
+2025-05-20 13:12:49,100 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:12:49,101 - WARNING - aiogram.dispatcher - Sleep for 5.152581 seconds and try again... (tryings = 110, bot id = 7667511166)
+2025-05-20 13:12:54,257 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:12:54,257 - WARNING - aiogram.dispatcher - Sleep for 4.889972 seconds and try again... (tryings = 111, bot id = 7667511166)
+2025-05-20 13:12:59,151 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:12:59,152 - WARNING - aiogram.dispatcher - Sleep for 4.821588 seconds and try again... (tryings = 112, bot id = 7667511166)
+2025-05-20 13:29:46,916 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:29:46,918 - WARNING - aiogram.dispatcher - Sleep for 4.914817 seconds and try again... (tryings = 113, bot id = 7667511166)
+2025-05-20 13:29:51,842 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:29:51,843 - WARNING - aiogram.dispatcher - Sleep for 5.006047 seconds and try again... (tryings = 114, bot id = 7667511166)
+2025-05-20 13:32:57,519 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:32:57,519 - WARNING - aiogram.dispatcher - Sleep for 4.972126 seconds and try again... (tryings = 115, bot id = 7667511166)
+2025-05-20 13:33:02,498 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:33:02,498 - WARNING - aiogram.dispatcher - Sleep for 4.977595 seconds and try again... (tryings = 116, bot id = 7667511166)
+2025-05-20 13:33:07,480 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:33:07,481 - WARNING - aiogram.dispatcher - Sleep for 4.989840 seconds and try again... (tryings = 117, bot id = 7667511166)
+2025-05-20 13:33:12,475 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:33:12,475 - WARNING - aiogram.dispatcher - Sleep for 5.052818 seconds and try again... (tryings = 118, bot id = 7667511166)
+2025-05-20 13:33:17,533 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:33:17,534 - WARNING - aiogram.dispatcher - Sleep for 4.955683 seconds and try again... (tryings = 119, bot id = 7667511166)
+2025-05-20 13:48:21,524 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 13:48:21,525 - WARNING - aiogram.dispatcher - Sleep for 5.118688 seconds and try again... (tryings = 120, bot id = 7667511166)
+2025-05-20 14:05:56,364 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:05:56,365 - WARNING - aiogram.dispatcher - Sleep for 5.069077 seconds and try again... (tryings = 121, bot id = 7667511166)
+2025-05-20 14:13:19,322 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:13:19,323 - WARNING - aiogram.dispatcher - Sleep for 5.001491 seconds and try again... (tryings = 122, bot id = 7667511166)
+2025-05-20 14:13:24,331 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:13:24,332 - WARNING - aiogram.dispatcher - Sleep for 5.057721 seconds and try again... (tryings = 123, bot id = 7667511166)
+2025-05-20 14:13:29,393 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:13:29,395 - WARNING - aiogram.dispatcher - Sleep for 4.955306 seconds and try again... (tryings = 124, bot id = 7667511166)
+2025-05-20 14:13:34,355 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:13:34,356 - WARNING - aiogram.dispatcher - Sleep for 4.965691 seconds and try again... (tryings = 125, bot id = 7667511166)
+2025-05-20 14:13:39,325 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:13:39,326 - WARNING - aiogram.dispatcher - Sleep for 5.098413 seconds and try again... (tryings = 126, bot id = 7667511166)
+2025-05-20 14:29:52,075 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:29:52,077 - WARNING - aiogram.dispatcher - Sleep for 4.994741 seconds and try again... (tryings = 127, bot id = 7667511166)
+2025-05-20 14:29:57,076 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:29:57,077 - WARNING - aiogram.dispatcher - Sleep for 5.181052 seconds and try again... (tryings = 128, bot id = 7667511166)
+2025-05-20 14:30:02,262 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:30:02,262 - WARNING - aiogram.dispatcher - Sleep for 5.057516 seconds and try again... (tryings = 129, bot id = 7667511166)
+2025-05-20 14:30:07,327 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:30:07,327 - WARNING - aiogram.dispatcher - Sleep for 5.023026 seconds and try again... (tryings = 130, bot id = 7667511166)
+2025-05-20 14:30:12,354 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:30:12,355 - WARNING - aiogram.dispatcher - Sleep for 4.931720 seconds and try again... (tryings = 131, bot id = 7667511166)
+2025-05-20 14:30:17,289 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:30:17,290 - WARNING - aiogram.dispatcher - Sleep for 5.072683 seconds and try again... (tryings = 132, bot id = 7667511166)
+2025-05-20 14:47:17,208 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 14:47:17,210 - WARNING - aiogram.dispatcher - Sleep for 4.875950 seconds and try again... (tryings = 133, bot id = 7667511166)
+2025-05-20 15:04:40,876 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:04:40,876 - WARNING - aiogram.dispatcher - Sleep for 4.883347 seconds and try again... (tryings = 134, bot id = 7667511166)
+2025-05-20 15:14:21,569 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:14:21,570 - WARNING - aiogram.dispatcher - Sleep for 4.815163 seconds and try again... (tryings = 135, bot id = 7667511166)
+2025-05-20 15:14:26,389 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:14:26,390 - WARNING - aiogram.dispatcher - Sleep for 4.949775 seconds and try again... (tryings = 136, bot id = 7667511166)
+2025-05-20 15:14:31,346 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:14:31,350 - WARNING - aiogram.dispatcher - Sleep for 4.971149 seconds and try again... (tryings = 137, bot id = 7667511166)
+2025-05-20 15:31:53,361 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:31:53,361 - WARNING - aiogram.dispatcher - Sleep for 5.097309 seconds and try again... (tryings = 138, bot id = 7667511166)
+2025-05-20 15:48:31,258 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 15:48:31,259 - WARNING - aiogram.dispatcher - Sleep for 5.137338 seconds and try again... (tryings = 139, bot id = 7667511166)
+2025-05-20 16:05:01,152 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:05:01,152 - WARNING - aiogram.dispatcher - Sleep for 5.040660 seconds and try again... (tryings = 140, bot id = 7667511166)
+2025-05-20 16:11:23,256 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:23,257 - WARNING - aiogram.dispatcher - Sleep for 5.000274 seconds and try again... (tryings = 141, bot id = 7667511166)
+2025-05-20 16:11:28,261 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:28,262 - WARNING - aiogram.dispatcher - Sleep for 4.990054 seconds and try again... (tryings = 142, bot id = 7667511166)
+2025-05-20 16:11:33,256 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:33,257 - WARNING - aiogram.dispatcher - Sleep for 4.923324 seconds and try again... (tryings = 143, bot id = 7667511166)
+2025-05-20 16:11:38,185 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:38,186 - WARNING - aiogram.dispatcher - Sleep for 4.905010 seconds and try again... (tryings = 144, bot id = 7667511166)
+2025-05-20 16:11:43,095 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:43,096 - WARNING - aiogram.dispatcher - Sleep for 4.999176 seconds and try again... (tryings = 145, bot id = 7667511166)
+2025-05-20 16:11:48,100 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:48,101 - WARNING - aiogram.dispatcher - Sleep for 4.938439 seconds and try again... (tryings = 146, bot id = 7667511166)
+2025-05-20 16:11:53,044 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:11:53,044 - WARNING - aiogram.dispatcher - Sleep for 5.248336 seconds and try again... (tryings = 147, bot id = 7667511166)
+2025-05-20 16:15:23,468 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:15:23,469 - WARNING - aiogram.dispatcher - Sleep for 4.954647 seconds and try again... (tryings = 148, bot id = 7667511166)
+2025-05-20 16:15:28,428 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:15:28,428 - WARNING - aiogram.dispatcher - Sleep for 4.791807 seconds and try again... (tryings = 149, bot id = 7667511166)
+2025-05-20 16:29:28,135 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:28,136 - WARNING - aiogram.dispatcher - Sleep for 5.066442 seconds and try again... (tryings = 150, bot id = 7667511166)
+2025-05-20 16:29:33,208 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:33,209 - WARNING - aiogram.dispatcher - Sleep for 4.893157 seconds and try again... (tryings = 151, bot id = 7667511166)
+2025-05-20 16:29:38,106 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:38,107 - WARNING - aiogram.dispatcher - Sleep for 4.989904 seconds and try again... (tryings = 152, bot id = 7667511166)
+2025-05-20 16:29:43,101 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:43,101 - WARNING - aiogram.dispatcher - Sleep for 5.064936 seconds and try again... (tryings = 153, bot id = 7667511166)
+2025-05-20 16:29:48,170 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:48,171 - WARNING - aiogram.dispatcher - Sleep for 5.068372 seconds and try again... (tryings = 154, bot id = 7667511166)
+2025-05-20 16:29:53,244 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:29:53,244 - WARNING - aiogram.dispatcher - Sleep for 4.820749 seconds and try again... (tryings = 155, bot id = 7667511166)
+2025-05-20 16:32:00,118 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:32:00,119 - WARNING - aiogram.dispatcher - Sleep for 5.059767 seconds and try again... (tryings = 156, bot id = 7667511166)
+2025-05-20 16:32:05,183 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:32:05,184 - WARNING - aiogram.dispatcher - Sleep for 4.948734 seconds and try again... (tryings = 157, bot id = 7667511166)
+2025-05-20 16:48:11,476 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 16:48:11,476 - WARNING - aiogram.dispatcher - Sleep for 5.037034 seconds and try again... (tryings = 158, bot id = 7667511166)
+2025-05-20 17:05:45,310 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:05:45,311 - WARNING - aiogram.dispatcher - Sleep for 5.158044 seconds and try again... (tryings = 159, bot id = 7667511166)
+2025-05-20 17:12:26,144 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:26,152 - WARNING - aiogram.dispatcher - Sleep for 5.091061 seconds and try again... (tryings = 160, bot id = 7667511166)
+2025-05-20 17:12:31,246 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:31,248 - WARNING - aiogram.dispatcher - Sleep for 4.903066 seconds and try again... (tryings = 161, bot id = 7667511166)
+2025-05-20 17:12:36,161 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:36,162 - WARNING - aiogram.dispatcher - Sleep for 4.991964 seconds and try again... (tryings = 162, bot id = 7667511166)
+2025-05-20 17:12:41,158 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:41,158 - WARNING - aiogram.dispatcher - Sleep for 4.988293 seconds and try again... (tryings = 163, bot id = 7667511166)
+2025-05-20 17:12:46,151 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:46,151 - WARNING - aiogram.dispatcher - Sleep for 5.050596 seconds and try again... (tryings = 164, bot id = 7667511166)
+2025-05-20 17:12:51,207 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:12:51,207 - WARNING - aiogram.dispatcher - Sleep for 4.821630 seconds and try again... (tryings = 165, bot id = 7667511166)
+2025-05-20 17:16:20,025 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:16:20,026 - WARNING - aiogram.dispatcher - Sleep for 5.072678 seconds and try again... (tryings = 166, bot id = 7667511166)
+2025-05-20 17:16:25,106 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:16:25,106 - WARNING - aiogram.dispatcher - Sleep for 4.974210 seconds and try again... (tryings = 167, bot id = 7667511166)
+2025-05-20 17:29:59,329 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:29:59,331 - WARNING - aiogram.dispatcher - Sleep for 5.098446 seconds and try again... (tryings = 168, bot id = 7667511166)
+2025-05-20 17:30:04,432 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:30:04,433 - WARNING - aiogram.dispatcher - Sleep for 4.785583 seconds and try again... (tryings = 169, bot id = 7667511166)
+2025-05-20 17:30:09,224 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:30:09,225 - WARNING - aiogram.dispatcher - Sleep for 5.011152 seconds and try again... (tryings = 170, bot id = 7667511166)
+2025-05-20 17:46:08,129 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 17:46:08,130 - WARNING - aiogram.dispatcher - Sleep for 4.972815 seconds and try again... (tryings = 171, bot id = 7667511166)
+2025-05-20 18:01:47,902 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:01:47,903 - WARNING - aiogram.dispatcher - Sleep for 4.979574 seconds and try again... (tryings = 172, bot id = 7667511166)
+2025-05-20 18:17:22,689 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:22,689 - WARNING - aiogram.dispatcher - Sleep for 4.933827 seconds and try again... (tryings = 173, bot id = 7667511166)
+2025-05-20 18:17:27,627 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:27,628 - WARNING - aiogram.dispatcher - Sleep for 5.088760 seconds and try again... (tryings = 174, bot id = 7667511166)
+2025-05-20 18:17:32,721 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:32,722 - WARNING - aiogram.dispatcher - Sleep for 4.813463 seconds and try again... (tryings = 175, bot id = 7667511166)
+2025-05-20 18:17:37,541 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:37,542 - WARNING - aiogram.dispatcher - Sleep for 5.008415 seconds and try again... (tryings = 176, bot id = 7667511166)
+2025-05-20 18:17:42,554 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:42,556 - WARNING - aiogram.dispatcher - Sleep for 4.962475 seconds and try again... (tryings = 177, bot id = 7667511166)
+2025-05-20 18:17:47,522 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:17:47,523 - WARNING - aiogram.dispatcher - Sleep for 4.952611 seconds and try again... (tryings = 178, bot id = 7667511166)
+2025-05-20 18:33:01,533 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:33:01,533 - WARNING - aiogram.dispatcher - Sleep for 5.008162 seconds and try again... (tryings = 179, bot id = 7667511166)
+2025-05-20 18:48:47,318 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 18:48:47,319 - WARNING - aiogram.dispatcher - Sleep for 5.246208 seconds and try again... (tryings = 180, bot id = 7667511166)
+2025-05-20 19:06:30,360 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 19:06:30,360 - WARNING - aiogram.dispatcher - Sleep for 5.356779 seconds and try again... (tryings = 181, bot id = 7667511166)
+2025-05-20 19:10:31,639 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 19:10:31,640 - WARNING - aiogram.dispatcher - Sleep for 5.015354 seconds and try again... (tryings = 182, bot id = 7667511166)
+2025-05-20 19:10:36,664 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Network is unreachable]
+2025-05-20 19:10:36,664 - WARNING - aiogram.dispatcher - Sleep for 5.026793 seconds and try again... (tryings = 183, bot id = 7667511166)
+2025-05-20 19:17:18,495 - INFO - aiogram.dispatcher - Connection established (tryings = 184, bot id = 7667511166)
+2025-05-20 20:33:39,462 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286460
+2025-05-20 20:33:39,464 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-20 20:33:39,550 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-20 20:33:39,551 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 89
+2025-05-20 20:33:39,557 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'My Progress' from inline menu.
+2025-05-20 20:33:40,003 - INFO - aiogram.event - Update id=855286460 is handled. Duration 546 ms by bot id=7667511166
+2025-05-20 20:33:57,552 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286461
+2025-05-20 20:33:57,554 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1229508120
+2025-05-20 20:33:57,570 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-20 20:33:57,571 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 90
+2025-05-20 20:33:57,586 - INFO - app.handlers.user.user_onboarding_handlers - User 1229508120 exists. Activity updated.
+2025-05-20 20:33:57,586 - INFO - app.handlers.user.user_onboarding_handlers - User 1229508120 has active sub/trial. Sending to main menu (inline).
+2025-05-20 20:33:57,765 - INFO - aiogram.event - Update id=855286461 is handled. Duration 213 ms by bot id=7667511166
+2025-05-20 20:34:04,289 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286462
+2025-05-20 20:34:04,290 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-20 20:34:04,291 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-20 20:34:04,291 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 91
+2025-05-20 20:34:04,291 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Tariffs' from inline menu.
+2025-05-20 20:34:04,374 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1229508120.
+2025-05-20 20:34:04,475 - INFO - aiogram.event - Update id=855286462 is handled. Duration 185 ms by bot id=7667511166
+2025-05-20 20:34:13,137 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286463
+2025-05-20 20:34:13,138 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-20 20:34:13,142 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-20 20:34:13,142 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 92
+2025-05-20 20:34:13,339 - INFO - aiogram.event - Update id=855286463 is handled. Duration 202 ms by bot id=7667511166
+2025-05-20 20:35:40,495 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286464
+2025-05-20 20:35:40,497 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-20 20:35:40,509 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-20 20:35:40,509 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 93
+2025-05-20 20:35:40,511 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'My Progress' from inline menu.
+2025-05-20 20:35:40,902 - INFO - aiogram.event - Update id=855286464 is handled. Duration 408 ms by bot id=7667511166
+2025-05-21 10:55:19,686 - INFO - __main__ - Starting bot...
+2025-05-21 10:55:19,691 - INFO - __main__ - Database session middleware registered.
+2025-05-21 10:55:19,691 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 10:55:20,221 - INFO - __main__ - Starting polling...
+2025-05-21 10:55:20,221 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 10:55:20,302 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:55:28,532 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286473
+2025-05-21 10:55:28,533 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:28,789 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:28,789 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 423
+2025-05-21 10:55:28,790 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'My Progress' from inline menu.
+2025-05-21 10:55:29,673 - INFO - aiogram.event - Update id=855286473 is handled. Duration 1141 ms by bot id=7667511166
+2025-05-21 10:55:34,768 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286474
+2025-05-21 10:55:34,768 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:34,772 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:34,772 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 424
+2025-05-21 10:55:35,018 - INFO - aiogram.event - Update id=855286474 is handled. Duration 250 ms by bot id=7667511166
+2025-05-21 10:55:36,427 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286475
+2025-05-21 10:55:36,427 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:36,430 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:36,431 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 425
+2025-05-21 10:55:36,432 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Leave Feedback' from inline menu.
+2025-05-21 10:55:36,646 - INFO - aiogram.event - Update id=855286475 is handled. Duration 219 ms by bot id=7667511166
+2025-05-21 10:55:37,221 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286476
+2025-05-21 10:55:37,221 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:37,224 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:37,224 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 426
+2025-05-21 10:55:37,224 - INFO - app.handlers.user.user_onboarding_handlers - User 1024566187 went back to main menu, cleared FeedbackStates.awaiting_feedback_text state.
+2025-05-21 10:55:37,537 - INFO - aiogram.event - Update id=855286476 is handled. Duration 315 ms by bot id=7667511166
+2025-05-21 10:55:38,064 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286477
+2025-05-21 10:55:38,064 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:38,067 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:38,068 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 427
+2025-05-21 10:55:38,069 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Tariffs' from inline menu.
+2025-05-21 10:55:38,175 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1024566187.
+2025-05-21 10:55:38,319 - INFO - aiogram.event - Update id=855286477 is handled. Duration 255 ms by bot id=7667511166
+2025-05-21 10:55:38,945 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286478
+2025-05-21 10:55:38,946 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:38,949 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:38,949 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 428
+2025-05-21 10:55:39,309 - INFO - aiogram.event - Update id=855286478 is handled. Duration 364 ms by bot id=7667511166
+2025-05-21 10:55:39,854 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286479
+2025-05-21 10:55:39,854 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:39,858 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:39,858 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 429
+2025-05-21 10:55:39,860 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Help' from inline menu.
+2025-05-21 10:55:40,193 - INFO - aiogram.event - Update id=855286479 is handled. Duration 338 ms by bot id=7667511166
+2025-05-21 10:55:40,860 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286480
+2025-05-21 10:55:40,860 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:40,863 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:40,864 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 430
+2025-05-21 10:55:41,193 - INFO - aiogram.event - Update id=855286480 is handled. Duration 332 ms by bot id=7667511166
+2025-05-21 10:55:41,703 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286481
+2025-05-21 10:55:41,703 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 10:55:41,706 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:41,706 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 431
+2025-05-21 10:55:41,707 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Request Case' from inline menu.
+2025-05-21 10:55:50,186 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 10:55:50,204 - INFO - app.handlers.case.case_lifecycle_handlers - Case 20 (AI-generated, another_case=False) created for user 1024566187. Refs count: 46
+2025-05-21 10:55:50,318 - INFO - app.handlers.case.case_lifecycle_handlers - User 1024566187 set to state SolveCaseStates.awaiting_solution for case_id 20 (another_case=False)
+2025-05-21 10:55:50,685 - INFO - aiogram.event - Update id=855286481 is handled. Duration 8982 ms by bot id=7667511166
+2025-05-21 10:55:51,042 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286482
+2025-05-21 10:55:51,042 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 10:55:51,044 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:55:51,044 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 432
+2025-05-21 10:55:51,045 - INFO - app.handlers.admin.admin - Admin user 1024566187 accessed /admin panel.
+2025-05-21 10:55:51,045 - INFO - app.handlers.admin.admin - Admin 1024566187 was in state SolveCaseStates:awaiting_solution, clearing state before showing admin menu.
+2025-05-21 10:55:51,172 - INFO - aiogram.event - Update id=855286482 is handled. Duration 129 ms by bot id=7667511166
+2025-05-21 10:56:52,618 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 855286483
+2025-05-21 10:56:52,620 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 10:56:52,632 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 10:56:52,632 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 94
+2025-05-21 10:56:53,244 - INFO - aiogram.event - Update id=855286483 is handled. Duration 626 ms by bot id=7667511166
+2025-05-21 10:57:11,744 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 10:57:11,746 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:57:11,747 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 10:57:12,008 - INFO - __main__ - Bot stopped.
+2025-05-21 10:57:19,706 - INFO - __main__ - Starting bot...
+2025-05-21 10:57:19,710 - INFO - __main__ - Database session middleware registered.
+2025-05-21 10:57:19,711 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 10:57:20,283 - INFO - __main__ - Starting polling...
+2025-05-21 10:57:20,284 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 10:57:20,367 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:58:12,447 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 10:58:12,451 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:58:12,452 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 10:58:12,705 - INFO - __main__ - Bot stopped.
+2025-05-21 10:58:25,309 - INFO - __main__ - Starting bot...
+2025-05-21 10:58:25,314 - INFO - __main__ - Database session middleware registered.
+2025-05-21 10:58:25,314 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 10:58:25,845 - INFO - __main__ - Starting polling...
+2025-05-21 10:58:25,846 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 10:58:25,929 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:59:01,193 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 10:59:01,195 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:59:01,195 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 10:59:01,448 - INFO - __main__ - Bot stopped.
+2025-05-21 10:59:03,638 - INFO - __main__ - Starting bot...
+2025-05-21 10:59:03,643 - INFO - __main__ - Database session middleware registered.
+2025-05-21 10:59:03,643 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 10:59:03,888 - INFO - __main__ - Starting polling...
+2025-05-21 10:59:03,889 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 10:59:03,973 - INFO - aiogram.dispatcher - Run polling for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:59:12,981 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 10:59:12,984 - INFO - aiogram.dispatcher - Polling stopped for bot @phys_glam_test_bot id=7667511166 - 'bot_phys_glam_test'
+2025-05-21 10:59:12,984 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 10:59:13,236 - INFO - __main__ - Bot stopped.
+2025-05-21 10:59:18,679 - INFO - __main__ - Starting bot...
+2025-05-21 10:59:18,683 - INFO - __main__ - Database session middleware registered.
+2025-05-21 10:59:18,683 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 10:59:19,530 - INFO - __main__ - Starting polling...
+2025-05-21 10:59:19,531 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 10:59:19,613 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 10:59:22,104 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800587
+2025-05-21 10:59:22,104 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 10:59:22,209 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:59:22,210 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 433
+2025-05-21 10:59:22,221 - INFO - app.handlers.user.user_onboarding_handlers - User 1024566187 exists. Activity updated.
+2025-05-21 10:59:22,221 - INFO - app.handlers.user.user_onboarding_handlers - User 1024566187 has active sub/trial. Sending to main menu (inline).
+2025-05-21 10:59:22,609 - INFO - aiogram.event - Update id=922800587 is handled. Duration 505 ms by bot id=7751645048
+2025-05-21 10:59:57,600 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800588
+2025-05-21 10:59:57,601 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 10:59:57,606 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 10:59:57,606 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 434
+2025-05-21 10:59:57,709 - INFO - aiogram.event - Update id=922800588 is handled. Duration 109 ms by bot id=7751645048
+2025-05-21 11:00:02,322 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800589
+2025-05-21 11:00:02,323 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1229508120
+2025-05-21 11:00:02,327 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 11:00:02,327 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 95
+2025-05-21 11:00:02,334 - INFO - app.handlers.user.user_onboarding_handlers - User 1229508120 exists. Activity updated.
+2025-05-21 11:00:02,334 - INFO - app.handlers.user.user_onboarding_handlers - User 1229508120 has active sub/trial. Sending to main menu (inline).
+2025-05-21 11:00:02,747 - INFO - aiogram.event - Update id=922800589 is handled. Duration 425 ms by bot id=7751645048
+2025-05-21 11:04:37,452 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800590
+2025-05-21 11:04:37,455 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 841782365
+2025-05-21 11:04:37,472 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: False
+2025-05-21 11:04:37,499 - INFO - app.handlers.user.user_onboarding_handlers - New user 841782365 created. Starting onboarding.
+2025-05-21 11:04:37,717 - INFO - aiogram.event - Update id=922800590 is handled. Duration 265 ms by bot id=7751645048
+2025-05-21 11:07:16,229 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800591
+2025-05-21 11:07:16,232 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 11:07:16,257 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 11:07:16,257 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 96
+2025-05-21 11:07:16,259 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Help' from inline menu.
+2025-05-21 11:07:16,762 - INFO - aiogram.event - Update id=922800591 is handled. Duration 534 ms by bot id=7751645048
+2025-05-21 11:07:20,131 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800592
+2025-05-21 11:07:20,131 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 11:07:20,135 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 11:07:20,135 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 97
+2025-05-21 11:07:20,334 - INFO - aiogram.event - Update id=922800592 is handled. Duration 203 ms by bot id=7751645048
+2025-05-21 11:08:07,648 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 11:08:07,651 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 11:08:07,652 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 11:08:07,916 - INFO - __main__ - Bot stopped.
+2025-05-21 11:08:19,132 - INFO - __main__ - Starting bot...
+2025-05-21 11:08:19,137 - INFO - __main__ - Database session middleware registered.
+2025-05-21 11:08:19,137 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 11:08:19,610 - INFO - __main__ - Starting polling...
+2025-05-21 11:08:19,610 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 11:08:19,695 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 11:09:41,603 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800593
+2025-05-21 11:09:41,604 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 841782365
+2025-05-21 11:09:41,701 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:09:41,701 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 0
+2025-05-21 11:09:41,701 - WARNING - app.middlewares.db - User 841782365 without active subscription/trial. Status: SubscriptionStatus.NONE, Trial ends: None
+2025-05-21 11:09:41,714 - INFO - app.handlers.user.user_onboarding_handlers - User 841782365 exists. Activity updated.
+2025-05-21 11:09:41,715 - INFO - app.handlers.user.user_onboarding_handlers - User 841782365 has no active sub/trial and trial never used. Starting onboarding flow.
+2025-05-21 11:09:42,086 - INFO - aiogram.event - Update id=922800593 is handled. Duration 484 ms by bot id=7751645048
+2025-05-21 11:09:48,256 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800594
+2025-05-21 11:09:48,256 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:09:48,259 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:09:48,259 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 1
+2025-05-21 11:09:48,259 - WARNING - app.middlewares.db - User 841782365 without active subscription/trial. Status: SubscriptionStatus.NONE, Trial ends: None
+2025-05-21 11:09:48,530 - INFO - aiogram.event - Update id=922800594 is handled. Duration 274 ms by bot id=7751645048
+2025-05-21 11:09:53,672 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800595
+2025-05-21 11:09:53,672 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:09:53,676 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:09:53,676 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 2
+2025-05-21 11:09:53,676 - WARNING - app.middlewares.db - User 841782365 without active subscription/trial. Status: SubscriptionStatus.NONE, Trial ends: None
+2025-05-21 11:09:53,920 - INFO - aiogram.event - Update id=922800595 is handled. Duration 247 ms by bot id=7751645048
+2025-05-21 11:09:59,890 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800596
+2025-05-21 11:09:59,891 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:09:59,894 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:09:59,894 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 3
+2025-05-21 11:09:59,894 - WARNING - app.middlewares.db - User 841782365 without active subscription/trial. Status: SubscriptionStatus.NONE, Trial ends: None
+2025-05-21 11:09:59,905 - INFO - app.handlers.user.user_onboarding_handlers - User 841782365 started trial period until 28.05.2025.
+2025-05-21 11:10:00,219 - INFO - aiogram.event - Update id=922800596 is handled. Duration 328 ms by bot id=7751645048
+2025-05-21 11:10:20,803 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800597
+2025-05-21 11:10:20,805 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:10:20,816 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:10:20,816 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 4
+2025-05-21 11:10:20,818 - INFO - app.handlers.user.feature_handlers - User 841782365 selected 'Request Case' from inline menu.
+2025-05-21 11:10:29,295 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-21 11:10:29,318 - INFO - app.handlers.case.case_lifecycle_handlers - Case 21 (AI-generated, another_case=False) created for user 841782365. Refs count: 46
+2025-05-21 11:10:29,904 - INFO - app.handlers.case.case_lifecycle_handlers - User 841782365 set to state SolveCaseStates.awaiting_solution for case_id 21 (another_case=False)
+2025-05-21 11:10:30,075 - INFO - aiogram.event - Update id=922800597 is handled. Duration 9273 ms by bot id=7751645048
+2025-05-21 11:10:38,514 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800598
+2025-05-21 11:10:38,514 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:10:38,518 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:10:38,518 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 5
+2025-05-21 11:10:38,792 - INFO - aiogram.event - Update id=922800598 is handled. Duration 279 ms by bot id=7751645048
+2025-05-21 11:10:45,993 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800599
+2025-05-21 11:10:45,994 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 11:10:45,998 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 11:10:45,998 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 6
+2025-05-21 11:10:45,999 - INFO - app.handlers.user.feature_handlers - User 841782365 selected 'My Progress' from inline menu.
+2025-05-21 11:10:46,493 - INFO - aiogram.event - Update id=922800599 is handled. Duration 500 ms by bot id=7751645048
+2025-05-21 12:17:55,935 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800600
+2025-05-21 12:17:55,938 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 12:17:56,001 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 12:17:56,002 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 435
+2025-05-21 12:17:56,006 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'My Progress' from inline menu.
+2025-05-21 12:17:58,007 - INFO - aiogram.event - Update id=922800600 is handled. Duration 2078 ms by bot id=7751645048
+2025-05-21 12:20:09,416 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800601
+2025-05-21 12:20:09,418 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:09,422 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:09,422 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 98
+2025-05-21 12:20:09,423 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'My Progress' from inline menu.
+2025-05-21 12:20:09,823 - INFO - aiogram.event - Update id=922800601 is handled. Duration 407 ms by bot id=7751645048
+2025-05-21 12:20:29,487 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800602
+2025-05-21 12:20:29,488 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:29,491 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:29,491 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 99
+2025-05-21 12:20:29,779 - INFO - aiogram.event - Update id=922800602 is handled. Duration 292 ms by bot id=7751645048
+2025-05-21 12:20:32,979 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800603
+2025-05-21 12:20:32,980 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:32,983 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:32,983 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 100
+2025-05-21 12:20:32,985 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Leave Feedback' from inline menu.
+2025-05-21 12:20:33,210 - INFO - aiogram.event - Update id=922800603 is handled. Duration 230 ms by bot id=7751645048
+2025-05-21 12:20:34,925 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800604
+2025-05-21 12:20:34,926 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:34,928 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:34,928 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 101
+2025-05-21 12:20:34,929 - INFO - app.handlers.user.user_onboarding_handlers - User 1229508120 went back to main menu, cleared FeedbackStates.awaiting_feedback_text state.
+2025-05-21 12:20:35,328 - INFO - aiogram.event - Update id=922800604 is handled. Duration 402 ms by bot id=7751645048
+2025-05-21 12:20:38,545 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800605
+2025-05-21 12:20:38,546 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:38,549 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:38,549 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 102
+2025-05-21 12:20:38,551 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Help' from inline menu.
+2025-05-21 12:20:38,783 - INFO - aiogram.event - Update id=922800605 is handled. Duration 237 ms by bot id=7751645048
+2025-05-21 12:20:44,060 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800606
+2025-05-21 12:20:44,061 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:44,063 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:44,063 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 103
+2025-05-21 12:20:44,318 - INFO - aiogram.event - Update id=922800606 is handled. Duration 258 ms by bot id=7751645048
+2025-05-21 12:20:45,093 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800607
+2025-05-21 12:20:45,093 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:45,096 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:45,096 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 104
+2025-05-21 12:20:45,097 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Tariffs' from inline menu.
+2025-05-21 12:20:45,309 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1229508120.
+2025-05-21 12:20:45,521 - INFO - aiogram.event - Update id=922800607 is handled. Duration 428 ms by bot id=7751645048
+2025-05-21 12:20:49,516 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800608
+2025-05-21 12:20:49,516 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:49,518 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:49,519 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 105
+2025-05-21 12:20:49,520 - INFO - app.handlers.user.feature_handlers - User 1229508120 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 12:20:49,553 - INFO - app.db.crud.transaction_crud - Transaction 12 created for user 3 with internal_id btrainer_sub_monthly_sub_v1_f2b539cd-1997-43d6-a3fa-fca3bb807429, status TransactionStatus.PENDING.
+2025-05-21 12:20:49,553 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_f2b539cd-1997-43d6-a3fa-fca3bb807429 for user 1229508120 (callback) for plan monthly_sub_v1
+2025-05-21 12:20:49,737 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 1229508120 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 12:20:50,197 - INFO - aiogram.event - Update id=922800608 is handled. Duration 680 ms by bot id=7751645048
+2025-05-21 12:20:58,620 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800609
+2025-05-21 12:20:58,620 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 12:20:58,624 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 12:20:58,624 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 106
+2025-05-21 12:20:58,828 - INFO - aiogram.event - Update id=922800609 is handled. Duration 207 ms by bot id=7751645048
+2025-05-21 12:22:04,819 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800610
+2025-05-21 12:22:04,819 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 695668688
+2025-05-21 12:22:04,823 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 12:22:04,823 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 19
+2025-05-21 12:22:04,831 - INFO - app.handlers.user.user_onboarding_handlers - User 695668688 exists. Activity updated.
+2025-05-21 12:22:04,831 - INFO - app.handlers.user.user_onboarding_handlers - User 695668688 has active sub/trial. Sending to main menu (inline).
+2025-05-21 12:22:04,957 - INFO - aiogram.event - Update id=922800610 is handled. Duration 138 ms by bot id=7751645048
+2025-05-21 12:22:11,167 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800611
+2025-05-21 12:22:11,167 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 12:22:11,169 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 12:22:11,169 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 20
+2025-05-21 12:22:11,171 - INFO - app.handlers.user.feature_handlers - User 695668688 selected 'Tariffs' from inline menu.
+2025-05-21 12:22:11,256 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 695668688.
+2025-05-21 12:22:11,460 - INFO - aiogram.event - Update id=922800611 is handled. Duration 292 ms by bot id=7751645048
+2025-05-21 12:22:12,703 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800612
+2025-05-21 12:22:12,704 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 12:22:12,707 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 12:22:12,707 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 21
+2025-05-21 12:22:12,708 - INFO - app.handlers.user.feature_handlers - User 695668688 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 12:22:12,712 - INFO - app.db.crud.transaction_crud - Transaction 13 created for user 4 with internal_id btrainer_sub_monthly_sub_v1_7140dfb1-a8bb-4f97-854e-153b1b9ca1be, status TransactionStatus.PENDING.
+2025-05-21 12:22:12,712 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_7140dfb1-a8bb-4f97-854e-153b1b9ca1be for user 695668688 (callback) for plan monthly_sub_v1
+2025-05-21 12:22:12,870 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 695668688 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 12:22:13,212 - INFO - aiogram.event - Update id=922800612 is handled. Duration 508 ms by bot id=7751645048
+2025-05-21 12:22:37,383 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800613
+2025-05-21 12:22:37,384 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 12:22:37,387 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 12:22:37,387 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 22
+2025-05-21 12:22:37,752 - INFO - aiogram.event - Update id=922800613 is handled. Duration 369 ms by bot id=7751645048
+2025-05-21 13:01:32,126 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800614
+2025-05-21 13:01:32,128 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 13:01:32,139 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:01:32,139 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 7
+2025-05-21 13:01:32,892 - INFO - aiogram.event - Update id=922800614 is handled. Duration 767 ms by bot id=7751645048
+2025-05-21 13:01:34,309 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800615
+2025-05-21 13:01:34,309 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 13:01:34,313 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:01:34,313 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 8
+2025-05-21 13:01:34,315 - INFO - app.handlers.user.feature_handlers - User 841782365 selected 'Tariffs' from inline menu.
+2025-05-21 13:01:34,446 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 841782365.
+2025-05-21 13:01:34,588 - INFO - aiogram.event - Update id=922800615 is handled. Duration 279 ms by bot id=7751645048
+2025-05-21 13:01:38,422 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800616
+2025-05-21 13:01:38,422 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 13:01:38,426 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:01:38,426 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 9
+2025-05-21 13:01:38,427 - INFO - app.handlers.user.feature_handlers - User 841782365 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:01:38,432 - INFO - app.db.crud.transaction_crud - Transaction 14 created for user 5 with internal_id btrainer_sub_monthly_sub_v1_5825123b-b0b4-4279-bb79-eb7156924ded, status TransactionStatus.PENDING.
+2025-05-21 13:01:38,432 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_5825123b-b0b4-4279-bb79-eb7156924ded for user 841782365 (callback) for plan monthly_sub_v1
+2025-05-21 13:01:38,580 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 841782365 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 13:01:38,847 - INFO - aiogram.event - Update id=922800616 is handled. Duration 425 ms by bot id=7751645048
+2025-05-21 13:02:06,222 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800617
+2025-05-21 13:02:06,223 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 841782365
+2025-05-21 13:02:06,227 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:02:06,227 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 10
+2025-05-21 13:02:06,228 - INFO - app.handlers.user.feature_handlers - User 841782365 pressed 'Тарифы и подписка' text button/command.
+2025-05-21 13:02:06,228 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 841782365.
+2025-05-21 13:02:06,354 - INFO - aiogram.event - Update id=922800617 is handled. Duration 131 ms by bot id=7751645048
+2025-05-21 13:02:11,548 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800618
+2025-05-21 13:02:11,548 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 13:02:11,550 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:02:11,551 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 11
+2025-05-21 13:02:11,551 - INFO - app.handlers.user.feature_handlers - User 841782365 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:02:11,556 - INFO - app.db.crud.transaction_crud - Transaction 15 created for user 5 with internal_id btrainer_sub_monthly_sub_v1_c5889805-d88d-487f-a448-6cd2b8052b2f, status TransactionStatus.PENDING.
+2025-05-21 13:02:11,556 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_c5889805-d88d-487f-a448-6cd2b8052b2f for user 841782365 (callback) for plan monthly_sub_v1
+2025-05-21 13:02:11,728 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 841782365 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 13:02:12,161 - INFO - aiogram.event - Update id=922800618 is handled. Duration 613 ms by bot id=7751645048
+2025-05-21 13:02:22,937 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800619
+2025-05-21 13:02:22,939 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 841782365
+2025-05-21 13:02:22,942 - INFO - app.middlewares.db - [Middleware] Checking user_id: 841782365. Found db_user: True
+2025-05-21 13:02:22,942 - INFO - app.middlewares.db - [Middleware] For user_id: 841782365, db_user.is_blocked = False, role = UserRole.USER, request_count = 12
+2025-05-21 13:02:23,217 - INFO - aiogram.event - Update id=922800619 is handled. Duration 279 ms by bot id=7751645048
+2025-05-21 13:19:50,244 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800620
+2025-05-21 13:19:50,246 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1229508120
+2025-05-21 13:19:50,270 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1229508120. Found db_user: True
+2025-05-21 13:19:50,271 - INFO - app.middlewares.db - [Middleware] For user_id: 1229508120, db_user.is_blocked = False, role = UserRole.USER, request_count = 107
+2025-05-21 13:19:50,272 - INFO - app.handlers.user.feature_handlers - User 1229508120 selected 'Tariffs' from inline menu.
+2025-05-21 13:19:50,564 - ERROR - app.middlewares.db - DbSessionMiddleware: Exception in handler, rolling back session: Telegram server says - Bad Request: query is too old and response timeout expired or query ID is invalid
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/middlewares/db.py", line 150, in __call__
+    result = await handler(event, data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 472, in cq_main_menu_tariffs
+    await query.answer()
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: query is too old and response timeout expired or query ID is invalid
+2025-05-21 13:19:50,575 - INFO - aiogram.event - Update id=922800620 is not handled. Duration 332 ms by bot id=7751645048
+2025-05-21 13:19:50,575 - ERROR - aiogram.event - Cause exception while process update id=922800620 by bot id=7751645048
+TelegramBadRequest: Telegram server says - Bad Request: query is too old and response timeout expired or query ID is invalid
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/middlewares/error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/middlewares/user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/fsm/storage/memory.py", line 69, in lock
+    yield
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/fsm/middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/app/middlewares/db.py", line 150, in __call__
+    result = await handler(event, data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 174, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 146, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 141, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/router.py", line 166, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/dispatcher/event/handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 472, in cq_main_menu_tariffs
+    await query.answer()
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: query is too old and response timeout expired or query ID is invalid
+2025-05-21 13:21:10,310 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800621
+2025-05-21 13:21:10,311 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 13:21:10,317 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:21:10,317 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 436
+2025-05-21 13:21:10,522 - INFO - aiogram.event - Update id=922800621 is handled. Duration 212 ms by bot id=7751645048
+2025-05-21 13:21:11,797 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800622
+2025-05-21 13:21:11,798 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:21:11,800 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:21:11,801 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 437
+2025-05-21 13:21:11,803 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Tariffs' from inline menu.
+2025-05-21 13:21:11,890 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1024566187.
+2025-05-21 13:21:12,002 - INFO - aiogram.event - Update id=922800622 is handled. Duration 204 ms by bot id=7751645048
+2025-05-21 13:21:12,649 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800623
+2025-05-21 13:21:12,650 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:21:12,652 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:21:12,653 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 438
+2025-05-21 13:21:12,654 - INFO - app.handlers.user.feature_handlers - User 1024566187 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:21:12,662 - INFO - app.db.crud.transaction_crud - Transaction 16 created for user 1 with internal_id btrainer_sub_monthly_sub_v1_8ca54457-3a62-465b-a0f5-b4a536794d22, status TransactionStatus.PENDING.
+2025-05-21 13:21:12,663 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_8ca54457-3a62-465b-a0f5-b4a536794d22 for user 1024566187 (callback) for plan monthly_sub_v1
+2025-05-21 13:21:12,764 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 1024566187 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 13:21:12,983 - INFO - aiogram.event - Update id=922800623 is handled. Duration 333 ms by bot id=7751645048
+2025-05-21 13:21:16,361 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800624
+2025-05-21 13:21:16,362 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:21:16,363 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:21:16,364 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 439
+2025-05-21 13:21:16,650 - INFO - aiogram.event - Update id=922800624 is handled. Duration 288 ms by bot id=7751645048
+2025-05-21 13:21:17,990 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800625
+2025-05-21 13:21:17,990 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:21:17,993 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:21:17,993 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 440
+2025-05-21 13:21:17,995 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Tariffs' from inline menu.
+2025-05-21 13:21:18,189 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1024566187.
+2025-05-21 13:21:18,402 - INFO - aiogram.event - Update id=922800625 is handled. Duration 412 ms by bot id=7751645048
+2025-05-21 13:26:30,373 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 13:26:30,377 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:26:30,378 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 13:26:30,645 - INFO - __main__ - Bot stopped.
+2025-05-21 13:26:32,981 - INFO - __main__ - Starting bot...
+2025-05-21 13:26:32,986 - INFO - __main__ - Database session middleware registered.
+2025-05-21 13:26:32,986 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 13:26:33,524 - INFO - __main__ - Starting polling...
+2025-05-21 13:26:33,524 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 13:26:33,604 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:26:37,545 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800626
+2025-05-21 13:26:37,545 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 13:26:37,642 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:26:37,642 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 441
+2025-05-21 13:26:38,066 - INFO - aiogram.event - Update id=922800626 is handled. Duration 521 ms by bot id=7751645048
+2025-05-21 13:26:39,621 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800627
+2025-05-21 13:26:39,622 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:26:39,625 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:26:39,625 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 442
+2025-05-21 13:26:39,625 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Tariffs' from inline menu.
+2025-05-21 13:26:39,717 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1024566187.
+2025-05-21 13:26:39,844 - INFO - aiogram.event - Update id=922800627 is handled. Duration 222 ms by bot id=7751645048
+2025-05-21 13:26:40,460 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800628
+2025-05-21 13:26:40,460 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:26:40,463 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:26:40,463 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 443
+2025-05-21 13:26:40,464 - INFO - app.handlers.user.feature_handlers - User 1024566187 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:26:40,480 - INFO - app.db.crud.transaction_crud - Transaction 17 created for user 1 with internal_id btrainer_sub_monthly_sub_v1_1e5895e3-44c6-437d-935a-cc785b9c294d, status TransactionStatus.PENDING.
+2025-05-21 13:26:40,480 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_1e5895e3-44c6-437d-935a-cc785b9c294d for user 1024566187 (callback) for plan monthly_sub_v1
+2025-05-21 13:26:40,647 - ERROR - app.handlers.user.feature_handlers - Failed to send invoice to user 1024566187 (callback) for plan monthly_sub_v1: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+Traceback (most recent call last):
+  File "/Users/fllarpy/projects/glamcoding/app/handlers/user/feature_handlers.py", line 317, in handle_subscribe_callback
+    await query.bot.send_invoice(
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 2663, in send_invoice
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 478, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 254, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 185, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/fllarpy/projects/glamcoding/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 120, in check_response
+    raise TelegramBadRequest(method=method, message=description)
+aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: PAYMENT_PROVIDER_INVALID
+2025-05-21 13:26:41,061 - INFO - aiogram.event - Update id=922800628 is handled. Duration 602 ms by bot id=7751645048
+2025-05-21 13:26:54,454 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 13:26:54,457 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:26:54,457 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 13:26:54,715 - INFO - __main__ - Bot stopped.
+2025-05-21 13:28:01,521 - INFO - __main__ - Starting bot...
+2025-05-21 13:28:01,525 - INFO - __main__ - Database session middleware registered.
+2025-05-21 13:28:01,525 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 13:28:01,772 - INFO - __main__ - Starting polling...
+2025-05-21 13:28:01,772 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 13:28:01,853 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:28:06,512 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800629
+2025-05-21 13:28:06,512 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 1024566187
+2025-05-21 13:28:06,588 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:28:06,588 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 444
+2025-05-21 13:28:06,864 - INFO - aiogram.event - Update id=922800629 is handled. Duration 352 ms by bot id=7751645048
+2025-05-21 13:28:53,579 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800630
+2025-05-21 13:28:53,580 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 6136039106
+2025-05-21 13:28:53,583 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:28:53,583 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 44
+2025-05-21 13:28:53,593 - INFO - app.handlers.user.user_onboarding_handlers - User 6136039106 exists. Activity updated.
+2025-05-21 13:28:53,593 - INFO - app.handlers.user.user_onboarding_handlers - User 6136039106 has active sub/trial. Sending to main menu (inline).
+2025-05-21 13:28:53,738 - INFO - aiogram.event - Update id=922800630 is handled. Duration 159 ms by bot id=7751645048
+2025-05-21 13:28:57,063 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800631
+2025-05-21 13:28:57,063 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:28:57,065 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:28:57,065 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 45
+2025-05-21 13:28:57,066 - INFO - app.handlers.user.feature_handlers - User 6136039106 selected 'Tariffs' from inline menu.
+2025-05-21 13:28:57,172 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 6136039106.
+2025-05-21 13:28:57,283 - INFO - aiogram.event - Update id=922800631 is handled. Duration 221 ms by bot id=7751645048
+2025-05-21 13:28:58,214 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800632
+2025-05-21 13:28:58,214 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:28:58,217 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:28:58,218 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 46
+2025-05-21 13:28:58,219 - INFO - app.handlers.user.feature_handlers - User 6136039106 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:28:58,231 - INFO - app.db.crud.transaction_crud - Transaction 18 created for user 2 with internal_id btrainer_sub_monthly_sub_v1_fdfa2704-e700-46fb-bed2-f207f582fcac, status TransactionStatus.PENDING.
+2025-05-21 13:28:58,232 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_fdfa2704-e700-46fb-bed2-f207f582fcac for user 6136039106 (callback) for plan monthly_sub_v1
+2025-05-21 13:28:58,232 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 390540012:...
+2025-05-21 13:28:58,435 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 6136039106 (callback) with payload btrainer_sub_monthly_sub_v1_fdfa2704-e700-46fb-bed2-f207f582fcac
+2025-05-21 13:28:58,438 - INFO - aiogram.event - Update id=922800632 is handled. Duration 224 ms by bot id=7751645048
+2025-05-21 13:30:56,024 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800633
+2025-05-21 13:30:56,025 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 695668688
+2025-05-21 13:30:56,040 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 13:30:56,040 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 23
+2025-05-21 13:30:56,042 - INFO - app.handlers.user.feature_handlers - User 695668688 pressed 'Тарифы и подписка' text button/command.
+2025-05-21 13:30:56,042 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 695668688.
+2025-05-21 13:30:56,931 - INFO - aiogram.event - Update id=922800633 is handled. Duration 907 ms by bot id=7751645048
+2025-05-21 13:31:00,910 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800634
+2025-05-21 13:31:00,910 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 13:31:00,913 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 13:31:00,913 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 24
+2025-05-21 13:31:00,915 - INFO - app.handlers.user.feature_handlers - User 695668688 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:31:00,924 - INFO - app.db.crud.transaction_crud - Transaction 19 created for user 4 with internal_id btrainer_sub_monthly_sub_v1_8fc4c37a-b6ab-4b54-a511-52685ee8f1c0, status TransactionStatus.PENDING.
+2025-05-21 13:31:00,925 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_8fc4c37a-b6ab-4b54-a511-52685ee8f1c0 for user 695668688 (callback) for plan monthly_sub_v1
+2025-05-21 13:31:00,925 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 390540012:...
+2025-05-21 13:31:01,142 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 695668688 (callback) with payload btrainer_sub_monthly_sub_v1_8fc4c37a-b6ab-4b54-a511-52685ee8f1c0
+2025-05-21 13:31:01,145 - INFO - aiogram.event - Update id=922800634 is handled. Duration 235 ms by bot id=7751645048
+2025-05-21 13:47:20,211 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 13:47:20,216 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:47:20,217 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 13:47:20,489 - INFO - __main__ - Bot stopped.
+2025-05-21 13:47:25,243 - INFO - __main__ - Starting bot...
+2025-05-21 13:47:25,248 - INFO - __main__ - Database session middleware registered.
+2025-05-21 13:47:25,248 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 13:47:25,554 - INFO - __main__ - Starting polling...
+2025-05-21 13:47:25,555 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 13:47:25,641 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:47:32,119 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800635
+2025-05-21 13:47:32,119 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:47:32,229 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:47:32,230 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 47
+2025-05-21 13:47:32,773 - INFO - aiogram.event - Update id=922800635 is handled. Duration 654 ms by bot id=7751645048
+2025-05-21 13:47:33,578 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800636
+2025-05-21 13:47:33,578 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:47:33,581 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:47:33,581 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 48
+2025-05-21 13:47:33,583 - INFO - app.handlers.user.feature_handlers - User 6136039106 selected 'Tariffs' from inline menu.
+2025-05-21 13:47:33,667 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 6136039106.
+2025-05-21 13:47:33,775 - INFO - aiogram.event - Update id=922800636 is handled. Duration 197 ms by bot id=7751645048
+2025-05-21 13:47:34,800 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800637
+2025-05-21 13:47:34,801 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:47:34,803 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:47:34,804 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 49
+2025-05-21 13:47:34,804 - INFO - app.handlers.user.feature_handlers - User 6136039106 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:47:34,820 - INFO - app.db.crud.transaction_crud - Transaction 20 created for user 2 with internal_id btrainer_sub_monthly_sub_v1_f619371c-88df-4051-b790-b2bf9411d05c, status TransactionStatus.PENDING.
+2025-05-21 13:47:34,820 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_f619371c-88df-4051-b790-b2bf9411d05c for user 6136039106 (callback) for plan monthly_sub_v1
+2025-05-21 13:47:34,821 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 390540012:...
+2025-05-21 13:47:35,027 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 6136039106 (callback) with payload btrainer_sub_monthly_sub_v1_f619371c-88df-4051-b790-b2bf9411d05c
+2025-05-21 13:47:35,033 - INFO - aiogram.event - Update id=922800637 is handled. Duration 233 ms by bot id=7751645048
+2025-05-21 13:51:27,957 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800638
+2025-05-21 13:51:27,960 - INFO - app.middlewares.db - [Middleware] Actual event type: Message, User ID: 695668688
+2025-05-21 13:51:27,993 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 13:51:27,993 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 25
+2025-05-21 13:51:28,016 - INFO - app.handlers.user.user_onboarding_handlers - User 695668688 exists. Activity updated.
+2025-05-21 13:51:28,016 - INFO - app.handlers.user.user_onboarding_handlers - User 695668688 has active sub/trial. Sending to main menu (inline).
+2025-05-21 13:51:28,133 - INFO - aiogram.event - Update id=922800638 is handled. Duration 177 ms by bot id=7751645048
+2025-05-21 13:51:30,963 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800639
+2025-05-21 13:51:30,963 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 13:51:30,967 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 13:51:30,967 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 26
+2025-05-21 13:51:30,969 - INFO - app.handlers.user.feature_handlers - User 695668688 selected 'Tariffs' from inline menu.
+2025-05-21 13:51:31,535 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 695668688.
+2025-05-21 13:51:32,157 - INFO - aiogram.event - Update id=922800639 is handled. Duration 1194 ms by bot id=7751645048
+2025-05-21 13:51:33,573 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800640
+2025-05-21 13:51:33,573 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 695668688
+2025-05-21 13:51:33,575 - INFO - app.middlewares.db - [Middleware] Checking user_id: 695668688. Found db_user: True
+2025-05-21 13:51:33,575 - INFO - app.middlewares.db - [Middleware] For user_id: 695668688, db_user.is_blocked = False, role = UserRole.USER, request_count = 27
+2025-05-21 13:51:33,576 - INFO - app.handlers.user.feature_handlers - User 695668688 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:51:33,583 - INFO - app.db.crud.transaction_crud - Transaction 21 created for user 4 with internal_id btrainer_sub_monthly_sub_v1_2f587cf3-0339-4f79-b940-7b3661d546fe, status TransactionStatus.PENDING.
+2025-05-21 13:51:33,583 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_2f587cf3-0339-4f79-b940-7b3661d546fe for user 695668688 (callback) for plan monthly_sub_v1
+2025-05-21 13:51:33,583 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 390540012:...
+2025-05-21 13:51:34,918 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 695668688 (callback) with payload btrainer_sub_monthly_sub_v1_2f587cf3-0339-4f79-b940-7b3661d546fe
+2025-05-21 13:51:34,922 - INFO - aiogram.event - Update id=922800640 is handled. Duration 1349 ms by bot id=7751645048
+2025-05-21 13:56:03,856 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 13:56:03,858 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:56:03,859 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 13:56:04,116 - INFO - __main__ - Bot stopped.
+2025-05-21 13:56:08,558 - INFO - __main__ - Starting bot...
+2025-05-21 13:56:08,562 - INFO - __main__ - Database session middleware registered.
+2025-05-21 13:56:08,562 - INFO - __main__ - All application routers and payment handlers included.
+2025-05-21 13:56:09,914 - INFO - __main__ - Starting polling...
+2025-05-21 13:56:09,915 - INFO - aiogram.dispatcher - Start polling
+2025-05-21 13:56:10,001 - INFO - aiogram.dispatcher - Run polling for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:56:13,831 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800641
+2025-05-21 13:56:13,831 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:56:13,909 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:56:13,910 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 445
+2025-05-21 13:56:13,911 - INFO - app.handlers.user.feature_handlers - User 1024566187 selected 'Tariffs' from inline menu.
+2025-05-21 13:56:14,607 - INFO - app.handlers.user.feature_handlers - Fetching tariffs data for user 1024566187.
+2025-05-21 13:56:15,064 - INFO - aiogram.event - Update id=922800641 is handled. Duration 1233 ms by bot id=7751645048
+2025-05-21 13:56:15,774 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800642
+2025-05-21 13:56:15,774 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 1024566187
+2025-05-21 13:56:15,776 - INFO - app.middlewares.db - [Middleware] Checking user_id: 1024566187. Found db_user: True
+2025-05-21 13:56:15,776 - INFO - app.middlewares.db - [Middleware] For user_id: 1024566187, db_user.is_blocked = False, role = UserRole.USER, request_count = 446
+2025-05-21 13:56:15,777 - INFO - app.handlers.user.feature_handlers - User 1024566187 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:56:15,789 - INFO - app.db.crud.transaction_crud - Transaction 22 created for user 1 with internal_id btrainer_sub_monthly_sub_v1_7ddc7680-c7c3-4d10-9cad-484d15cbca5e, status TransactionStatus.PENDING.
+2025-05-21 13:56:15,789 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_7ddc7680-c7c3-4d10-9cad-484d15cbca5e for user 1024566187 (callback) for plan monthly_sub_v1
+2025-05-21 13:56:15,789 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 381764678:...
+2025-05-21 13:56:16,298 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 1024566187 (callback) with payload btrainer_sub_monthly_sub_v1_7ddc7680-c7c3-4d10-9cad-484d15cbca5e
+2025-05-21 13:56:16,302 - INFO - aiogram.event - Update id=922800642 is handled. Duration 528 ms by bot id=7751645048
+2025-05-21 13:56:26,284 - INFO - app.middlewares.db - [Middleware] Entered __call__ for raw event type: Update, Update ID: 922800643
+2025-05-21 13:56:26,285 - INFO - app.middlewares.db - [Middleware] Actual event type: CallbackQuery, User ID: 6136039106
+2025-05-21 13:56:26,288 - INFO - app.middlewares.db - [Middleware] Checking user_id: 6136039106. Found db_user: True
+2025-05-21 13:56:26,289 - INFO - app.middlewares.db - [Middleware] For user_id: 6136039106, db_user.is_blocked = False, role = UserRole.USER, request_count = 50
+2025-05-21 13:56:26,290 - INFO - app.handlers.user.feature_handlers - User 6136039106 pressed inline subscribe button for plan_id: monthly_sub_v1
+2025-05-21 13:56:26,293 - INFO - app.db.crud.transaction_crud - Transaction 23 created for user 2 with internal_id btrainer_sub_monthly_sub_v1_8f265789-961c-421b-829c-6c7aafe27491, status TransactionStatus.PENDING.
+2025-05-21 13:56:26,293 - INFO - app.handlers.user.feature_handlers - Created PENDING transaction btrainer_sub_monthly_sub_v1_8f265789-961c-421b-829c-6c7aafe27491 for user 6136039106 (callback) for plan monthly_sub_v1
+2025-05-21 13:56:26,293 - INFO - app.handlers.user.feature_handlers - Attempting to send invoice with provider token: 381764678:...
+2025-05-21 13:56:26,515 - INFO - app.handlers.user.feature_handlers - Invoice for plan monthly_sub_v1 sent to user 6136039106 (callback) with payload btrainer_sub_monthly_sub_v1_8f265789-961c-421b-829c-6c7aafe27491
+2025-05-21 13:56:26,517 - INFO - aiogram.event - Update id=922800643 is handled. Duration 233 ms by bot id=7751645048
+2025-05-21 13:58:26,090 - WARNING - aiogram.dispatcher - Received SIGINT signal
+2025-05-21 13:58:26,093 - INFO - aiogram.dispatcher - Polling stopped for bot @BTrainerBot id=7751645048 - 'BTrainer'
+2025-05-21 13:58:26,093 - INFO - aiogram.dispatcher - Polling stopped
+2025-05-21 13:58:26,356 - INFO - __main__ - Bot stopped.

@@ -314,6 +314,7 @@ async def handle_subscribe_callback(query: types.CallbackQuery, session: AsyncSe
     prices = [LabeledPrice(label=current_plan_title, amount=int(current_plan_price_rub * 100))]
 
     try:
+        logger.info(f"Attempting to send invoice with provider token: {settings.TELEGRAM_PAYMENT_PROVIDER_TOKEN[:10]}...")
         await query.bot.send_invoice(
             chat_id=query.message.chat.id,
             title=current_plan_title,
