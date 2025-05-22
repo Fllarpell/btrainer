@@ -11,7 +11,9 @@ from app.db.models import SubscriptionStatus, TransactionStatus, UserRole
 logger = logging.getLogger(__name__)
 payment_router = Router(name="payment_handlers")
 
+REGULAR_MONTHLY_PRICE_RUB = 850.00
 MONTHLY_PLAN_PRICE_RUB = 450.00
+
 MONTHLY_PLAN_TITLE = "Доступ BTrainer Pro (1 месяц)"
 
 price_str = str(MONTHLY_PLAN_PRICE_RUB).replace('.', ',')

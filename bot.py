@@ -5,6 +5,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.client.default import DefaultBotProperties
+from aiogram.types import BotCommand
 
 from app.core.config import settings
 from app.db.session import AsyncSessionLocal
@@ -48,6 +49,16 @@ async def main():
     dp.include_router(payment_router)
 
     logger.info("All application routers and payment handlers included.")
+
+    commands_to_set = [
+        BotCommand(command="start", description="🚀 Запустить бота"),
+        BotCommand(command="menu", description="📋 Показать главное меню")
+    ]
+    try:
+        await bot.set_my_commands(commands_to_set)
+        logger.info("Bot commands set successfully.")
+    except Exception as e:
+        logger.error(f"Failed to set bot commands: {e}")
 
     await bot.delete_webhook(drop_pending_updates=True)
     logger.info("Starting polling...")

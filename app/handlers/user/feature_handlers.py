@@ -30,6 +30,7 @@ from app.handlers.payment_handlers import (
     MONTHLY_PLAN_TITLE,
     MONTHLY_PLAN_DESCRIPTION,
     MONTHLY_PLAN_PRICE_RUB,
+    REGULAR_MONTHLY_PRICE_RUB,
     MONTHLY_PLAN_CURRENCY,
     MONTHLY_PLAN_ID,
     MONTHLY_PLAN_DURATION_DAYS
@@ -39,6 +40,8 @@ from app.handlers.user.user_onboarding_handlers import HELP_TEXT
 
 from app.handlers.case.case_lifecycle_handlers import _generate_and_send_case
 from app.states.solve_case import SolveCaseStates
+
+from yookassa import Payment
 
 logger = logging.getLogger(__name__)
 feature_router = Router(name="feature_handlers") 
@@ -196,7 +199,7 @@ async def _get_tariffs_data(user_telegram_id: int, user_first_name: str, session
     )
 
     plan_id_for_button = MONTHLY_PLAN_ID
-    button_text_for_subscribe = f"🚀 {escape_md(MONTHLY_PLAN_TITLE)}"
+    button_text_for_subscribe = f"🚀 {MONTHLY_PLAN_TITLE}"
 
     return tariffs_text, show_subscribe_button, plan_id_for_button, button_text_for_subscribe
 
