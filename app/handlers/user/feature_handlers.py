@@ -181,8 +181,8 @@ async def _get_tariffs_data(user_telegram_id: int, user_first_name: str, session
 
     title_escaped = escape_md(MONTHLY_PLAN_TITLE)
     desc_escaped = escape_md(MONTHLY_PLAN_DESCRIPTION)
-    price_info = f"Цена: {MONTHLY_PLAN_PRICE_RUB:.2f} {MONTHLY_PLAN_CURRENCY}"
-    price_info_escaped = escape_md(price_info)
+    # price_info = f"Цена: {MONTHLY_PLAN_PRICE_RUB:.2f} {MONTHLY_PLAN_CURRENCY}"
+    price_info_escaped = f"Цена: ~{REGULAR_MONTHLY_PRICE_RUB:.0f}~ {MONTHLY_PLAN_PRICE_RUB:.0f} рублей при оформлении подписки до конца мая\!"
 
     tariffs_text = (
         f"💎 *{title_escaped}*\n"
