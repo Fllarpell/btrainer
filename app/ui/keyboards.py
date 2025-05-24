@@ -4,6 +4,10 @@ from app.db.models import User, UserRole, AISourceType
 from aiogram.filters.callback_data import CallbackData
 from typing import Optional
 from datetime import datetime
+from app.core.config import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 class AdminUserCallback(CallbackData, prefix="admin_user"):
     action: str
@@ -252,12 +256,49 @@ def get_admin_manage_subscription_keyboard(user_id: int, current_subscription_st
 
 def get_main_inline_menu_keyboard() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
-    builder.button(text="📝 Новый кейс", callback_data="main_menu:request_case")
-    builder.button(text="📊 Мой прогресс", callback_data="main_menu:my_progress")
-    builder.button(text="💬 Оставить отзыв", callback_data="main_menu:leave_feedback")
-    builder.button(text="💳 Тарифы и подписка", callback_data="main_menu:tariffs")
-    builder.button(text="ℹ️ Помощь", callback_data="main_menu:help")
-    builder.adjust(2, 2, 1)
+
+    def _unquote(value: Optional[str]) -> str:
+        if value is None:
+            return ""
+        s = str(value).strip()
+        if (s.startswith('"') and s.endswith('"')) or \
+           (s.startswith("'") and s.endswith("'")):
+            s = s[1:-1]
+        return s
+
+    builder.row(
+        InlineKeyboardButton(text="📝 Новый кейс", callback_data="main_menu:request_case"),
+        InlineKeyboardButton(text="📊 Мой прогресс", callback_data="main_menu:my_progress")
+    )
+    
+    builder.row(
+        InlineKeyboardButton(text="💬 Оставить отзыв", callback_data="main_menu:leave_feedback"),
+        InlineKeyboardButton(text="ℹ️ Помощь", callback_data="main_menu:help")
+    )
+    
+    row3_buttons = []
+    
+    channel_url_raw = str(settings.TELEGRAM_CHANNEL_URL)
+    channel_url = _unquote(channel_url_raw).strip()
+    logger.info(f"Processed channel_url for button: '{channel_url}' (raw: '{channel_url_raw}')")
+    if channel_url and (channel_url.startswith("https://") or channel_url.startswith("http://")):
+        row3_buttons.append(InlineKeyboardButton(text="📢 Канал", url=channel_url))
+    else:
+        logger.warning(f"Channel URL '{channel_url}' (raw: '{channel_url_raw}') is invalid or empty, button not added.")
+        
+    # support_email_raw = str(settings.SUPPORT_EMAIL)
+    # support_email_processed = _unquote(support_email_raw).strip()
+    # logger.info(f"Processed support_email for callback button: '{support_email_processed}' (raw: '{support_email_raw}')")
+    # if support_email_processed and "@" in support_email_processed and "." in support_email_processed.split("@", 1)[-1]:
+    #     row3_buttons.append(InlineKeyboardButton(text="📧 Поддержка", callback_data="main_menu:support_email"))
+    # else:
+    #     logger.warning(f"Support email '{support_email_processed}' (raw: '{support_email_raw}') is invalid or empty, Support button not added.")
+        
+    row3_buttons.append(InlineKeyboardButton(text="💳 Тарифы и подписка", callback_data="main_menu:tariffs"))
+    
+    if row3_buttons:
+        builder.row(*row3_buttons) 
+        
     return builder.as_markup()
 
 def get_back_to_main_menu_keyboard() -> InlineKeyboardMarkup:

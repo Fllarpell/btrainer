@@ -1,7 +1,8 @@
 import logging
 import json
 from aiogram import Router, types, F
-from aiogram.utils.markdown import hbold
+from aiogram.enums import ParseMode
+import html
 from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram.fsm.context import FSMContext
 import datetime
@@ -17,7 +18,7 @@ from app.db.crud.user_crud import get_user_by_telegram_id
 from app.db.crud.case_crud import create_case, get_case
 from app.db.crud.solution_crud import create_solution
 from app.db.crud.ai_reference_crud import get_active_ai_references_for_prompt
-from app.db.models import Solution
+from app.db.models import Solution, Case as DBCase
 from app.ui.keyboards import get_after_case_keyboard, get_after_solution_analysis_keyboard
 from app.services.ai_service import generate_case_from_ai, analyze_solution_with_ai
 from app.states.solve_case import SolveCaseStates
@@ -47,34 +48,21 @@ def manual_text_splitter(text: str, max_chunk_size: int = MAX_MESSAGE_LENGTH) ->
     return chunks
 
 
-async def _generate_and_send_case(
-    message_or_callback_query: types.Message | types.CallbackQuery,
-    state: FSMContext,
+async def _generate_new_case_content(
     session: AsyncSession,
-    is_another_case: bool = False
-):
-
-    user = message_or_callback_query.from_user
-    if isinstance(message_or_callback_query, types.CallbackQuery):
-        await message_or_callback_query.answer()
-        await message_or_callback_query.message.answer("⏳ Генерирую новый кейс для вас, подождите немного...")
-    else:
-        await message_or_callback_query.answer("⏳ Генерирую кейс для вас, это может занять некоторое время...")
-
+    user_id: int
+) -> tuple[DBCase | None, str | None]:
+    """Generates a new case, saves it to DB, and returns the case object and formatted text or an error message."""
     active_references = await get_active_ai_references_for_prompt(db=session)
     if not active_references:
-        logger.warning(f"No active AI references found in DB for user {user.id} during case generation.")
+        logger.warning(f"No active AI references found in DB for user {user_id} during case generation.")
 
     case_data = await generate_case_from_ai(active_references=active_references)
 
     if not case_data or not case_data.get("title") or not case_data.get("description"):
         error_message = "К сожалению, не удалось сгенерировать кейс в данный момент. Попробуйте, пожалуйста, позже."
-        logger.error(f"Failed to generate case from AI for user {user.id}. Case data: {case_data}. References used: {len(active_references) if active_references else 0}")
-        if isinstance(message_or_callback_query, types.CallbackQuery):
-            await message_or_callback_query.message.answer(error_message)
-        else:
-            await message_or_callback_query.answer(error_message)
-        return
+        logger.error(f"Failed to generate case from AI for user {user_id}. Case data: {case_data}. References used: {len(active_references) if active_references else 0}")
+        return None, error_message
 
     case_title = case_data["title"]
     case_description = case_data["description"]
@@ -90,44 +78,53 @@ async def _generate_and_send_case(
             prompt_version=prompt_version_placeholder,
         )
         await session.flush()
-        logger.info(f"Case {new_case.id} (AI-generated, another_case={is_another_case}) created for user {user.id}. Refs count: {len(active_references) if active_references else 0}")
-
-        response_text = f"{hbold(new_case.title)}\n\n{new_case.case_text}"
-        
-        target_message_callable = message_or_callback_query.message.answer if isinstance(message_or_callback_query, types.CallbackQuery) else message_or_callback_query.answer
-        
-        await target_message_callable(
-            response_text,
-            reply_markup=get_after_case_keyboard()
-        )
-        
-        await state.set_state(SolveCaseStates.awaiting_solution)
-        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
-        logger.info(f"User {user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id} (another_case={is_another_case})")
-
+        logger.info(f"Case {new_case.id} (AI-generated) created for user {user_id}. Refs count: {len(active_references) if active_references else 0}")
+        return new_case, None
     except Exception as e:
-        logger.error(f"Error processing AI-generated case (another_case={is_another_case}) for user {user.id}: {e}", exc_info=True)
-        error_msg = "Произошла ошибка при сохранении или отправке сгенерированного кейса. Пожалуйста, попробуйте еще раз позже."
-        target_error_callable = message_or_callback_query.message.answer if isinstance(message_or_callback_query, types.CallbackQuery) else message_or_callback_query.answer
-        await target_error_callable(error_msg)
+        logger.error(f"Error creating case in DB for user {user_id}: {e}", exc_info=True)
+        return None, "Произошла ошибка при сохранении сгенерированного кейса. Пожалуйста, попробуйте еще раз позже."
 
 
 @case_lifecycle_router.message(F.text == "📝 Новый кейс")
 async def handle_new_case_button(message: types.Message, state: FSMContext, session: AsyncSession):
-    """
-    Обработчик для кнопки '📝 Новый кейс' из главного меню.
-    """
     logger.info(f"User {message.from_user.id} requested a new case via '📝 Новый кейс' button.")
-    await _generate_and_send_case(message, state, session, is_another_case=False)
+    status_msg = await message.answer("⏳ Генерирую кейс для вас, это может занять некоторое время...")
+    
+    new_case, error = await _generate_new_case_content(session, message.from_user.id)
+    
+    if error:
+        await status_msg.edit_text(html.escape(error))
+        return
+
+    if new_case:
+        response_text = f"<b>{html.escape(new_case.title)}</b>\n\n{html.escape(new_case.case_text)}"
+        await status_msg.edit_text(response_text, reply_markup=get_after_case_keyboard(), parse_mode=ParseMode.HTML)
+        await state.set_state(SolveCaseStates.awaiting_solution)
+        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
+        logger.info(f"User {message.from_user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id}")
+    else:
+        await status_msg.edit_text("Не удалось получить кейс. Попробуйте снова.")
 
 
 @case_lifecycle_router.message(F.text == "💼 Получить кейс")
 async def handle_request_case_button(message: types.Message, state: FSMContext, session: AsyncSession):
-    """
-    Обработчик для кнопки '💼 Получить кейс'.
-    """
-    logger.info(f"User {message.from_user.id} requested a new case via button.")
-    await _generate_and_send_case(message, state, session, is_another_case=False)
+    logger.info(f"User {message.from_user.id} requested a new case via '💼 Получить кейс' button.")
+    status_msg = await message.answer("⏳ Генерирую кейс для вас, это может занять некоторое время...")
+    
+    new_case, error = await _generate_new_case_content(session, message.from_user.id)
+    
+    if error:
+        await status_msg.edit_text(html.escape(error))
+        return
+
+    if new_case:
+        response_text = f"<b>{html.escape(new_case.title)}</b>\n\n{html.escape(new_case.case_text)}"
+        await status_msg.edit_text(response_text, reply_markup=get_after_case_keyboard(), parse_mode=ParseMode.HTML)
+        await state.set_state(SolveCaseStates.awaiting_solution)
+        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
+        logger.info(f"User {message.from_user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id}")
+    else:
+        await status_msg.edit_text("Не удалось получить кейс. Попробуйте снова.")
 
 @case_lifecycle_router.callback_query(F.data == "request_another_case")
 async def handle_request_another_case_callback(
@@ -135,11 +132,24 @@ async def handle_request_another_case_callback(
     state: FSMContext,
     session: AsyncSession
 ):
-    """
-    Обработчик для кнопки '🔀 Запросить другой кейс' (инлайн).
-    """
-    logger.info(f"User {callback_query.from_user.id} requested another case via inline button.")
-    await _generate_and_send_case(callback_query, state, session, is_another_case=True)
+    logger.info(f"User {callback_query.from_user.id} requested another case via inline button ('request_another_case').")
+    await callback_query.answer()
+    await callback_query.message.edit_text("⏳ Генерирую новый кейс для вас, подождите немного...", reply_markup=None)
+    
+    new_case, error = await _generate_new_case_content(session, callback_query.from_user.id)
+    
+    if error:
+        await callback_query.message.edit_text(html.escape(error), reply_markup=None, parse_mode=ParseMode.HTML)
+        return
+
+    if new_case:
+        response_text = f"<b>{html.escape(new_case.title)}</b>\n\n{html.escape(new_case.case_text)}"
+        await callback_query.message.edit_text(response_text, reply_markup=get_after_case_keyboard(), parse_mode=ParseMode.HTML)
+        await state.set_state(SolveCaseStates.awaiting_solution)
+        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
+        logger.info(f"User {callback_query.from_user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id} (via 'request_another_case')")
+    else:
+        await callback_query.message.edit_text("Не удалось получить кейс. Попробуйте снова.", reply_markup=None, parse_mode=ParseMode.HTML)
 
 @case_lifecycle_router.callback_query(F.data == "request_case_again")
 async def handle_request_case_again_callback(
@@ -147,11 +157,29 @@ async def handle_request_case_again_callback(
     state: FSMContext,
     session: AsyncSession
 ):
-    """
-    Обработчик для кнопки '💼 Получить новый кейс' (после анализа).
-    """
-    logger.info(f"User {callback_query.from_user.id} requested case again via button after analysis.")
-    await _generate_and_send_case(callback_query, state, session, is_another_case=True)
+    logger.info(f"User {callback_query.from_user.id} requested case again via button after analysis ('request_case_again').")
+    await callback_query.answer()
+    
+    status_msg = await callback_query.message.answer(
+        "⏳ Генерирую новый кейс для вас, подождите немного...", 
+        reply_markup=None
+    )
+    
+    new_case, error = await _generate_new_case_content(session, callback_query.from_user.id)
+    
+    if error:
+        await status_msg.edit_text(html.escape(error), reply_markup=None, parse_mode=ParseMode.HTML)
+        return
+
+    if new_case:
+        response_text = f"<b>{html.escape(new_case.title)}</b>\n\n{html.escape(new_case.case_text)}"
+        await status_msg.edit_text(response_text, reply_markup=get_after_case_keyboard(), parse_mode=ParseMode.HTML)
+        await state.set_state(SolveCaseStates.awaiting_solution)
+        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
+        logger.info(f"User {callback_query.from_user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id} (via 'request_case_again')")
+    else:
+        await status_msg.edit_text("Не удалось получить кейс. Попробуйте снова.", reply_markup=None, parse_mode=ParseMode.HTML)
+
 
 @case_lifecycle_router.message(SolveCaseStates.awaiting_solution, F.text & ~F.text.startswith('/'))
 async def handle_solution_submission(
@@ -188,7 +216,7 @@ async def handle_solution_submission(
         return
     
     solution_text = message.text
-    await message.answer("⏳ Анализирую ваше решение... Это может занять некоторое время.")
+    status_message = await message.answer("⏳ Анализирую ваше решение... Это может занять некоторое время.")
 
     active_references = await get_active_ai_references_for_prompt(db=session)
     if not active_references:
@@ -209,17 +237,35 @@ async def handle_solution_submission(
         ):
             error_detail = analysis_report.get("raw_response") if analysis_report and analysis_report.get("error") else str(analysis_report)
             logger.error(f"AI analysis failed or returned unexpected structure for user {user_telegram_id}, case {current_case_id}. Report: {error_detail}")
-            await message.answer("К сожалению, не удалось получить анализ вашего решения от AI (неверный формат или структура ответа). Попробуйте позже.")
+            await status_message.edit_text("К сожалению, не удалось получить анализ вашего решения от AI (неверный формат или структура ответа). Попробуйте позже.")
             return
 
-        strengths_text = "\n".join([f"- {s}" for s in analysis_report['strengths']]) if analysis_report['strengths'] else "\(Не отмечено\)" 
-        improvements_text = "\n".join([f"- {i}" for i in analysis_report['areas_for_improvement']]) if analysis_report['areas_for_improvement'] else "\(Не отмечено\)"
+        escaped_strengths = [html.escape(s) for s in analysis_report['strengths']] if analysis_report['strengths'] else []
+        escaped_improvements = [html.escape(i) for i in analysis_report['areas_for_improvement']] if analysis_report['areas_for_improvement'] else []
+
+        strengths_text = "\n".join([f"- {s}" for s in escaped_strengths]) if escaped_strengths else "(Не отмечено)" 
+        improvements_text = "\n".join([f"- {i}" for i in escaped_improvements]) if escaped_improvements else "(Не отмечено)"
+        
+        RATING_DISPLAY_MAP = {
+            "meets_expectations": "Соответствует ожиданиям",
+            "partially_meets_expectations": "Частично соответствует ожиданиям",
+            "below_expectations": "Ниже ожиданий",
+            "insufficient_input": "Требуется более развернутый ответ",
+            "not_applicable": "Оценка не применима"
+        }
+        solution_rating_key = analysis_report.get('solution_rating', 'not_applicable')
+        solution_rating_display = RATING_DISPLAY_MAP.get(solution_rating_key, solution_rating_key.replace("_", " ").capitalize()) 
+
+        escaped_case_title = html.escape(case_title)
+        overall_impression_text = analysis_report.get('overall_impression', 'N/A') 
+        escaped_solution_rating_display = html.escape(solution_rating_display)
+
         formatted_analysis = (
-            f"{hbold('Анализ вашего решения для кейса:')} \"{case_title}\"\n\n"
-            f"{hbold('Сильные стороны:')}\n{strengths_text}\n\n"
-            f"{hbold('Области для улучшения:')}\n{improvements_text}\n\n"
-            f"{hbold('Общее впечатление:')}\n{analysis_report.get('overall_impression', 'N/A')}\n\n"
-            f"{hbold('Оценка решения:')} {analysis_report.get('solution_rating', 'N/A')}"
+            f"<b>{html.escape('Анализ вашего решения для кейса:')}</b> \"{escaped_case_title}\"\n\n"
+            f"<b>{html.escape('Сильные стороны:')}</b>\n{strengths_text}\n\n"
+            f"<b>{html.escape('Области для улучшения:')}</b>\n{improvements_text}\n\n"
+            f"<b>{html.escape('Общее впечатление:')}</b>\n{overall_impression_text}\n\n"
+            #f"<b>{html.escape('Оценка решения:')}</b> {escaped_solution_rating_display}"
         )
         raw_analysis_json_string = json.dumps(analysis_report, ensure_ascii=False)
         solution = await create_solution(
@@ -234,20 +280,29 @@ async def handle_solution_submission(
 
         if TEXT_SPLITTER_AVAILABLE:
             splitter = TextSplitter(max_len=MAX_MESSAGE_LENGTH)
-            analysis_chunks = splitter.split_text(formatted_analysis)
+            if not hasattr(splitter, 'split_text'): 
+                 analysis_chunks = manual_text_splitter(formatted_analysis, MAX_MESSAGE_LENGTH)
+            else:
+                 analysis_chunks = splitter.split_text(formatted_analysis)
         else:
             analysis_chunks = manual_text_splitter(formatted_analysis, MAX_MESSAGE_LENGTH)
         
+        if analysis_chunks:
+            first_chunk = analysis_chunks.pop(0)
+            reply_markup_first_chunk = get_after_solution_analysis_keyboard() if not analysis_chunks else None
+            await status_message.edit_text(first_chunk, reply_markup=reply_markup_first_chunk, parse_mode=ParseMode.HTML)
+
         for i, chunk in enumerate(analysis_chunks):
-            reply_markup = get_after_solution_analysis_keyboard() if i == len(analysis_chunks) - 1 else None
-            await message.answer(chunk, reply_markup=reply_markup)
+            reply_markup_subsequent_chunk = get_after_solution_analysis_keyboard() if i == len(analysis_chunks) - 1 else None
+            await message.answer(chunk, reply_markup=reply_markup_subsequent_chunk, parse_mode=ParseMode.HTML)
         
         await state.clear()
         logger.info(f"State cleared for user {user_telegram_id} after solution analysis for case {current_case_id}.")
 
     except Exception as e:
         logger.error(f"Error during solution analysis or DB saving for user {user_telegram_id}, case {current_case_id}: {e}", exc_info=True)
-        await message.answer(
-            "Произошла серьезная ошибка во время анализа или сохранения вашего решения. Пожалуйста, сообщите администратору или попробуйте позже."
-        )
-        raise 
+        error_message_text = "Произошла серьезная ошибка во время анализа или сохранения вашего решения. Пожалуйста, сообщите администратору или попробуйте позже."
+        try:
+            await status_message.edit_text(html.escape(error_message_text), parse_mode=ParseMode.HTML)
+        except Exception: 
+            await message.answer(html.escape(error_message_text), parse_mode=ParseMode.HTML) 

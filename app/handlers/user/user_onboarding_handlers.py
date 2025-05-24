@@ -1,7 +1,8 @@
 import logging
 from aiogram import Router, types, F
 from aiogram.filters import CommandStart, Command
-from aiogram.utils.markdown import hbold
+from aiogram.utils.markdown import hbold, hlink
+from aiogram.enums import ParseMode
 from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram.fsm.context import FSMContext
 from datetime import datetime, timedelta, timezone
@@ -80,8 +81,18 @@ Telegram ID: {user_id}
 
 @user_onboarding_router.message(CommandStart())
 async def handle_start(message: types.Message, session: AsyncSession, state: FSMContext):
-    await state.clear()
     user = message.from_user
+    current_state_data = await state.get_data()
+    last_menu_msg_id = current_state_data.get("last_menu_msg_id")
+
+    if last_menu_msg_id:
+        try:
+            await message.bot.delete_message(chat_id=message.chat.id, message_id=last_menu_msg_id)
+            logger.info(f"Deleted previous menu message {last_menu_msg_id} for user {user.id} during /start")
+        except Exception as e:
+            logger.warning(f"Could not delete previous menu message {last_menu_msg_id} for user {user.id} during /start: {e}")
+
+    await state.clear()
     db_user = await user_crud.get_user_by_telegram_id(session, telegram_id=user.id)
 
     current_time = datetime.now(timezone.utc)
@@ -130,10 +141,11 @@ async def handle_start(message: types.Message, session: AsyncSession, state: FSM
         if trial_was_ever_used:
             # Trial was used and is not currently active, and no active subscription
             logger.info(f"User {db_user.telegram_id} has no active sub/trial, but trial was used before. Guiding to /menu.")
-            await message.answer(
+            menu_msg = await message.answer(
                 "Пробный период уже был использован. Вы можете выбрать платный тариф или посмотреть другие опции в меню.", 
                 reply_markup=get_main_inline_menu_keyboard()
             )
+            await state.update_data(last_menu_msg_id=menu_msg.message_id)
         else:
             # No active trial, no active subscription, and trial was never used
             logger.info(f"User {db_user.telegram_id} has no active sub/trial and trial never used. Starting onboarding flow.")
@@ -141,7 +153,8 @@ async def handle_start(message: types.Message, session: AsyncSession, state: FSM
     else:
         # User has an active trial or active subscription
         logger.info(f"User {db_user.telegram_id} has active sub/trial. Sending to main menu (inline).")
-        await message.answer(WELCOME_BACK_TEXT, reply_markup=get_main_inline_menu_keyboard())
+        menu_msg = await message.answer(WELCOME_BACK_TEXT, reply_markup=get_main_inline_menu_keyboard())
+        await state.update_data(last_menu_msg_id=menu_msg.message_id)
 
 @user_onboarding_router.callback_query(OnboardingCallback.filter(F.action == "tell_me_more"))
 async def cq_onboarding_tell_me_more(query: types.CallbackQuery, callback_data: OnboardingCallback, session: AsyncSession):
@@ -197,11 +210,17 @@ async def cq_onboarding_start_trial(query: types.CallbackQuery, callback_data: O
         start_date_str = trial_starts_at.strftime("%d.%m.%Y")
         end_date_str = trial_expires_at.strftime("%d.%m.%Y")
         logger.info(f"User {updated_user.telegram_id} started trial period until {end_date_str}.")
+        
         await query.message.edit_text(
             TRIAL_STARTED_TEXT.format(start_date=start_date_str, end_date=end_date_str),
-            reply_markup=None # Remove old keyboard
+            reply_markup=None 
         )
-        await query.message.answer(f"Добро пожаловать, {hbold(updated_user.first_name or '')}! Используйте /menu для доступа к функциям.", reply_markup=get_main_inline_menu_keyboard()) # Show inline menu
+        edited_menu_msg = await query.message.edit_text( 
+            f"Добро пожаловать, {hbold(updated_user.first_name or '')}! Ваш пробный период активен.", 
+            reply_markup=get_main_inline_menu_keyboard()
+        )
+        await state.update_data(last_menu_msg_id=edited_menu_msg.message_id)
+        logger.info(f"Updated last_menu_msg_id to {edited_menu_msg.message_id} after trial activation menu for user {updated_user.telegram_id}")
     else:
         logger.error(f"Failed to update user {db_user.telegram_id} to start trial period via update_user.")
         await query.message.edit_text("Не удалось активировать пробный период. Пожалуйста, свяжитесь с поддержкой.")
@@ -248,8 +267,19 @@ async def handle_profile_command(message: types.Message, session: AsyncSession, 
 
 @user_onboarding_router.message(Command("menu"))
 async def handle_menu_command(message: types.Message, session: AsyncSession, state: FSMContext):
-    await state.clear()
     user_id = message.from_user.id
+    current_state_data = await state.get_data()
+    last_menu_msg_id = current_state_data.get("last_menu_msg_id")
+
+    if last_menu_msg_id:
+        try:
+            await message.bot.delete_message(chat_id=message.chat.id, message_id=last_menu_msg_id)
+            logger.info(f"Deleted previous menu message {last_menu_msg_id} for user {user_id}")
+        except Exception as e:
+            logger.warning(f"Could not delete previous menu message {last_menu_msg_id} for user {user_id}: {e}")
+    
+    await state.clear()
+
     db_user = await user_crud.get_user_by_telegram_id(session, telegram_id=user_id)
     if not db_user:
         await message.answer("Похоже, вы еще не начали диалог со мной. Пожалуйста, используйте /start.")
@@ -257,12 +287,16 @@ async def handle_menu_command(message: types.Message, session: AsyncSession, sta
     if db_user.is_blocked:
         await message.answer("Ваш аккаунт заблокирован.")
         return
-    await message.answer("Выберите опцию из меню:", reply_markup=get_main_inline_menu_keyboard())
+    
+    await message.delete()
+    new_menu_msg = await message.answer("Выберите опцию из меню:", reply_markup=get_main_inline_menu_keyboard())
+    await state.update_data(last_menu_msg_id=new_menu_msg.message_id)
+    logger.info(f"Sent new menu {new_menu_msg.message_id} for user {user_id} and updated last_menu_msg_id.")
 
 @user_onboarding_router.callback_query(F.data == "main_menu:show")
 async def cq_show_main_menu(query: types.CallbackQuery, session: AsyncSession, state: FSMContext):
-    current_state = await state.get_state()
-    if current_state == FeedbackStates.awaiting_feedback_text:
+    current_fsm_state = await state.get_state()
+    if current_fsm_state == FeedbackStates.awaiting_feedback_text.state:
         await state.clear()
         logger.info(f"User {query.from_user.id} went back to main menu, cleared FeedbackStates.awaiting_feedback_text state.")
 
@@ -270,4 +304,64 @@ async def cq_show_main_menu(query: types.CallbackQuery, session: AsyncSession, s
         "Выберите опцию из меню:", 
         reply_markup=get_main_inline_menu_keyboard()
     )
+    await state.update_data(last_menu_msg_id=query.message.message_id)
     await query.answer()
+
+@user_onboarding_router.callback_query(F.data == "main_menu:support_email")
+async def cq_support_email(query: types.CallbackQuery, session: AsyncSession):
+    processed_email = ""
+    if settings.SUPPORT_EMAIL:
+        email_value = str(settings.SUPPORT_EMAIL).strip()
+        if (email_value.startswith('"') and email_value.endswith('"')) or \
+           (email_value.startswith("'") and email_value.endswith("'")):
+            email_value = email_value[1:-1]
+        processed_email = email_value.strip()
+
+    if processed_email and "@" in processed_email and "." in processed_email.split("@",1)[-1]:
+        email_link = hlink(processed_email, f"mailto:{processed_email}")
+        await query.message.edit_text(
+            f"Для связи с поддержкой, пожалуйста, используйте нашу почту <b>{email_link}</b>. \nМы постараемся помочь вам как можно скорее!🧑‍💻",
+            parse_mode=ParseMode.HTML,
+            reply_markup=get_back_to_main_menu_keyboard()
+        )
+    else:
+        await query.message.edit_text(
+            "😔 Контактные данные поддержки временно не указаны. Пожалуйста, попробуйте позже.",
+            reply_markup=get_back_to_main_menu_keyboard()
+        )
+    await query.answer()
+
+@user_onboarding_router.message(Command("support"))
+async def handle_support_command(message: types.Message, session: AsyncSession, state: FSMContext):
+    user_id = message.from_user.id
+    current_state_data = await state.get_data()
+    last_menu_msg_id = current_state_data.get("last_menu_msg_id")
+
+    if last_menu_msg_id:
+        try:
+            await message.bot.delete_message(chat_id=message.chat.id, message_id=last_menu_msg_id)
+            logger.info(f"Deleted previous menu message {last_menu_msg_id} for user {user_id} before /support")
+        except Exception as e:
+            logger.warning(f"Could not delete previous menu message {last_menu_msg_id} for user {user_id} before /support: {e}")
+
+    processed_email = ""
+    if settings.SUPPORT_EMAIL:
+        email_value = str(settings.SUPPORT_EMAIL).strip()
+        if (email_value.startswith('"') and email_value.endswith('"')) or \
+           (email_value.startswith("'") and email_value.endswith("'")):
+            email_value = email_value[1:-1]
+        processed_email = email_value.strip()
+
+    await message.delete()
+    if processed_email and "@" in processed_email and "." in processed_email.split("@",1)[-1]:
+        email_link = hlink(processed_email, f"mailto:{processed_email}")
+        await message.answer(
+            f"📧 Для связи с поддержкой, пожалуйста, используйте нашу почту <b>{email_link}</b>. \nМы постараемся помочь вам как можно скорее!🧑‍💻",
+            parse_mode=ParseMode.HTML,
+            reply_markup=get_back_to_main_menu_keyboard()
+        )
+    else:
+        await message.answer(
+            "😔 Контактные данные поддержки временно не указаны. Пожалуйста, попробуйте позже.",
+            reply_markup=get_back_to_main_menu_keyboard()
+        )

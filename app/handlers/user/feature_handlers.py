@@ -7,7 +7,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram.fsm.context import FSMContext
 
-from app.ui.keyboards import get_main_menu_keyboard, get_subscribe_inline_keyboard, get_after_solution_analysis_keyboard, get_back_to_main_menu_keyboard
+from app.ui.keyboards import get_main_menu_keyboard, get_subscribe_inline_keyboard, get_after_solution_analysis_keyboard, get_back_to_main_menu_keyboard, get_after_case_keyboard
 
 from app.db.crud.user_crud import get_user_by_telegram_id
 from app.db.crud.solution_crud import (
@@ -38,8 +38,9 @@ from app.handlers.payment_handlers import (
 
 from app.handlers.user.user_onboarding_handlers import HELP_TEXT
 
-from app.handlers.case.case_lifecycle_handlers import _generate_and_send_case
+from app.handlers.case.case_lifecycle_handlers import _generate_new_case_content
 from app.states.solve_case import SolveCaseStates
+from aiogram.utils.markdown import hbold
 
 from yookassa import Payment
 
@@ -112,8 +113,8 @@ async def _get_my_progress_content(user_telegram_id: int, session: AsyncSession)
     ai_feedback_shown = False
 
     progress_lines = []
-    progress_lines.append(f"🏆 Ваш Текущий Ранг: {user_rank_escaped}")
-    progress_lines.append(f"💡 Решено кейсов \\(засчитано\\): *{quality_solved_count}*")
+    #progress_lines.append(f"🏆 Ваш Текущий Ранг: {user_rank_escaped}")
+    #progress_lines.append(f"💡 Решено кейсов \\(засчитано\\): *{quality_solved_count}*")
 
     if recent_solutions:
         most_recent_solution = recent_solutions[0]
@@ -425,18 +426,26 @@ async def process_feedback_text(message: types.Message, session: AsyncSession, s
 
 @feature_router.callback_query(F.data == "main_menu:request_case")
 async def cq_main_menu_request_case(query: types.CallbackQuery, session: AsyncSession, state: FSMContext, bot: Bot):
-    logger.info(f"User {query.from_user.id} selected 'Request Case' from inline menu.")
-    await query.answer("Загружаю новый кейс...")
+    logger.info(f"User {query.from_user.id} requested a new case via 'main_menu:request_case' callback.")
+    await query.answer() # Acknowledge callback
+    
+    status_msg = await query.message.answer("⏳ Генерирую новый кейс для вас, подождите немного...")
+    
+    new_case, error = await _generate_new_case_content(session, query.from_user.id)
+    
+    if error:
+        await status_msg.edit_text(error)
+        return
 
-    await _generate_and_send_case(message_or_callback_query=query, state=state, session=session)
-
-    try:
-        await query.message.edit_text(
-            "✔️ Новый кейс был отправлен вам в отдельном сообщении ниже!",
-            reply_markup=get_back_to_main_menu_keyboard()
-        )
-    except Exception as e:
-        logger.error(f"Error editing original menu message after sending case: {e}")
+    if new_case:
+        response_text = f"{hbold(new_case.title)}\n\n{new_case.case_text}"
+        await status_msg.edit_text(response_text, reply_markup=get_after_case_keyboard())
+        await state.set_state(SolveCaseStates.awaiting_solution)
+        await state.update_data(current_case_id=new_case.id, case_title=new_case.title)
+        logger.info(f"User {query.from_user.id} set to state SolveCaseStates.awaiting_solution for case_id {new_case.id}")
+    else:
+        # This case should ideally be caught by 'error' above, but as a fallback:
+        await status_msg.edit_text("Не удалось получить кейс. Попробуйте снова.")
 
 @feature_router.callback_query(F.data == "main_menu:my_progress")
 async def cq_main_menu_my_progress(query: types.CallbackQuery, session: AsyncSession):

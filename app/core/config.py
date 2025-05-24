@@ -52,6 +52,9 @@ class Settings:
 
     TRIAL_PERIOD_DAYS: int = 7
 
+    SUPPORT_EMAIL: Optional[str] = os.getenv("SUPPORT_EMAIL", "BTrainerbot@yandex.com")
+    TELEGRAM_CHANNEL_URL: Optional[str] = os.getenv("TELEGRAM_CHANNEL_URL", "https://t.me/BTrainer")
+
 settings = Settings()
 
 def is_admin(user_id: int, db_user) -> bool:
