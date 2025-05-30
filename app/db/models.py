@@ -50,6 +50,7 @@ class User(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
     current_case_id: Mapped[Optional[int]] = mapped_column(Integer, ForeignKey("cases.id", ondelete="SET NULL"), nullable=True)
     state: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    trial_ending_notification_sent: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
 
     solutions: Mapped[List["Solution"]] = relationship(back_populates="user", cascade="all, delete-orphan")
     feedbacks: Mapped[List["Feedback"]] = relationship(back_populates="user", cascade="all, delete-orphan")

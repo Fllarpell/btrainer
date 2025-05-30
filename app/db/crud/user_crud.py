@@ -2,7 +2,7 @@ import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
-from sqlalchemy import func
+from sqlalchemy import func, and_
 from typing import Optional, List
 from sqlalchemy import update
 import logging
@@ -40,7 +40,8 @@ async def create_user(
     subscription_status: SubscriptionStatus = SubscriptionStatus.NONE,
     trial_start_date: Optional[datetime.datetime] = None,
     trial_end_date: Optional[datetime.datetime] = None,
-    last_seen: Optional[datetime.datetime] = None
+    last_seen: Optional[datetime.datetime] = None,
+    trial_ending_notification_sent: bool = False
 ) -> User:
     db_user = User(
         telegram_id=telegram_id, 
@@ -52,7 +53,8 @@ async def create_user(
         subscription_status=subscription_status,
         trial_start_date=trial_start_date,
         trial_end_date=trial_end_date,
-        last_active_at=last_seen if last_seen else datetime.datetime.now(datetime.timezone.utc)
+        last_active_at=last_seen if last_seen else datetime.datetime.now(datetime.timezone.utc),
+        trial_ending_notification_sent=trial_ending_notification_sent
     )
     db.add(db_user)
     await db.commit()
@@ -89,6 +91,7 @@ async def update_user(
         "trial_end_date",
         "current_plan_name",
         "converted_from_trial",
+        "trial_ending_notification_sent"
     }
     update_data_filtered = {
         k: v for k, v in update_data.items() if k in allowed_updates
@@ -120,6 +123,9 @@ async def set_user_subscription(
             update_data["current_plan_name"] = plan_name
         pass
     
+    if status != SubscriptionStatus.EXPIRED:
+         update_data["trial_ending_notification_sent"] = False
+
     return await update_user(db, telegram_id, update_data)
 
 
@@ -191,6 +197,8 @@ async def grant_subscription_to_user(
     if was_on_trial:
         values_to_update["converted_from_trial"] = True
     
+    values_to_update["trial_ending_notification_sent"] = False
+
     stmt = (
         update(User)
         .where(User.telegram_id == telegram_id)
@@ -227,6 +235,7 @@ async def update_user_subscription(
         if status == SubscriptionStatus.ACTIVE or status == SubscriptionStatus.EXPIRED:
             pass
         elif status == SubscriptionStatus.TRIAL:
+            user.trial_ending_notification_sent = False
             pass 
 
         await db.commit()
@@ -249,22 +258,63 @@ async def grant_trial_period(db: AsyncSession, user_id: int, trial_days: int) ->
         return None
 
     now = datetime.datetime.now(datetime.timezone.utc)
-    user.trial_start_date = now
-    user.trial_end_date = now + datetime.timedelta(days=trial_days)
+    trial_end = now + datetime.timedelta(days=trial_days)
+
     user.subscription_status = SubscriptionStatus.TRIAL
-    user.current_plan_name = None
-    user.subscription_expires_at = None
+    user.trial_start_date = now
+    user.trial_end_date = trial_end
+    user.trial_ending_notification_sent = False
     user.converted_from_trial = False
-    
-    try:
+
+    await db.commit()
+    await db.refresh(user)
+    logger.info(f"Granted {trial_days}-day trial to user {user.telegram_id} (DB ID: {user.id}). Trial ends: {trial_end}")
+    return user
+
+async def get_users_trial_ending_soon(db: AsyncSession, hours_before_end: int) -> List[User]:
+    now = datetime.datetime.now(datetime.timezone.utc)
+    # Calculate the time range for trial ending: between (target_hours - 1) and target_hours from now
+    start_window = now + datetime.timedelta(hours=hours_before_end - 1)
+    end_window = now + datetime.timedelta(hours=hours_before_end)
+
+    # Ensure end_time_start is not in the past relative to now
+    if start_window < now:
+        start_window = now
+
+    result = await db.execute(
+        select(User).where(
+            and_(
+                User.subscription_status == SubscriptionStatus.TRIAL,
+                User.trial_end_date >= start_window,
+                User.trial_end_date < end_window, # Use < to avoid including the exact end time twice
+                User.trial_ending_notification_sent == False,
+                User.is_blocked == False # Do not send notification to blocked users
+            )
+        )
+    )
+    return result.scalars().all()
+
+async def set_trial_ending_notification_sent(db: AsyncSession, user_id: int) -> Optional[User]:
+    user = await db.get(User, user_id) # Fetch by primary key user_id
+    if user:
+        user.trial_ending_notification_sent = True
         await db.commit()
         await db.refresh(user)
-        logger.info(f"Granted {trial_days}-day trial to user ID {user_id} (TG: {user.telegram_id}). Ends: {user.trial_end_date}")
+        logger.info(f"Marked trial ending notification sent for user DB ID {user_id}.")
         return user
-    except Exception as e:
-        logger.error(f"Error granting trial to user ID {user_id}: {e}", exc_info=True)
-        await db.rollback()
-        return None
+    logger.warning(f"User with DB ID {user_id} not found to mark notification sent.")
+    return None
+
+async def reset_trial_ending_notification_sent(db: AsyncSession, user_id: int) -> Optional[User]:
+    user = await db.get(User, user_id) # Fetch by primary key user_id
+    if user:
+        user.trial_ending_notification_sent = False
+        await db.commit()
+        await db.refresh(user)
+        logger.info(f"Reset trial ending notification sent flag for user DB ID {user_id}.")
+        return user
+    logger.warning(f"User with DB ID {user_id} not found to reset notification sent flag.")
+    return None
 
 async def cancel_trial_period(db: AsyncSession, user_id: int) -> Optional[User]:
     user = await db.get(User, user_id)
@@ -273,20 +323,16 @@ async def cancel_trial_period(db: AsyncSession, user_id: int) -> Optional[User]:
         return None
 
     if user.subscription_status == SubscriptionStatus.TRIAL:
-        user.subscription_status = SubscriptionStatus.NONE
+        user.subscription_status = SubscriptionStatus.EXPIRED # Or NONE, depending on desired final state after cancellation
         user.trial_end_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
+        user.trial_ending_notification_sent = False # Reset flag if trial is cancelled manually
         logger.info(f"Cancelled trial for user ID {user_id} (TG: {user.telegram_id}).")
     else:
         logger.warning(f"Attempted to cancel trial for user ID {user_id} (TG: {user.telegram_id}) who is not on trial (status: {user.subscription_status}).")
 
-    try:
-        await db.commit()
-        await db.refresh(user)
-        return user
-    except Exception as e:
-        logger.error(f"Error cancelling trial for user ID {user_id}: {e}", exc_info=True)
-        await db.rollback()
-        return None
+    await db.commit()
+    await db.refresh(user)
+    return user
 
 async def activate_user_subscription(db: AsyncSession, user_id: int, plan_name: str, duration_days: int) -> Optional[User]:
     user = await db.get(User, user_id)
@@ -300,24 +346,20 @@ async def activate_user_subscription(db: AsyncSession, user_id: int, plan_name: 
     # If user has an active subscription, extend it from the current expiration date
     if user.subscription_status == SubscriptionStatus.ACTIVE and user.subscription_expires_at and user.subscription_expires_at > now:
         new_expiration_date = user.subscription_expires_at + datetime.timedelta(days=duration_days)
-    
+
     was_on_trial = user.subscription_status == SubscriptionStatus.TRIAL
 
     user.subscription_status = SubscriptionStatus.ACTIVE
     user.current_plan_name = plan_name
     user.subscription_expires_at = new_expiration_date
+    user.trial_ending_notification_sent = False # Reset flag on subscription activation
     if was_on_trial:
         user.converted_from_trial = True
 
-    try:
-        await db.commit()
-        await db.refresh(user)
-        logger.info(f"Activated subscription '{plan_name}' for user ID {user_id} (TG: {user.telegram_id}) for {duration_days} days. Expires: {new_expiration_date}")
-        return user
-    except Exception as e:
-        logger.error(f"Error activating subscription for user ID {user_id}: {e}", exc_info=True)
-        await db.rollback()
-        return None
+    await db.commit()
+    await db.refresh(user)
+    logger.info(f"Activated subscription '{plan_name}' for user ID {user_id} (TG: {user.telegram_id}) for {duration_days} days. Expires: {new_expiration_date}")
+    return user
 
 async def deactivate_user_subscription(db: AsyncSession, user_id: int) -> Optional[User]:
     user = await db.get(User, user_id)
@@ -327,16 +369,13 @@ async def deactivate_user_subscription(db: AsyncSession, user_id: int) -> Option
 
     if user.subscription_status == SubscriptionStatus.ACTIVE:
         user.subscription_status = SubscriptionStatus.EXPIRED
+        # Set expiration to a time in the past to ensure it's not considered active
         user.subscription_expires_at = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
+        user.trial_ending_notification_sent = False # Reset flag on subscription deactivation (optional, but safe)
         logger.info(f"Deactivated subscription for user ID {user_id} (TG: {user.telegram_id}). Plan was: {user.current_plan_name}")
     else:
         logger.warning(f"Attempted to deactivate subscription for user ID {user_id} (TG: {user.telegram_id}) who has no active subscription (status: {user.subscription_status}).")
 
-    try:
-        await db.commit()
-        await db.refresh(user)
-        return user
-    except Exception as e:
-        logger.error(f"Error deactivating subscription for user ID {user_id}: {e}", exc_info=True)
-        await db.rollback()
-        return None 
+    await db.commit()
+    await db.refresh(user)
+    return user 

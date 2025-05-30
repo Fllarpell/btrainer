@@ -17,6 +17,9 @@ from app.handlers.case.case_lifecycle_handlers import case_lifecycle_router
 from app.handlers.admin.admin import admin_router
 from app.handlers.payment_handlers import payment_router
 
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
+from app.tasks.scheduled_tasks import send_trial_ending_notifications
 
 async def main():
     logging.basicConfig(
@@ -61,11 +64,17 @@ async def main():
     except Exception as e:
         logger.error(f"Failed to set bot commands: {e}")
 
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(send_trial_ending_notifications, 'interval', minutes=10, args=[bot])
+    scheduler.start()
+    logger.info("Scheduler started.")
+
     await bot.delete_webhook(drop_pending_updates=True)
     logger.info("Starting polling...")
     try:
         await dp.start_polling(bot)
     finally:
+        scheduler.shutdown() # Shutdown scheduler on bot stop
         await bot.session.close()
 
         from app.db.session import async_engine
