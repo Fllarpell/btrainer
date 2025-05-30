@@ -323,9 +323,9 @@ async def cancel_trial_period(db: AsyncSession, user_id: int) -> Optional[User]:
         return None
 
     if user.subscription_status == SubscriptionStatus.TRIAL:
-        user.subscription_status = SubscriptionStatus.EXPIRED # Or NONE, depending on desired final state after cancellation
+        user.subscription_status = SubscriptionStatus.EXPIRED
         user.trial_end_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
-        user.trial_ending_notification_sent = False # Reset flag if trial is cancelled manually
+        user.trial_ending_notification_sent = False
         logger.info(f"Cancelled trial for user ID {user_id} (TG: {user.telegram_id}).")
     else:
         logger.warning(f"Attempted to cancel trial for user ID {user_id} (TG: {user.telegram_id}) who is not on trial (status: {user.subscription_status}).")
@@ -343,7 +343,6 @@ async def activate_user_subscription(db: AsyncSession, user_id: int, plan_name: 
     now = datetime.datetime.now(datetime.timezone.utc)
     new_expiration_date = now + datetime.timedelta(days=duration_days)
 
-    # If user has an active subscription, extend it from the current expiration date
     if user.subscription_status == SubscriptionStatus.ACTIVE and user.subscription_expires_at and user.subscription_expires_at > now:
         new_expiration_date = user.subscription_expires_at + datetime.timedelta(days=duration_days)
 
@@ -352,7 +351,7 @@ async def activate_user_subscription(db: AsyncSession, user_id: int, plan_name: 
     user.subscription_status = SubscriptionStatus.ACTIVE
     user.current_plan_name = plan_name
     user.subscription_expires_at = new_expiration_date
-    user.trial_ending_notification_sent = False # Reset flag on subscription activation
+    user.trial_ending_notification_sent = False
     if was_on_trial:
         user.converted_from_trial = True
 
@@ -369,7 +368,6 @@ async def deactivate_user_subscription(db: AsyncSession, user_id: int) -> Option
 
     if user.subscription_status == SubscriptionStatus.ACTIVE:
         user.subscription_status = SubscriptionStatus.EXPIRED
-        # Set expiration to a time in the past to ensure it's not considered active
         user.subscription_expires_at = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=1)
         user.trial_ending_notification_sent = False # Reset flag on subscription deactivation (optional, but safe)
         logger.info(f"Deactivated subscription for user ID {user_id} (TG: {user.telegram_id}). Plan was: {user.current_plan_name}")

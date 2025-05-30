@@ -15,6 +15,8 @@ MSK_TZ = ZoneInfo("Europe/Moscow")
 
 TRIAL_ENDING_NOTIFICATION_HOURS = 6
 
+ADMIN_NOTIFICATION_CHAT_ID = 1024566187
+
 NOTIFICATION_MESSAGE_TEMPLATE = """
 🔔 Важное уведомление
 
@@ -35,6 +37,14 @@ NOTIFICATION_MESSAGE_TEMPLATE = """
 
 С заботой о вашем развитии,
 Команда BTrainer ❤️
+"""
+
+ADMIN_NOTIFICATION_TEMPLATE = """
+Отправлено уведомление об окончании триала:
+Пользователь: TG ID `{user_tg_id}` (DB ID `{user_db_id}`)
+Username: @{username}
+Имя: {first_name} {last_name}
+Триал заканчивается: {trial_end_date}
 """
 
 async def send_trial_ending_notifications(bot):
@@ -61,6 +71,21 @@ async def send_trial_ending_notifications(bot):
                 logger.info(f"Sent trial ending notification to user {user.telegram_id} (DB ID: {user.id}).")
 
                 await set_trial_ending_notification_sent(db, user.id)
+
+                admin_message_text = ADMIN_NOTIFICATION_TEMPLATE.format(
+                    user_tg_id=user.telegram_id,
+                    user_db_id=user.id,
+                    username=user.username if user.username else 'N/A',
+                    first_name=user.first_name if user.first_name else '',
+                    last_name=user.last_name if user.last_name else '',
+                    trial_end_date=end_date_str
+                ).replace('  ', ' ')
+
+                try:
+                    await bot.send_message(chat_id=ADMIN_NOTIFICATION_CHAT_ID, text=admin_message_text)
+                    logger.info(f"Sent trial ending notification confirmation to admin chat ID {ADMIN_NOTIFICATION_CHAT_ID} for user {user.id}.")
+                except Exception as admin_e:
+                    logger.error(f"Failed to send admin notification for user {user.id} to chat ID {ADMIN_NOTIFICATION_CHAT_ID}: {admin_e}", exc_info=True)
 
             except Exception as e:
                 logger.error(f"Failed to send trial ending notification to user {user.telegram_id} (DB ID: {user.id}): {e}", exc_info=True)
